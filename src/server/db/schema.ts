@@ -27,9 +27,10 @@ export const databaseIdentity = pgTable('database_identity', {
 export const members = pgTable('members', {
   userId: text('user_id').primaryKey().references(() => user.id, { onDelete: 'restrict' }),
   role: text('role').notNull().default('member'),
+  status: text('status').notNull().default('active'),
   publicProfile: boolean('public_profile').notNull().default(false),
   createdAt: instant('created_at').notNull().defaultNow(),
-}, t => [check('member_role', sql`${t.role} IN ('member', 'admin')`)]);
+}, t => [check('member_role', sql`${t.role} IN ('member', 'admin')`), check('member_status', sql`${t.status} IN ('active', 'suspended')`)]);
 
 export const artists = pgTable('artists', {
   id: text('id').primaryKey(),
@@ -268,3 +269,52 @@ export const watchlists = pgTable('watchlists', {
   artistId: text('artist_id').notNull().references(() => artists.id, { onDelete: 'restrict' }),
   createdAt: instant('created_at').notNull().defaultNow(),
 }, t => [primaryKey({ columns: [t.userId, t.artistId] })]);
+
+export const betaInvites = pgTable('beta_invites', {
+  email: text('email').primaryKey(),
+  expiresAt: instant('expires_at').notNull(),
+  createdAt: instant('created_at').notNull().defaultNow(),
+  createdBy: text('created_by').notNull(),
+  revokedAt: instant('revoked_at'),
+  claimedBy: text('claimed_by').unique().references(() => user.id, { onDelete: 'restrict' }),
+  claimedAt: instant('claimed_at'),
+}, t => [
+  check('invite_normalized_email', sql`${t.email} = lower(trim(${t.email})) AND length(${t.email}) BETWEEN 3 AND 254`),
+  check('invite_claim_pair', sql`(${t.claimedBy} IS NULL AND ${t.claimedAt} IS NULL) OR (${t.claimedBy} IS NOT NULL AND ${t.claimedAt} IS NOT NULL)`),
+  check('invite_expiry', sql`${t.expiresAt} > ${t.createdAt}`),
+]);
+
+export const authAuditEvents = pgTable('auth_audit_events', {
+  id: text('id').primaryKey(),
+  actor: text('actor').notNull(),
+  action: text('action').notNull(),
+  target: text('target').notNull(),
+  reason: text('reason').notNull(),
+  createdAt: instant('created_at').notNull().defaultNow(),
+}, t => [index('auth_audit_target_idx').on(t.target, t.createdAt)]);
+
+export const mailOutbox = pgTable('mail_outbox', {
+  id: text('id').primaryKey(),
+  recipient: text('recipient').notNull(),
+  purpose: text('purpose').notNull(),
+  subject: text('subject').notNull(),
+  body: text('body'),
+  status: text('status').notNull().default('queued'),
+  attempts: integer('attempts').notNull().default(0),
+  availableAt: instant('available_at').notNull().defaultNow(),
+  expiresAt: instant('expires_at').notNull(),
+  leaseAt: instant('lease_at'),
+  sentAt: instant('sent_at'),
+  createdAt: instant('created_at').notNull().defaultNow(),
+}, t => [
+  check('mail_purpose', sql`${t.purpose} IN ('verification', 'reset')`),
+  check('mail_state', sql`${t.status} IN ('queued', 'sending', 'sent', 'failed') AND ${t.attempts} BETWEEN 0 AND 5`),
+  check('mail_payload', sql`(${t.status} IN ('queued', 'sending') AND ${t.body} IS NOT NULL) OR (${t.status} IN ('sent', 'failed') AND ${t.body} IS NULL)`),
+  index('mail_queue_idx').on(t.status, t.availableAt),
+]);
+
+export const actionLimits = pgTable('action_limits', {
+  key: text('key').primaryKey(),
+  count: integer('count').notNull(),
+  windowStartedAt: instant('window_started_at').notNull(),
+}, t => [check('action_limit_nonnegative', sql`${t.count} >= 0`)]);

@@ -25,6 +25,7 @@ async function transaction(fn) {
   try { await fn(); } finally { await query('ROLLBACK'); }
 }
 async function fixture() {
+  await query(`INSERT INTO beta_invites (email,created_by,expires_at) VALUES ('alice@example.invalid','test',now()+interval '1 day'),('bob@example.invalid','test',now()+interval '1 day')`);
   await query(`INSERT INTO "user" (id,name,email) VALUES ('alice','Alice','alice@example.invalid'),('bob','Bob','bob@example.invalid')`);
   await query(`INSERT INTO wallets (user_id) VALUES ('alice'),('bob')`);
   await query(`INSERT INTO artists (id,slug,name,spotify_artist_id,status) VALUES ('artist','artist','Artist','1111111111111111111111','active'),('other','other','Other','2222222222222222222222','active')`);
@@ -52,7 +53,7 @@ after(async () => { await client.end(); });
 
 test('empty database migrations replay safely and all stored instants are timezone-aware', async () => {
   mustPass(migration());
-  assert.equal((await query('SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations')).rows[0].n, 2);
+  assert.equal((await query('SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations')).rows[0].n, 4);
   const wrong = await query(`SELECT table_name,column_name FROM information_schema.columns WHERE table_schema='public' AND data_type='timestamp without time zone'`);
   assert.deepEqual(wrong.rows, []);
   const pending = await query('SELECT count(*)::int AS n FROM artists');
