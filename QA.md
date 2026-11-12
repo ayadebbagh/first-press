@@ -1,10 +1,21 @@
 # Beta verification — 2026-11-08
 
+
+## Artist pictures and isolated browsers — 2026-11-12
+
+[PR #46](https://github.com/ayadebbagh/first-press/pull/46) is merged. All 50 artists have local picture mappings; the 18 new profile images include source and artist-identity evidence in `ASSET-SOURCES.json`. Each new file was decoded locally, and the production and standalone-preview builds passed. The unit check now rejects missing image mappings instead of silently skipping them.
+
+[CI run 43287769563](https://github.com/ayadebbagh/first-press/actions/runs/43287769563) passed the frozen pnpm installation, typecheck, all 21 unit tests, production/preview builds and all 16 Playwright checks. The browser tests use an actual Next.js production server with separate desktop (1440px) and mobile (320px) Chromium contexts. They cover all 50 decoded catalog images, direct artist links, a broken-image fallback, page width, direct routes/root redirect/404, keyboard and dialog focus, watchlist persistence, buy/cancel/settle/full exit/retained receipts, daily vote/prediction locking and the original Dreamflasher Spotify mapping. Desktop/mobile screenshots were downloaded and visually reviewed. Failure traces, reports and screenshots are kept for seven days in Actions artifacts.
+
+Optional fonts and external provider frames are deterministic fixtures in this suite. This proves app behavior and provider selection; it does not revalidate live Spotify/SoundCloud audio eligibility. Every test gets fresh browser storage and no personal Brave window/profile is used. The local environment still denies HTTP binding, so actual-server browser execution runs in hosted CI.
+
+Run `pnpm exec playwright install chromium`, `pnpm build`, then `pnpm test:e2e` on a host that permits local listening. The suite manages its own server on port 3100. Issues #45 and #8 are complete.
+
 ## Repository and planning checks — 2026-11-12
 
 Typecheck, all 21 existing tests, the Next.js production build and the React QA preview build passed again while preparing the repository. The 43-issue/four-milestone backlog validates without missing dependencies or cycles; additional invalid fixtures confirmed that the validator rejects cycles, missing keys and duplicate keys. All local Markdown links resolve and GitHub YAML files parse. The project-sync command defaults to a no-network dry run and rejects an unexpected repository target before mutation.
 
-No credential-pattern matches were found in the selected source files. Generated previews/builds, local tool state and private environment files are excluded. The current browser-testing limit remains unchanged: the earlier Brave observations used the file preview; isolated real-server browser coverage is planned in F02. Publication and access status are recorded in `docs/planning/PUBLICATION.md`.
+No credential-pattern matches were found in the selected source files. Generated previews/builds, local tool state and private environment files are excluded. The earlier Brave observations used the file preview; real-server isolated coverage was subsequently completed in F02 as documented above. Publication and access status are recorded in `docs/planning/PUBLICATION.md`.
 
 Publication follow-up: the [first GitHub CI run](https://github.com/ayadebbagh/first-press/actions/runs/43282396592) passed its frozen install, checks, both builds and Docker HTTP smoke test. The latter verified health, the root/discovery route, catalog, favicon and invalid-route 404 against the actual production server. The [planning workflow](https://github.com/ayadebbagh/first-press/actions/runs/43282396565) passed and four milestones/43 assigned issues were verified via GitHub's repository API. These HTTP checks do not replace F02's isolated browser/hydration tests.
 

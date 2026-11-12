@@ -208,5 +208,15 @@
   "project": {
     "status": "pending",
     "reason": "Projects creation is not exposed by the connected tools; CLI authentication unavailable."
+  },
+  "followups": {
+    "pictures_pr": "https://github.com/ayadebbagh/first-press/pull/46",
+    "browser_ci_url": "https://github.com/ayadebbagh/first-press/actions/runs/43287769563",
+    "browser_checks_passed": 16,
+    "unit_tests_passed": 21,
+    "completed_issue_keys": [
+      "F02",
+      "B01"
+    ]
   }
 }

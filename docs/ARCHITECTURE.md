@@ -4,9 +4,9 @@
 
 Next.js App Router serves independent app routes and `/api/health`. React state and `localStorage` implement the entire demo account. `src/engine.ts` holds pure accounting rules; `src/playback.ts` selects the provider. The production bundle uses standalone output and a non-root Docker image. There is no database, authentication or metric collector.
 
-## Recommended connected-beta design — proposed
+## Accepted connected-beta design — implementation pending
 
-Keep one Next.js application, one PostgreSQL database and one scheduled Node worker from the same repository. Consider Drizzle for typed migrations and Better Auth for sessions, subject to F01. These are recommendations, not installed or final choices. Choose one supported sign-in method before implementation; avoid making paid email delivery a hidden prerequisite. Do not require a member's Spotify login just to use an embed or back an artist.
+Keep one Next.js application, one PostgreSQL database and one scheduled Node worker from the same repository. Use Drizzle for typed migrations and Better Auth with both Google and email/password sign-in, as accepted in [ADR 0001](adr/0001-self-hosted-backend.md). These backend packages and connected accounts are not implemented yet. Select and test email delivery for verification/recovery before launch; avoid making a paid service a hidden prerequisite. Do not require a member's Spotify login just to use an embed or back an artist.
 
 Browser → authenticated Next.js handlers → domain services → PostgreSQL transactions. The browser supplies intent, never authoritative balances, prices or receipt timestamps. The scheduled worker obtains candidate observations through a provider adapter, validates them, commits immutable snapshots and settles eligible orders transactionally. An admin-only manual import adapter is a useful first implementation if automated source access is unresolved. Do not bypass access controls.
 

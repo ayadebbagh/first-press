@@ -4,7 +4,7 @@ Record a dated decision, owner, options, consequences and linked issue when reso
 
 | Key | Choice | Recommendation / unresolved detail | Gate |
 | --- | --- | --- | --- |
-| F01 | Database, migration and authentication approach | PostgreSQL + Drizzle + Better Auth; select a sign-in method and verify current compatibility before adding dependencies | Server schema/auth |
+| F01 | Database, migration and authentication approach | Accepted 2026-11-12: PostgreSQL + Drizzle + Better Auth for beta and production, with both Google and email/password. Baseline versions, migration ownership and configuration are in [ADR 0001](adr/0001-self-hosted-backend.md) | Server schema/auth |
 | F04 | Backing economy and update contract | 1,000 initial Credits accepted; specify UTC boundaries, centi-Credit rounding, units, order cutoff, reservations, partial lots, source-delay treatment, stale grace, suspensions and correction policy | Live order implementation |
 | C03 | Listener source access | Evaluate public-page collection without bypassing restrictions; document allowed operational use, reliability and cost. Use verified manual imports if automation remains unresolved. No paid service selected | Automated collection / live data |
 | C08 | Bad or corrected snapshots | Append-only correction events; choose cancel/freeze/recompute behavior before any live incident | Live settlement |
