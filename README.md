@@ -43,7 +43,7 @@ Current verification results are in [QA.md](QA.md). Generated previews, build ou
 
 ## Development plan
 
-Start with the [product scope](docs/PRODUCT.md), [roadmap](docs/ROADMAP.md) and [contribution guide](CONTRIBUTING.md). The [architecture](docs/ARCHITECTURE.md) distinguishes the existing demo from the proposed connected beta. Open product and technical choices are tracked in the [decision register](docs/DECISIONS.md).
+Start with the [product scope](docs/PRODUCT.md), [roadmap](docs/ROADMAP.md) and [contribution guide](CONTRIBUTING.md). The [architecture](docs/ARCHITECTURE.md) distinguishes the existing demo from the planned connected beta. Open product and technical choices are tracked in the [decision register](docs/DECISIONS.md).
 
 The [project workflow](docs/PROJECT-MANAGEMENT.md) explains priorities, dependencies and release gates. [The backlog](docs/planning/BACKLOG.md) contains the full issue plan; `backlog.json` is its machine-readable source. Run `pnpm project:check` to validate it and `pnpm project:sync` to preview GitHub setup without making changes. Publishing status is recorded in [PUBLICATION.md](docs/planning/PUBLICATION.md).
 
