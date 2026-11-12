@@ -1,6 +1,6 @@
 # Invite-only identity (A02)
 
-A connected identity is separate from the local-storage demo. Account creation does not grant Credits, import browser balances, or publish verified receipts. A03–A08 implement those services. `/account` and `/reset-password` are independent app screens; demo discovery stays available when accounts are disabled.
+A connected identity is separate from the local-storage demo. Account creation does not grant Credits, import browser balances, or publish verified receipts. A03 supplies the [server ledger](LEDGER.md) and explicit initialization endpoint; A04–A08 implement orders and connected portfolio UI. `/account` and `/reset-password` are independent app screens; demo discovery stays available when accounts are disabled.
 
 ## Enable on an isolated host
 
@@ -59,7 +59,7 @@ The web service needs database access to enqueue mail; it does not need SMTP cre
 | Endpoint | Authority |
 | --- | --- |
 | GET/PATCH `/api/account/profile` | Current member only; PATCH accepts display name/privacy preference, never ID, role or status; same-origin and per-member write limit. No public profile is published by this preference. |
-| GET `/api/account/wallet` | Current member's wallet only; exact amounts are strings, and missing wallet is NULL until A03. Query-string user IDs are ignored. |
+| GET `/api/account/wallet` | Current member's wallet only; exact amounts are strings, and missing wallet is NULL until explicitly initialized through the A03 POST endpoint. Query-string user IDs are ignored. |
 | GET `/api/account/orders/:id` | Lookup requires both order ID and current member ID; other members and unknown IDs get the same 404. |
 | POST `/api/admin/invites` | Active admin session, same origin and per-admin rate limit; actor comes from the session. |
 

@@ -72,3 +72,7 @@ PostgreSQL schema, reviewed Drizzle migrations and opt-in isolated synthetic fix
 ## Connected identity
 
 Invite-only email/password and Google account code is available behind an explicit server flag. See [authentication setup and rollout checks](docs/AUTHENTICATION.md). Real Google/SMTP configuration and supervised mail delivery are required before live admission. Signing in does not import demo Credits. The [organization transfer plan](docs/REPOSITORY-TRANSFER.md) records the agreed `first-press-app` destination and intended collaborator admin access; the move has not occurred.
+
+## Credit ledger
+
+The [server ledger](docs/LEDGER.md) provides a fixed, exactly-once starting grant, commit-time accounting checks and an admin reconciliation endpoint. Wallet initialization is a separate authenticated POST; demo Credits remain local and order/portfolio integration follows in A04–A08.

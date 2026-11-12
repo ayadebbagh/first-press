@@ -1,6 +1,16 @@
 # Beta verification — 2026-11-08
 
 
+## Server Credit ledger — 2026-11-12
+
+A03 adds a fixed server starting grant, internal transaction primitives, deferred wallet/ledger/cash-hold consistency and an admin reconciliation API. Registration alone still creates no wallet; initialization is an authenticated, same-origin POST with no client amount or recipient. File/local demo Credits are not imported.
+
+[Branch preflight 43311970259](https://github.com/ayadebbagh/first-press/actions/runs/43311970259) passed the ledger and browser suites. Nine real PostgreSQL ledger cases cover twenty concurrent initialization retries producing one grant/event, active verified eligibility, distinct accounts, reserve/replay/cancel and grant replay after spending, competing reservations, atomic rollback and incomplete-commit rejection, negative/floating/overflow/foreign-order input, idempotency conflicts, drift diagnostics and append-only/unique grants. The initial prep run correctly rejected the incomplete transaction; its assertion was corrected to inspect Drizzle's wrapped PostgreSQL error.
+
+The connected API browser cases additionally verify fixed exact string amounts across concurrent requests, rejection of client Credits/recipient fields and cross-origin posts, no effect on a second member, and member/admin diagnostic permissions. The new suite totals 98 tests: 35 unit, 14 schema/migration, 10 auth handlers, 9 ledger integrations and 30 desktop/mobile browser checks (22 demo/file-preview + 8 connected). Final PR/main runs supply the release evidence. Frozen install, types, production/preview builds, drift and Compose checks also run.
+
+No existing migration was rewritten; Drizzle Kit generated the fifth custom migration and its journal/snapshot. It validates historical wallet accounting before enabling commit-time checks. [Ledger operations](docs/LEDGER.md) covers lock order, retries, exact units, review-only diagnostics and remaining A04–A08 gates. Live data collection, server order placement/settlement and connected portfolio UI are not established by these tests. All database test targets are explicit isolated `_ledger_test`/other test databases; production accounts remain disabled until configured.
+
 ## File-preview account navigation — 2026-11-12
 
 B03 / issue #53 fixes a reported regression: the shell used a raw `/account` anchor, which a file-open browser resolved as a local account file. The account bubble now uses the existing navigation provider, so file previews open `#/account` and Next.js retains `/account`. The preview renders an explicit file-only account status with a working discovery return link; it never imitates a server sign-in or imports demo records. The initial is centered with inline-flex and a separate text span; the status dot remains absolutely positioned.
