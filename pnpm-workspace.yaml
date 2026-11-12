@@ -1,2 +1,5 @@
 ignoredOptionalDependencies:
   - sharp
+# Reviewed native binary installers required by Drizzle Kit and the pinned auth CLI.
+allowBuilds:
+  'esbuild@0.18.20 || 0.25.12 || 0.28.2': true

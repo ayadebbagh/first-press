@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'package.json'
+      - 'pnpm-workspace.yaml'
+      - 'src/server/db/schema.ts'
       - 'scripts/db/auth-schema-config.ts'
       - '.github/workflows/database-bootstrap.yml'
 permissions:
@@ -21,10 +23,14 @@ jobs:
       - name: Resolve explicit dependency update using normal pnpm checks
         run: pnpm install --no-frozen-lockfile
       - run: pnpm auth:schema
+      - run: node scripts/db/normalize-auth-schema.mjs
+      - run: pnpm db:generate --name=foundation
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
         with:
           name: database-preparation
           path: |
             pnpm-lock.yaml
+            pnpm-workspace.yaml
+            drizzle/
             src/server/db/auth.generated.ts
           retention-days: 3
