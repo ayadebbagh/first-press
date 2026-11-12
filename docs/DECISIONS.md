@@ -5,9 +5,9 @@ Record a dated decision, owner, options, consequences and linked issue when reso
 | Key | Choice | Recommendation / unresolved detail | Gate |
 | --- | --- | --- | --- |
 | F01 | Database, migration and authentication approach | Accepted 2026-11-12: PostgreSQL + Drizzle + Better Auth for beta and production, with both Google and email/password. Baseline versions, migration ownership and configuration are in [ADR 0001](adr/0001-self-hosted-backend.md) | Server schema/auth |
-| F04 | Backing economy and update contract | 1,000 initial Credits accepted; specify UTC boundaries, centi-Credit rounding, units, order cutoff, reservations, partial lots, source-delay treatment, stale grace, suspensions and correction policy | Live order implementation |
+| F04 | Backing economy and update contract | Accepted core choices 2026-11-12: keep failed-update orders queued/cancellable; settled receipts retain the original order time. Exact amounts, 00:00/12:00 UTC slots, lot fractions, rounding and correction defaults are defined in [Backing v1](specs/backing-v1.md) | Live order implementation |
 | C03 | Listener source access | Evaluate public-page collection without bypassing restrictions; document allowed operational use, reliability and cost. Use verified manual imports if automation remains unresolved. No paid service selected | Automated collection / live data |
-| C08 | Bad or corrected snapshots | Append-only correction events; choose cancel/freeze/recompute behavior before any live incident | Live settlement |
+| C08 | Bad or corrected snapshots | Accepted policy 2026-11-12: quarantine before execution; flag and prospectively correct later source errors, preserving completed trades. Append-only audit, validation and incident rehearsal remain to implement in C08 | Live settlement |
 | R02 | Public support history | Pseudonyms, opt-in public profile and selective receipt sharing; define deletion/redaction versus ledger retention | Public receipts |
 | D01 | Daily global ranking | Vary balanced pairings across participants so the comparison graph connects all eight tracks. Specify aggregation, ties, minimum coverage and guess cutoff | Community daily |
 | D02 | Spotify game use | Resolve provider terms/approval or choose a permitted daily design. Discovery playback and game approval are separate decisions | Public daily |

@@ -7,7 +7,7 @@ FIRST PRESS lets underground-music listeners discover artists, commit virtual Cr
 - Artist-only positions; curated admission with user suggestions.
 - 1,000 starting Credits. Credits have no cash value, purchase, transfer or redemption.
 - Buy and sell orders queue for the next eligible twice-daily listener update. Pending reservations can be cancelled before execution.
-- Positions change proportionally with Spotify monthly listeners. Exact settlement boundaries, precision and outage treatment need a versioned specification before server implementation.
+- Positions change proportionally with Spotify monthly listeners. The connected-beta rules are defined in [Backing v1](specs/backing-v1.md), including exact amounts, timing, outage treatment and receipt timestamps.
 - Spotify embeds for confirmed recordings; SoundCloud only after reviewed Spotify absence. No Audius. Distinct releases retain explicit version labels.
 - Next.js, React, TypeScript and pnpm; self-hosted deployment. Bold ink/paper editorial app views, with responsive navigation.
 

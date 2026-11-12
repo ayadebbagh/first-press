@@ -22,11 +22,11 @@ Start without Redis, hosted job services or object storage. PostgreSQL can coord
 - Operations: audited admin actions, collection jobs, settlement batches, migrations, backups and health/readiness.
 - Daily (later): rotation versions, connected match assignments, votes, locked predictions and published results, isolated from live backing accounting.
 
-## Settlement model to specify before coding
+## Settlement contract
 
-For a position of q listener-index units, value at an accepted listener count L is q × L, rounded by the versioned rule. A buy of C Credits at execution count L creates q = C/L; a sale queues a quantity of units, so its eventual proceeds are not guaranteed at order time. A split/lot representation and cost basis must support partial exits and retained entry evidence.
+[Backing v1](specs/backing-v1.md) defines exact centi-Credits, immutable principal/entry-listener lots and fixed fractions reserved for exits. A lot follows the listener ratio from its own execution snapshot, with exact subcent carry across partial exits. `src/domain/backing-policy.ts` provides tested arithmetic and timing references; the browser demo still uses the separate synthetic engine.
 
-Orders must commit before their eligible update boundary; obtain an initial valid baseline before enabling backing. Snapshot observation delay, cutoffs, maximum staleness, source corrections and suspended artists need explicit policy. A fetch failure or missing number never becomes zero. A retry must not debit, settle, grant or create proof twice. Never substitute another platform's metric silently.
+Orders must be accepted before their eligible update boundary; obtain a valid baseline before enabling backing. The contract specifies 00:00/12:00 UTC cutoffs, a two-hour execution window, a 24-hour baseline limit, queued carry-forward/cancellation and prospective source corrections. A fetch failure or missing number never becomes zero. A retry must not debit, settle, grant or create proof twice. Never substitute another platform's metric silently.
 
 ## Environments and deployment
 
