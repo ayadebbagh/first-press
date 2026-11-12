@@ -44,3 +44,30 @@
 .history-help,.history-provenance{font-size:10px;line-height:1.6;margin:12px 0 0}
 .history-provenance{font-family:var(--mono);font-size:9px;padding-left:8px;border-left:2px solid #bd3b2b}
 .history-empty{font-size:13px;padding:22px 0;line-height:1.6}
+
+/* Connected identity screens: paper, ink, and a single red accent. */
+.auth-screen{min-height:100dvh;background:var(--ink,#151515);color:#f4f0df;padding:32px clamp(20px,6vw,100px)}
+.auth-header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #69685e;padding-bottom:28px}
+.auth-header>a:last-child{color:#f4f0df;font-size:12px;text-decoration:underline;text-underline-offset:5px}
+.auth-brand{font-family:'Barlow Condensed',sans-serif;font-size:35px;line-height:.8;font-weight:900;color:#f4f0df;letter-spacing:-1px;text-decoration:none;position:relative}
+.auth-brand span{font-family:Arial,sans-serif;font-size:11px;position:absolute;right:-14px;top:0}
+.auth-grid{display:grid;grid-template-columns:1fr minmax(300px,460px);gap:clamp(32px,6vw,100px);max-width:1100px;margin:62px auto}
+.auth-kicker{font-size:10px;letter-spacing:1.3px;font-weight:700}
+.auth-grid h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(86px,11vw,160px);line-height:.82;letter-spacing:-3px;margin:26px 0}
+.auth-grid h1 em{font-style:normal;color:#ff4736}
+.auth-grid aside>p{font-size:15px}.auth-stamp{display:block;font-size:90px;color:#ff4736;margin-top:30px}
+.auth-paper{background:#f4f0df;color:#171713;border:1px solid #171713;padding:30px}
+.auth-paper h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:42px;line-height:1;letter-spacing:-.7px;margin:15px 0 20px;overflow-wrap:anywhere}
+.auth-paper p{font-size:13px;line-height:1.6}.auth-email{overflow-wrap:anywhere}
+.auth-paper label{display:block;font-size:12px;font-weight:700;margin:18px 0}
+.auth-paper input{display:block;width:100%;min-width:0;box-sizing:border-box;margin-top:7px;padding:12px;border:1px solid #55564d;background:#fffcef;color:#171713;font-size:16px;border-radius:0}
+.auth-paper small{font-size:11px;display:block;margin-top:6px;font-weight:400}
+.auth-button,.auth-google{display:block;box-sizing:border-box;width:100%;border:1px solid #171713;padding:14px 12px;text-align:center;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;border-radius:0}
+.auth-paper .auth-button{background:#ff4736;color:#171713}.auth-paper .auth-google{background:#171713;color:#f4f0df;margin-top:24px}
+.auth-paper button:disabled{cursor:wait;opacity:.55}.auth-paper :focus-visible,.auth-header a:focus-visible{outline:3px solid #ff4736;outline-offset:4px}
+.auth-divider{display:flex;align-items:center;justify-content:center;gap:12px;font-size:9px;letter-spacing:1px;margin:23px 0}.auth-divider:before,.auth-divider:after{content:'';height:1px;background:#9b9a8c;flex:1}
+.auth-message{min-height:20px}.auth-links{border-top:1px solid #9b9a8c;padding-top:12px;display:flex;flex-direction:column;align-items:flex-start;gap:15px}
+.auth-links button,.auth-secondary{border:0;background:none;color:#171713;padding:4px 0;text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:12px;line-height:1.5;text-align:left}
+.auth-secondary{display:block;margin-top:18px}.auth-paper .auth-small{font-size:11px;margin-top:25px}.auth-profile{border-top:1px solid #9b9a8c;padding-top:4px;margin-top:24px}
+.auth-alert{padding:14px;border:1px solid #ff4736;font-size:13px;line-height:1.5}.auth-footer{border-top:1px solid #69685e;padding:20px 0;font-size:9px;letter-spacing:1px}.auth-reset{max-width:460px;margin:60px auto}
+@media(max-width:700px){.auth-screen{padding:24px 20px}.auth-grid{grid-template-columns:1fr;margin:32px auto;gap:28px}.auth-grid h1{font-size:48px;line-height:.9;letter-spacing:-1px;margin:18px 0}.auth-grid h1 br{display:none}.auth-grid h1 br:after{content:' '}.auth-grid aside>p,.auth-stamp{display:none}.auth-grid h1 em{display:block}.auth-paper{padding:23px 20px}.auth-paper h2{font-size:36px}.auth-header>a:last-child{font-size:11px;max-width:120px}.auth-grid>div{min-width:0}}

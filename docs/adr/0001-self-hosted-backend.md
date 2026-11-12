@@ -29,7 +29,7 @@ SQLite would simplify the first local setup but introduces a database migration 
 
 Google uses minimal OpenID/email/profile access. Require a verified identity and the same server-enforced invite rule as email/password. A02 must prevent a social callback from bypassing beta admission and define safe account linking when one email is used through both methods.
 
-Email/password requires verification and reset delivery through a server-side mail transport. Select and test an SMTP relay/provider before public access; no mail service is purchased or contacted by this decision. Use expiring single-use links and generic responses that do not expose account membership. Do not turn off verification to make a deployment appear complete.
+Email/password requires verification and reset delivery through a server-side mail transport. Select and test an SMTP relay/provider before public access; no mail service is purchased or contacted by this decision. Use expiring single-use password-reset links and generic recovery responses that do not expose account membership. Verification marks an email idempotently and does not automatically create a session. Do not turn off verification to make a deployment appear complete.
 
 Use Better Auth's password/session primitives, secure production cookies, allowed origins, session expiry and server-side role/ownership checks. A browser wallet or local demo receipt must never establish identity, a starting grant or verified backing history.
 

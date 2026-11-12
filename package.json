@@ -18,7 +18,12 @@
     "db:migrate": "node scripts/db/migrate.mjs",
     "db:seed:demo": "node scripts/db/seed-demo.mjs",
     "test:db": "node --experimental-strip-types --test tests/database/*.test.mjs",
-    "auth:schema": "auth generate --config scripts/db/auth-schema-config.ts --adapter drizzle --dialect postgresql --output src/server/db/auth.generated.ts --yes"
+    "auth:schema": "auth generate --config scripts/db/auth-schema-config.ts --adapter drizzle --dialect postgresql --output src/server/db/auth.generated.ts --yes",
+    "mail:worker": "node scripts/auth/mail-worker.mjs",
+    "auth:invite": "node scripts/auth/manage.mjs invite",
+    "auth:member": "node scripts/auth/manage.mjs member",
+    "test:auth": "node --experimental-strip-types --test tests/auth/*.test.mjs",
+    "test:auth:e2e": "playwright test --config playwright.auth.config.mjs"
   },
   "dependencies": {
     "next": "16.4.5",
@@ -28,7 +33,8 @@
     "pg": "8.23.1",
     "better-auth": "1.7.21",
     "@better-auth/drizzle-adapter": "1.7.21",
-    "server-only": "0.0.1"
+    "server-only": "0.0.1",
+    "nodemailer": "10.5.0"
   },
   "devDependencies": {
     "@types/node": "22.20.5",
@@ -38,7 +44,8 @@
     "playwright": "1.65.0",
     "drizzle-kit": "0.31.11",
     "@types/pg": "8.23.1",
-    "auth": "1.7.21"
+    "auth": "1.7.21",
+    "@types/nodemailer": "8.0.2"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {

@@ -51,3 +51,7 @@ yarn-error.log*
 
 # pnpm diagnostics
 pnpm-debug.log*
+
+# Isolated connected-account test artifacts
+/auth-playwright-report/
+/auth-test-results/
