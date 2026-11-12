@@ -126,5 +126,204 @@
   {
     "artist_id": "artist_011",
     "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/96/7d/eb/967deb4e-dbf5-b27b-72a2-a2922fce6b6a/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_005",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb856122aa629701a14755ab65",
+    "source_page_url": "https://open.spotify.com/embed/artist/5A7T1LAGJg5NXySBoIKUmF",
+    "spotify_artist_id": "5A7T1LAGJg5NXySBoIKUmF",
+    "source_artist_name": "Che",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/0R9OsKMegkMrcMposu5uOX",
+    "checked_at": "2026-11-12T18:57:55.789334+00:00",
+    "local_path": "assets/artist_005.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_010",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5ebac465ae2e1060d01c4b00e92",
+    "source_page_url": "https://open.spotify.com/embed/artist/3J3ngZn7GjzjwCPBkqtz65",
+    "spotify_artist_id": "3J3ngZn7GjzjwCPBkqtz65",
+    "source_artist_name": "prettifun",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/3s72RIMx3B0V6s1BikStrA",
+    "checked_at": "2026-11-12T18:57:55.789683+00:00",
+    "local_path": "assets/artist_010.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_014",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb35e3833be479b9091a60a207",
+    "source_page_url": "https://open.spotify.com/embed/artist/41GfvEtCZu3KXaThpF01c1",
+    "spotify_artist_id": "41GfvEtCZu3KXaThpF01c1",
+    "source_artist_name": "bleood",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/6RRpMHfjsLFMu2S8LUAtHj",
+    "checked_at": "2026-11-12T18:57:55.789903+00:00",
+    "local_path": "assets/artist_014.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_016",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb05257ab77302755e539eae8f",
+    "source_page_url": "https://open.spotify.com/embed/artist/4sY0lTSkfDMMt27cVvFT6o",
+    "spotify_artist_id": "4sY0lTSkfDMMt27cVvFT6o",
+    "source_artist_name": "Rico Ace",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/57Z6TJCTMACXxdrcwZ3Zvf",
+    "checked_at": "2026-11-12T18:57:55.790109+00:00",
+    "local_path": "assets/artist_016.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_017",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb1799beb583fb4df72697cfa1",
+    "source_page_url": "https://open.spotify.com/embed/artist/278vNvolx8H3sQJ2hgOMnh",
+    "spotify_artist_id": "278vNvolx8H3sQJ2hgOMnh",
+    "source_artist_name": "Feng",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/7hKUH1NXQXOt6bQjHhRZQg",
+    "checked_at": "2026-11-12T18:57:55.790303+00:00",
+    "local_path": "assets/artist_017.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_018",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb3e875b3755259e98ddd79ddf",
+    "source_page_url": "https://open.spotify.com/embed/artist/0YsYhESxyHC1kuMm9Mbm3C",
+    "spotify_artist_id": "0YsYhESxyHC1kuMm9Mbm3C",
+    "source_artist_name": "YT",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/1Ad6LwiyMBJCralCXzUVJw",
+    "checked_at": "2026-11-12T18:57:55.790498+00:00",
+    "local_path": "assets/artist_018.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_022",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb93fa23b3bcd6feb16ea5c6a3",
+    "source_page_url": "https://open.spotify.com/embed/artist/7IrBqZo6diq3hV3GpUhrs2",
+    "spotify_artist_id": "7IrBqZo6diq3hV3GpUhrs2",
+    "source_artist_name": "Jim Legxacy",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/03zypUrD0e5vrFcmc80NJm",
+    "checked_at": "2026-11-12T18:57:55.790686+00:00",
+    "local_path": "assets/artist_022.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_023",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb72897d237ad4fe0345bd0b97",
+    "source_page_url": "https://open.spotify.com/embed/artist/2LakckgvXEtJlKOYP6BO11",
+    "spotify_artist_id": "2LakckgvXEtJlKOYP6BO11",
+    "source_artist_name": "Lancey Foux",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/4FbEljjTdoUcnY2aYsxDDh",
+    "checked_at": "2026-11-12T18:57:55.790872+00:00",
+    "local_path": "assets/artist_023.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_032",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb7fcb229f5c6f656193e57125",
+    "source_page_url": "https://open.spotify.com/embed/artist/2QpNu8tDPv9n7oY34J1TtN",
+    "spotify_artist_id": "2QpNu8tDPv9n7oY34J1TtN",
+    "source_artist_name": "osquinn",
+    "identity_evidence_url": "https://www.thefader.com/2022/07/28/quinn-is-her-own-wave",
+    "checked_at": "2026-11-12T18:57:55.791068+00:00",
+    "local_path": "assets/artist_032.jpg",
+    "kind": "artist_profile_image",
+    "identity_note": "Catalog quinn is credited as osquinn on both selected Spotify tracks. The FADER interview identifies both songs as quinn releases."
+  },
+  {
+    "artist_id": "artist_035",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb3eeca66375535d122e322b5d",
+    "source_page_url": "https://open.spotify.com/embed/artist/2Vcda6Z3Ugbq2ZlYnKGGfC",
+    "spotify_artist_id": "2Vcda6Z3Ugbq2ZlYnKGGfC",
+    "source_artist_name": "Egobreak",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/5SDsIlan0VD3oSYPibpXTQ",
+    "checked_at": "2026-11-12T18:57:55.791241+00:00",
+    "local_path": "assets/artist_035.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_036",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5ebaba6fe5da04e2f2ba762e22a",
+    "source_page_url": "https://open.spotify.com/embed/artist/4ZmwdJnMTqHie4HvzBd0rC",
+    "spotify_artist_id": "4ZmwdJnMTqHie4HvzBd0rC",
+    "source_artist_name": "ezcodylee",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/5U2iSe276IiMC28OINqAU3",
+    "checked_at": "2026-11-12T18:57:55.791412+00:00",
+    "local_path": "assets/artist_036.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_037",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb5dbed4fdc4a6f0deb97260d3",
+    "source_page_url": "https://open.spotify.com/embed/artist/0G2xkjzM76THRB0rEgx7N8",
+    "spotify_artist_id": "0G2xkjzM76THRB0rEgx7N8",
+    "source_artist_name": "Nokia Angel",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/35y8Vc3Lyrv8v03gckuj6Q",
+    "checked_at": "2026-11-12T18:57:55.791579+00:00",
+    "local_path": "assets/artist_037.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_039",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb52b49f674dc05f3773fe45fb",
+    "source_page_url": "https://open.spotify.com/embed/artist/6Rs7Ufqb4h0FTuVg6wlqOy",
+    "spotify_artist_id": "6Rs7Ufqb4h0FTuVg6wlqOy",
+    "source_artist_name": "Nine Vicious",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/3HNQr62f7YzwOqfLeISjLd",
+    "checked_at": "2026-11-12T18:57:55.791746+00:00",
+    "local_path": "assets/artist_039.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_044",
+    "source_image_url": "https://image-cdn-fa.spotifycdn.com/image/ab6761610000e5eba4caf4073b40cef9206c8012",
+    "source_page_url": "https://open.spotify.com/embed/artist/6hG0VsXXlD10l60TqiIHIX",
+    "spotify_artist_id": "6hG0VsXXlD10l60TqiIHIX",
+    "source_artist_name": "Ecco2k",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/1fbmkoREwP13dkXJI5YGfn",
+    "checked_at": "2026-11-12T18:57:55.791907+00:00",
+    "local_path": "assets/artist_044.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_046",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5eb98b7c54dab5aff22a22a0b78",
+    "source_page_url": "https://open.spotify.com/embed/artist/089ASSwOW4Cih3frNuDtUv",
+    "spotify_artist_id": "089ASSwOW4Cih3frNuDtUv",
+    "source_artist_name": "1oneam",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/7gdnMcpt7ZdvNhXj2FDEgF",
+    "checked_at": "2026-11-12T18:57:55.792071+00:00",
+    "local_path": "assets/artist_046.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_047",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5ebb451198790c31f59b317da43",
+    "source_page_url": "https://open.spotify.com/embed/artist/4mAsHgZzoZvU0eMbHOB60X",
+    "spotify_artist_id": "4mAsHgZzoZvU0eMbHOB60X",
+    "source_artist_name": "Yhapojj",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/4kyl8oI17dX2BhsW6BrECc",
+    "checked_at": "2026-11-12T18:57:55.792233+00:00",
+    "local_path": "assets/artist_047.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_049",
+    "source_image_url": "https://image-cdn-ak.spotifycdn.com/image/ab6761610000e5ebd9b6df826e10903cc5a7d38c",
+    "source_page_url": "https://open.spotify.com/embed/artist/4bXDZie6sqszxFN6D0Mi2K",
+    "spotify_artist_id": "4bXDZie6sqszxFN6D0Mi2K",
+    "source_artist_name": "untiljapan",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/7xMSw4yHm2HZ8g3MREmFUR",
+    "checked_at": "2026-11-12T18:57:55.792392+00:00",
+    "local_path": "assets/artist_049.jpg",
+    "kind": "artist_profile_image"
+  },
+  {
+    "artist_id": "artist_050",
+    "source_image_url": "https://image-cdn-fa.spotifycdn.com/image/ab6761610000e5ebbe22487f19dc3c24dc89057c",
+    "source_page_url": "https://open.spotify.com/embed/artist/3LE39lgBs68N41XjxH5cLD",
+    "spotify_artist_id": "3LE39lgBs68N41XjxH5cLD",
+    "source_artist_name": "damon r.",
+    "identity_evidence_url": "https://open.spotify.com/embed/track/5HXgmD0Qbdjn8crHpTwlvm",
+    "checked_at": "2026-11-12T18:57:55.792548+00:00",
+    "local_path": "assets/artist_050.jpg",
+    "kind": "artist_profile_image"
   }
 ]

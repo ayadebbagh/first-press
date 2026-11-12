@@ -9,3 +9,5 @@ outputs
 dist
 FIRST-PRESS-preview.html
 QA.md
+playwright-report
+test-results

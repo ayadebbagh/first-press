@@ -18,6 +18,9 @@ importers:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
     devDependencies:
+      playwright:
+        specifier: 1.65.0
+        version: 1.65.0
       '@types/node':
         specifier: 22.20.5
         version: 22.20.5
@@ -32,6 +35,16 @@ importers:
         version: 5.9.3
 
 packages:
+
+  playwright@1.65.0:
+    resolution: {integrity: sha512-F3AMWcR44qMBt4kq+6Kb6mX7bjGXshktKFOPULd7reED6ZJWevjbNRqysP7q+AATE9kdPEZBibex1BYsvpVoeA==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  playwright-core@1.65.0:
+    resolution: {integrity: sha512-vNSKgH6YqtN7cdT/L334zo0a+YwkrpicyrHJlWWPIm/Q+Nn2SWInil01oT0mbu96U4GgoRtCYQD9CzJQgju+lA==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   '@next/env@16.4.5':
     resolution: {integrity: sha512-JwSPwpdkZL5VMl2jA/q+JI8MZdweAL3xmw5/tb9y/TLtmS0YXZnmYDzSihwk8xTj1OL+WM53gTqaj96yuLp6Xw==}
@@ -193,6 +206,12 @@ ignoredOptionalDependencies:
   - sharp
 
 snapshots:
+
+  playwright@1.65.0:
+    dependencies:
+      playwright-core: 1.65.0
+
+  playwright-core@1.65.0: {}
 
   '@next/env@16.4.5': {}
 

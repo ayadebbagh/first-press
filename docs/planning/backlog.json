@@ -928,6 +928,24 @@
         "Test concurrent workers, eligibility changes, missed week and migration between economy versions."
       ],
       "decision": true
+    },
+    {
+      "key": "B01",
+      "kind": "task",
+      "title": "Fill missing beta artist pictures and verify image coverage",
+      "area": "data",
+      "milestone": "M0",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [],
+      "summary": "Fill the 18 missing artist-profile images, record identity/source evidence, retain an accessible image-error fallback and verify all 50 catalog pictures through the isolated browser suite.",
+      "acceptance": [
+        "Every curated artist has a local, decodable picture and a source mapping.",
+        "Record reviewed artist identities; use existing track credits and explicit alias evidence rather than name-only guesses.",
+        "Verify catalog images, direct artist routes and the standalone QA preview.",
+        "Test a failed image leaves an accessible fallback without hiding a different artist picture.",
+        "Run typecheck, unit tests, production/preview builds and isolated desktop/mobile browser checks."
+      ]
     }
   ]
 }

@@ -12,7 +12,8 @@
     "build:preview": "node scripts/build-preview.mjs",
     "project:check": "node scripts/planning.mjs",
     "project:render": "node scripts/planning.mjs --render",
-    "project:sync": "node scripts/project-sync.mjs"
+    "project:sync": "node scripts/project-sync.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "16.4.5",
@@ -23,7 +24,8 @@
     "@types/node": "22.20.5",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "playwright": "1.65.0"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {

@@ -15,6 +15,8 @@ pnpm start
 
 Use Node.js 22.13+ and the pnpm version pinned in `package.json`. See [SELF-HOSTING.md](SELF-HOSTING.md) for Node and Docker deployment commands and observed environment limits.
 
+For isolated browser tests, run `pnpm exec playwright install chromium`, `pnpm build`, then `pnpm test:e2e`. These launch a separate headless browser and production server on port 3100, using fresh test storage for every case. They do not control Brave or load a personal browser profile. CI installs the matching Chromium build and keeps screenshots/reports and failure traces for seven days. Provider embeds are stubbed in these deterministic app tests; actual third-party audio availability remains a separate integration check.
+
 `pnpm build:preview` creates `FIRST-PRESS-preview.html`, a file-open QA companion built from the same React components using Next.js’s pinned compiler. It uses a hash-navigation adapter and embeds the artwork. It does not replace the self-hosted Next.js server or verify HTTP routing. Internet is required for playback and optional fonts.
 
 ## Structure
@@ -25,7 +27,7 @@ Use Node.js 22.13+ and the pnpm version pinned in `package.json`. See [SELF-HOST
 - `src/state`: typed React state, local persistence and navigation adapters.
 - `src/engine.ts`: tested pure Credit reservation, settlement and portfolio rules.
 - `src/playback.ts`: Spotify-first source selection and reviewed SoundCloud fallback.
-- `public/assets`: 32 bundled artist/cover images; attribution in `ASSET-SOURCES.json`.
+- `public/assets`: 50 bundled artist/profile images; attribution in `ASSET-SOURCES.json`.
 
 ## Beta behavior
 
