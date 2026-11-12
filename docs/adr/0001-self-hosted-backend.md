@@ -17,7 +17,7 @@ Selected dependency baseline, verified against official package metadata on 2026
 | Better Auth | 1.7.21 | Declares peers for Next 16, React 19, pg 8 and Drizzle 0.45. |
 | @better-auth/drizzle-adapter | 1.7.21 | Match the Better Auth release and use provider `pg`. |
 
-A01 pins Better Auth and its CLI/adapter to 1.7.21: the initially proposed same-day 1.7.22 release is inside pnpm’s minimum release-age window. Keep that policy enabled and upgrade through a later tested dependency PR. Their official published peer ranges fit the existing Next.js 16.4.5 / React 19.3.1 / Node 22 stack. This is a documentation/metadata compatibility check; actual database, migration, cookie and provider integration tests belong to A01/A02. Recheck the baseline before installing if development occurs later.
+A01 pins Better Auth and its CLI/adapter to 1.7.21: the initially proposed same-day 1.7.22 release is inside pnpm’s minimum release-age window. Keep that policy enabled and upgrade through a later tested dependency PR. Their official published peer ranges fit the existing Next.js 16.4.5 / React 19.3.1 / Node 22 stack. The ADR initially checked metadata compatibility. A01 adds real PostgreSQL migration/constraint checks; cookie and provider integration tests still belong to A02. Recheck the baseline before installing if development occurs later.
 
 ## Why this direction
 

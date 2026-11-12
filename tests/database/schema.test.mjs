@@ -178,3 +178,28 @@ test('demo seed is explicit, isolated, synthetic and safely repeatable', async (
     for (const table of ['user','wallets','ledger_events','receipt_events']) assert.equal((await demo.query(`SELECT count(*)::int AS n FROM "${table}"`)).rows[0].n, 0);
   } finally { await demo.end(); await query(`DROP DATABASE "${name}"`); }
 });
+
+test('quarantined, future and stale placement baselines cannot admit an order', () => transaction(async () => {
+  await fixture();
+  await query(`INSERT INTO listener_snapshots (id,artist_id,status,source_url,source_event_key,evidence,parser_version,observed_at,fetched_at)
+    VALUES ('quarantine','artist','quarantined','https://example.invalid','quarantine','{"raw":"unreadable"}','test','2026-01-01T10:00Z','2026-01-01T10:01Z')`);
+  const insert = `INSERT INTO orders (id,user_id,artist_id,side,amount_cents,request_key,request_hash,placement_snapshot_id,accepted_at,earliest_cutoff)
+    VALUES ('invalid','alice','artist','buy',100,'invalid',repeat('a',64),$1,$2,$3)`;
+  await rejected(insert, ['quarantine','2026-01-01T11:00Z','2026-01-01T12:00Z']);
+  await rejected(insert, ['baseline','2026-01-01T09:00Z','2026-01-01T12:00Z']);
+  await rejected(insert, ['baseline','2026-01-03T11:00Z','2026-01-03T12:00Z']);
+}));
+
+test('batch guards reject expired quotes, reused observations and orders at the strict cutoff', () => transaction(async () => {
+  await fixture();
+  await query(`INSERT INTO settlement_batches (id,artist_id,cutoff,sealed_at,eligible_through)
+    VALUES ('batch','artist','2026-01-01T12:00Z','2026-01-01T12:01Z','2026-01-01T11:59:59.999Z')`);
+  await rejected(`UPDATE settlement_batches SET status='executed',snapshot_id='execution',executed_at='2026-01-01T14:00Z' WHERE id='batch'`);
+  await rejected(`UPDATE settlement_batches SET status='executed',snapshot_id='baseline',executed_at='2026-01-01T12:07Z' WHERE id='batch'`);
+  await query(`UPDATE settlement_batches SET status='executed',snapshot_id='execution',executed_at='2026-01-01T12:07Z' WHERE id='batch'`);
+  await query(`INSERT INTO orders (id,user_id,artist_id,side,amount_cents,request_key,request_hash,placement_snapshot_id,accepted_at,earliest_cutoff)
+    VALUES ('boundary','alice','artist','buy',100,'boundary',repeat('c',64),'baseline','2026-01-01T12:00Z','2026-01-02T00:00Z')`);
+  await query(`UPDATE orders SET status='settled',settled_at='2026-01-01T12:07Z' WHERE id='boundary'`);
+  await rejected(`INSERT INTO settlements (order_id,user_id,artist_id,batch_id,executed_at,cash_cents)
+    VALUES ('boundary','alice','artist','batch','2026-01-01T12:07Z',100)`);
+}));

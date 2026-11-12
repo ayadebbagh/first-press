@@ -1,6 +1,14 @@
 # Beta verification — 2026-11-08
 
 
+## PostgreSQL foundation — 2026-11-12
+
+[A01 / PR #51](https://github.com/ayadebbagh/first-press/pull/51) adds persistence tooling without switching the UI to real accounts. The [initial PostgreSQL job](https://github.com/ayadebbagh/first-press/actions/runs/43299923068/job/131468146763) passed all 12 database integration cases on the official PostgreSQL 18.6 image: empty/repeated/concurrent migrations, changed-migration rejection, exact bounded amounts, grant uniqueness, cross-account reservations/exits, immutable quotes/receipts, lot precision and isolated repeatable demo seeding. Drizzle found no uncommitted schema drift; Compose validation passed. Two additional stale/quarantined-baseline and strict-cutoff cases are included in the final PR checks; its CI is the final release evidence.
+
+The existing 34 unit tests also pass locally and with the new dependencies in CI. Typechecking succeeds with the generated auth core and server schema. Local PostgreSQL execution is unavailable because the local Docker daemon is not running; real database execution occurs in an isolated hosted CI service, not a mock or the founder's personal browser. Database tests require an explicit disposable `_test` URL and never default to application credentials.
+
+The development image is 18.6 because the announced 18.7 image was not yet published; upgrade/retest before live deployment. pnpm's release-age policy remains enabled, with Better Auth/CLI/adapter pinned to the compatible 1.7.21 patch. The temporary generation workflow was removed after its lockfile, auth schema and migrations were reviewed and committed. Sign-in, transactional wallet services, collection, verified public receipts and production rollout are still separate release gates. See [database operations and limits](docs/DATABASE.md).
+
 ## Artist pictures and isolated browsers — 2026-11-12
 
 [PR #46](https://github.com/ayadebbagh/first-press/pull/46) is merged. All 50 artists have local picture mappings; the 18 new profile images include source and artist-identity evidence in `ASSET-SOURCES.json`. Each new file was decoded locally, and the production and standalone-preview builds passed. The unit check now rejects missing image mappings instead of silently skipping them.
