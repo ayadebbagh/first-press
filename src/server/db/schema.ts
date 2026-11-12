@@ -96,8 +96,8 @@ export const snapshotAnnotations = pgTable('snapshot_annotations', {
 
 export const wallets = pgTable('wallets', {
   userId: text('user_id').primaryKey().references(() => user.id, { onDelete: 'restrict' }),
-  availableCents: cents('available_cents').notNull().default(0n),
-  reservedCents: cents('reserved_cents').notNull().default(0n),
+  availableCents: cents('available_cents').notNull().default(sql`0`),
+  reservedCents: cents('reserved_cents').notNull().default(sql`0`),
   updatedAt: instant('updated_at').notNull().defaultNow(),
 }, t => [check('wallet_nonnegative', sql`${t.availableCents} >= 0 AND ${t.reservedCents} >= 0`), check('wallet_total_fits', sql`${t.availableCents}::numeric + ${t.reservedCents}::numeric <= 9223372036854775807`)]);
 
@@ -123,11 +123,11 @@ export const orders = pgTable('orders', {
   foreignKey({ name: 'order_baseline_artist', columns: [t.placementSnapshotId, t.artistId], foreignColumns: [listenerSnapshots.id, listenerSnapshots.artistId] }),
   index('order_artist_queue_idx').on(t.artistId, t.earliestCutoff, t.acceptedAt).where(sql`${t.status} = 'queued'`),
   index('order_user_history_idx').on(t.userId, t.acceptedAt),
-  check('order_intent', sql`(${t.side} = 'buy' AND ${t.amountCents} >= 100 AND ${t.exitBasisPoints} IS NULL) OR (${t.side} = 'sell' AND ${t.amountCents} IS NULL AND ${t.exitBasisPoints} BETWEEN 1 AND 10000)`),
+  check('order_intent', sql`(${t.side} = 'buy' AND ${t.amountCents} IS NOT NULL AND ${t.amountCents} >= 100 AND ${t.exitBasisPoints} IS NULL) OR (${t.side} = 'sell' AND ${t.amountCents} IS NULL AND ${t.exitBasisPoints} IS NOT NULL AND ${t.exitBasisPoints} BETWEEN 1 AND 10000)`),
   check('order_nonempty_key', sql`length(${t.requestKey}) BETWEEN 1 AND 200 AND ${t.requestHash} ~ '^[a-f0-9]{64}$'`),
   check('order_version', sql`${t.economyVersion} = 'backing-v1'`),
   check('order_cutoff', sql`${t.earliestCutoff} > ${t.acceptedAt} AND mod(extract(epoch FROM ${t.earliestCutoff}), 43200) = 0`),
-  check('order_terminal_time', sql`(${t.status} = 'queued' AND ${t.cancelledAt} IS NULL AND ${t.settledAt} IS NULL) OR (${t.status} = 'cancelled' AND ${t.cancelledAt} >= ${t.acceptedAt} AND ${t.settledAt} IS NULL) OR (${t.status} = 'settled' AND ${t.settledAt} >= ${t.acceptedAt} AND ${t.cancelledAt} IS NULL)`),
+  check('order_terminal_time', sql`(${t.status} = 'queued' AND ${t.cancelledAt} IS NULL AND ${t.settledAt} IS NULL) OR (${t.status} = 'cancelled' AND ${t.cancelledAt} IS NOT NULL AND ${t.cancelledAt} >= ${t.acceptedAt} AND ${t.settledAt} IS NULL) OR (${t.status} = 'settled' AND ${t.settledAt} IS NOT NULL AND ${t.settledAt} >= ${t.acceptedAt} AND ${t.cancelledAt} IS NULL)`),
 ]);
 
 export const settlementBatches = pgTable('settlement_batches', {
@@ -145,7 +145,7 @@ export const settlementBatches = pgTable('settlement_batches', {
   unique('batch_artist_id').on(t.id, t.artistId),
   foreignKey({ name: 'batch_snapshot_artist', columns: [t.snapshotId, t.artistId], foreignColumns: [listenerSnapshots.id, listenerSnapshots.artistId] }),
   check('batch_slot', sql`mod(extract(epoch FROM ${t.cutoff}), 43200) = 0 AND ${t.sealedAt} >= ${t.cutoff} AND ${t.eligibleThrough} < ${t.cutoff} AND ${t.eligibleThrough} <= ${t.sealedAt}`),
-  check('batch_terminal', sql`(${t.status} = 'sealed' AND ${t.executedAt} IS NULL AND ${t.skipReason} IS NULL) OR (${t.status} = 'executed' AND ${t.snapshotId} IS NOT NULL AND ${t.executedAt} >= ${t.sealedAt} AND ${t.executedAt} < ${t.cutoff} + interval '2 hours' AND ${t.skipReason} IS NULL) OR (${t.status} = 'skipped' AND ${t.executedAt} IS NULL AND ${t.skipReason} IS NOT NULL)`),
+  check('batch_terminal', sql`(${t.status} = 'sealed' AND ${t.executedAt} IS NULL AND ${t.skipReason} IS NULL) OR (${t.status} = 'executed' AND ${t.snapshotId} IS NOT NULL AND ${t.executedAt} IS NOT NULL AND ${t.executedAt} >= ${t.sealedAt} AND ${t.executedAt} < ${t.cutoff} + interval '2 hours' AND ${t.skipReason} IS NULL) OR (${t.status} = 'skipped' AND ${t.executedAt} IS NULL AND ${t.skipReason} IS NOT NULL)`),
 ]);
 
 export const settlements = pgTable('settlements', {
@@ -174,7 +174,7 @@ export const cashReservations = pgTable('cash_reservations', {
 }, t => [
   foreignKey({ name: 'cash_reservation_owner', columns: [t.orderId, t.userId, t.artistId], foreignColumns: [orders.id, orders.userId, orders.artistId] }),
   check('cash_reservation_positive', sql`${t.amountCents} >= 100`),
-  check('cash_reservation_terminal', sql`(${t.status} = 'held' AND ${t.resolvedAt} IS NULL) OR (${t.status} <> 'held' AND ${t.resolvedAt} >= ${t.createdAt})`),
+  check('cash_reservation_terminal', sql`(${t.status} = 'held' AND ${t.resolvedAt} IS NULL) OR (${t.status} <> 'held' AND ${t.resolvedAt} IS NOT NULL AND ${t.resolvedAt} >= ${t.createdAt})`),
   index('cash_reservation_user_idx').on(t.userId),
 ]);
 
@@ -186,9 +186,9 @@ export const positionLots = pgTable('position_lots', {
   entrySnapshotId: text('entry_snapshot_id').notNull(),
   principalCents: cents('principal_cents').notNull(),
   entryListenerCount: cents('entry_listener_count').notNull(),
-  initialQuanta: cents('initial_quanta').notNull().default(1000000000000n),
-  remainingQuanta: cents('remaining_quanta').notNull().default(1000000000000n),
-  reservedQuanta: cents('reserved_quanta').notNull().default(0n),
+  initialQuanta: cents('initial_quanta').notNull().default(sql`1000000000000`),
+  remainingQuanta: cents('remaining_quanta').notNull().default(sql`1000000000000`),
+  reservedQuanta: cents('reserved_quanta').notNull().default(sql`0`),
   proceedsRemainder: exact('proceeds_remainder').notNull().default('0'),
   economyVersion: text('economy_version').notNull().default('backing-v1'),
   createdAt: instant('created_at').notNull(),
@@ -220,7 +220,7 @@ export const exitAllocations = pgTable('exit_allocations', {
   foreignKey({ name: 'exit_lot_owner', columns: [t.lotId, t.userId, t.artistId], foreignColumns: [positionLots.id, positionLots.userId, positionLots.artistId] }),
   index('exit_lot_idx').on(t.lotId),
   check('exit_quantity', sql`${t.quanta} BETWEEN 1 AND 1000000000000`),
-  check('exit_proceeds', sql`(${t.status} = 'consumed' AND ${t.proceedsCents} >= 0 AND ${t.resolvedAt} >= ${t.createdAt}) OR (${t.status} = 'released' AND ${t.proceedsCents} IS NULL AND ${t.resolvedAt} >= ${t.createdAt}) OR (${t.status} = 'held' AND ${t.proceedsCents} IS NULL AND ${t.resolvedAt} IS NULL)`),
+  check('exit_proceeds', sql`(${t.status} = 'consumed' AND ${t.proceedsCents} IS NOT NULL AND ${t.proceedsCents} >= 0 AND ${t.resolvedAt} IS NOT NULL AND ${t.resolvedAt} >= ${t.createdAt}) OR (${t.status} = 'released' AND ${t.proceedsCents} IS NULL AND ${t.resolvedAt} IS NOT NULL AND ${t.resolvedAt} >= ${t.createdAt}) OR (${t.status} = 'held' AND ${t.proceedsCents} IS NULL AND ${t.resolvedAt} IS NULL)`),
 ]);
 
 export const ledgerEvents = pgTable('ledger_events', {
