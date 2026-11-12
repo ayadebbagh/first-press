@@ -134,8 +134,10 @@ test('daily votes, editable prediction and locked demo result persist',async({pa
   await page.goto('/daily');
   for(let i=0;i<4;i++)await page.getByRole('button',{name:'This is my pick',exact:true}).first().click();
   await expect(page.getByRole('heading',{level:1,name:'CALL THE ORDER.'})).toBeVisible();
-  await page.getByRole('button',{name:'Move fakemink down',exact:true}).click();
-  await expect(page.locator('.rank-row').first()).toContainText('2hollis');
+  const initialOrder=await page.locator('.rank-row strong').allTextContents();
+  expect(initialOrder).toHaveLength(8);
+  await page.locator('.rank-row').first().getByRole('button',{name:/ down$/}).click();
+  await expect(page.locator('.rank-row strong')).toHaveText([initialOrder[1],initialOrder[0],...initialOrder.slice(2)]);
   await page.getByRole('button',{name:'Reveal demo ranking',exact:true}).click();
   await expect(page.getByText('DEMO RANKING · NOT LIVE COMMUNITY RESULTS',{exact:true})).toBeVisible();
   await expect(page.locator('.rank-controls')).toHaveCount(0);
