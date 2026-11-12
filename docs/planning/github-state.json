@@ -174,5 +174,35 @@
       "url": "https://github.com/ayadebbagh/first-press/issues/43"
     }
   },
-  "milestones": {}
+  "milestones": {
+    "M0": {
+      "number": 1,
+      "url": "https://github.com/ayadebbagh/first-press/milestone/1"
+    },
+    "M1": {
+      "number": 2,
+      "url": "https://github.com/ayadebbagh/first-press/milestone/2"
+    },
+    "M2": {
+      "number": 3,
+      "url": "https://github.com/ayadebbagh/first-press/milestone/3"
+    },
+    "M3": {
+      "number": 4,
+      "url": "https://github.com/ayadebbagh/first-press/milestone/4"
+    }
+  },
+  "verification": {
+    "source_commit": "2a5a63989c888d85f71373f99d92c96f32843ae2",
+    "ci_url": "https://github.com/ayadebbagh/first-press/actions/runs/43282396592",
+    "planning_url": "https://github.com/ayadebbagh/first-press/actions/runs/43282396565",
+    "ci": "success",
+    "container_http_smoke": "success",
+    "planning": "success",
+    "verified_at": "2026-11-12T18:45:47.520Z"
+  },
+  "project": {
+    "status": "pending",
+    "reason": "Projects creation is not exposed by the connected tools; CLI authentication unavailable."
+  }
 }

@@ -4,7 +4,9 @@
 
 Typecheck, all 21 existing tests, the Next.js production build and the React QA preview build passed again while preparing the repository. The 43-issue/four-milestone backlog validates without missing dependencies or cycles; additional invalid fixtures confirmed that the validator rejects cycles, missing keys and duplicate keys. All local Markdown links resolve and GitHub YAML files parse. The project-sync command defaults to a no-network dry run and rejects an unexpected repository target before mutation.
 
-No credential-pattern matches were found in the selected source files. Generated previews/builds, local tool state and private environment files are excluded. GitHub CI is configured, but no hosted run is claimed at this stage. The current browser-testing limit remains unchanged: the earlier Brave observations used the file preview; isolated real-server browser coverage is planned in F02. Publication and access status are recorded in `docs/planning/PUBLICATION.md`.
+No credential-pattern matches were found in the selected source files. Generated previews/builds, local tool state and private environment files are excluded. The current browser-testing limit remains unchanged: the earlier Brave observations used the file preview; isolated real-server browser coverage is planned in F02. Publication and access status are recorded in `docs/planning/PUBLICATION.md`.
+
+Publication follow-up: the [first GitHub CI run](https://github.com/ayadebbagh/first-press/actions/runs/43282396592) passed its frozen install, checks, both builds and Docker HTTP smoke test. The latter verified health, the root/discovery route, catalog, favicon and invalid-route 404 against the actual production server. The [planning workflow](https://github.com/ayadebbagh/first-press/actions/runs/43282396565) passed and four milestones/43 assigned issues were verified via GitHub's repository API. These HTTP checks do not replace F02's isolated browser/hydration tests.
 
 ## Automated checks
 

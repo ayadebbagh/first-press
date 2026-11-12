@@ -46,6 +46,8 @@ The Docker build installs from the frozen pnpm lockfile. The Linux SWC packages 
 - The environment denied localhost binding (`listen EPERM`). Docker CLI is installed, but its daemon was unavailable. A running HTTP server and container have therefore **not** been verified here.
 - Browser tests used a standalone QA build of the same React components, with a small hash-navigation adapter. That artifact verifies the UI and local mechanics; it does not exercise Next.js HTTP routing or hydration.
 
+On 2026-11-12, [hosted GitHub CI](https://github.com/ayadebbagh/first-press/actions/runs/43282396592) successfully built the Docker image and ran the actual production HTTP server. Health, root redirect/discovery, catalog, favicon and an invalid-route 404 passed. The local environment limits above remain; browser interactions against the HTTP server are a separate planned test (F02).
+
 Before public beta access, connect authenticated accounts and a transactional database for the Credits ledger, settlements, receipts, listener snapshots and community votes. This migration does not make local demo records server-verified.
 
 References: [Next.js standalone output](https://nextjs.org/docs/app/api-reference/config/next-config-js/output), [Next.js self-hosting](https://nextjs.org/docs/app/guides/self-hosting), [Docker’s Next.js guide](https://docs.docker.com/guides/nextjs/).
