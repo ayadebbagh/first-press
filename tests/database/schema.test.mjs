@@ -133,6 +133,7 @@ test('a receipt requires a settled buy lot and preserves placement and execution
   await rejected(`UPDATE position_lots SET entry_listener_count=1 WHERE id='lot'`);
   await rejected(`UPDATE receipt_events SET created_at=now() WHERE id='receipt'`);
   await rejected(`DELETE FROM position_lots WHERE id='lot'`);
+  await rejected(`UPDATE settlement_batches SET snapshot_id='baseline' WHERE id='batch'`);
 }));
 
 test('lot quantities are bounded and remainders exceed bigint without losing precision', () => transaction(async () => {
@@ -173,6 +174,7 @@ test('demo seed is explicit, isolated, synthetic and safely repeatable', async (
     for (let i=0;i<2;i++) mustPass(command('scripts/db/seed-demo.mjs', { DATABASE_URL: demoUrl.toString(), ALLOW_DEMO_SEED: 'true' }));
     await demo.connect();
     assert.equal((await demo.query('SELECT count(*)::int AS n FROM artists WHERE synthetic')).rows[0].n, 1);
+    await assert.rejects(demo.query("UPDATE database_identity SET purpose='live'"), e=>e.code==='23514');
     for (const table of ['user','wallets','ledger_events','receipt_events']) assert.equal((await demo.query(`SELECT count(*)::int AS n FROM "${table}"`)).rows[0].n, 0);
   } finally { await demo.end(); await query(`DROP DATABASE "${name}"`); }
 });

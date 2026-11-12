@@ -116,7 +116,7 @@ CREATE TRIGGER exit_allocation_guard BEFORE INSERT OR UPDATE ON exit_allocations
 DO $$
 DECLARE t text;
 BEGIN
-  FOREACH t IN ARRAY ARRAY['listener_snapshots','snapshot_annotations','settlements','ledger_events','receipt_events','rounding_events'] LOOP
+  FOREACH t IN ARRAY ARRAY['database_identity','listener_snapshots','snapshot_annotations','settlements','ledger_events','receipt_events','rounding_events'] LOOP
     EXECUTE format('CREATE TRIGGER append_only BEFORE UPDATE OR DELETE ON %I FOR EACH ROW EXECUTE FUNCTION fp_append_only()', t);
   END LOOP;
   FOREACH t IN ARRAY ARRAY['orders','position_lots','cash_reservations','exit_allocations'] LOOP

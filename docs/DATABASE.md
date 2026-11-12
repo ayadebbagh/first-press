@@ -12,7 +12,7 @@ node --env-file=.env scripts/db/migrate.mjs
 pnpm dev
 ```
 
-PostgreSQL is pinned to `postgres:18.7-bookworm`. Its port binds only to loopback; its persistent volume mounts `/var/lib/postgresql`, the versioned data layout for PostgreSQL 18. The standalone app's `compose.yaml` stays independent. A future app+worker production composition must use the private service hostname, not container loopback. The database command never runs automatically on app startup. Do not remove the database volume to solve migration problems.
+PostgreSQL is pinned to the available official `postgres:18.6-bookworm` image for development/CI. Upstream 18.7 was announced on 2026-11-12 but its Docker image was not yet published when checked; upgrade and retest before live deployment. Its port binds only to loopback; its persistent volume mounts `/var/lib/postgresql`, the versioned data layout for PostgreSQL 18. The standalone app's `compose.yaml` stays independent. A future app+worker production composition must use the private service hostname, not container loopback. The database command never runs automatically on app startup. Do not remove the database volume to solve migration problems.
 
 The migration CLI deliberately reads injected process environment. For pnpm commands, export the URL through your shell/secret manager; use `node --env-file=.env scripts/db/migrate.mjs` for a local file. Drizzle Kit does not implicitly load this file through our config. Never put credentials in `NEXT_PUBLIC_*`, issues, screenshots or command output. Remote PostgreSQL must use verified TLS (`sslmode=verify-full` plus a trusted CA as required by the host); loopback/private Compose development does not require a public listener.
 
@@ -70,6 +70,6 @@ The seed verifies the actual database name, takes a transaction lock, and refuse
 
 ## Verification
 
-`pnpm test:db` requires an explicit `TEST_DATABASE_URL` ending `_test`; it never falls back to `DATABASE_URL`. Use a **disposable** database owned by the test role. CI provides an isolated PostgreSQL 18.7 service, migrates from empty, tests replay/tamper detection/concurrent migration calls, and rolls back transaction fixtures. The seed test creates/drops its own random `_demo` database, so the isolated test role needs CREATEDB; the production runtime role must not have that privilege. Browser tests continue against the local demo and prove no connected account behavior.
+`pnpm test:db` requires an explicit `TEST_DATABASE_URL` ending `_test`; it never falls back to `DATABASE_URL`. Use a **disposable** database owned by the test role. CI provides an isolated PostgreSQL 18.6 service, migrates from empty, tests replay/tamper detection/concurrent migration calls, and rolls back transaction fixtures. The seed test creates/drops its own random `_demo` database, so the isolated test role needs CREATEDB; the production runtime role must not have that privilege. Browser tests continue against the local demo and prove no connected account behavior.
 
 References checked 2026-11-12: [Drizzle migrations](https://orm.drizzle.team/docs/migrations), [Better Auth generation](https://better-auth.com/docs/concepts/cli), [PostgreSQL constraints](https://www.postgresql.org/docs/18/ddl-constraints.html), [Docker PostgreSQL 18 layout](https://hub.docker.com/_/postgres).

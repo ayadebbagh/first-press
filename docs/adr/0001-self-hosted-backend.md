@@ -10,7 +10,7 @@ Selected dependency baseline, verified against official package metadata on 2026
 
 | Component | Baseline | Notes |
 | --- | --- | --- |
-| PostgreSQL | 18.7 | Pin the concrete image/digest during A01 provisioning and keep security minors current. PostgreSQL 18 is in the supported release family. |
+| PostgreSQL | 18.x | A01 development/CI pins the available official 18.6-bookworm image. Upstream 18.7 was announced today but its image is not published yet; upgrade/retest before live deployment. Keep security minors current. |
 | Drizzle ORM | 0.45.4 | Stable release; use its Relations v1 adapter path initially. |
 | Drizzle Kit | 0.31.11 | Sole application/auth schema migration runner. |
 | node-postgres | 8.23.1 | Compatible with Node 22; use a bounded pool. |
