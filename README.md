@@ -31,7 +31,7 @@ For isolated browser tests, run `pnpm exec playwright install chromium`, `pnpm b
 
 ## Beta behavior
 
-50 curated artists and 100 discovery tracks. Users start with 1,000 demo Credits, can watch artists, queue artist-only buys and sells, cancel pending orders, settle the next synthetic update and keep entry receipts after selling. Backing value moves proportionally with illustrative listener figures. The daily rotation has four votes, a reorderable prediction and an explicitly illustrative crowd ranking. Artist suggestions stay on the device.
+50 curated artists and 100 discovery tracks. Users start with 1,000 demo Credits, can watch artists, queue artist-only buys and sells, cancel pending orders, settle the next synthetic update and keep entry receipts after selling. Backing value moves proportionally with illustrative listener figures. Artist pages include inspectable monthly-listener history with 7/30/90-day views; this history is explicitly generated demo data until collected snapshots are connected. The daily rotation has four votes, a reorderable prediction and an explicitly illustrative crowd ranking. Artist suggestions stay on the device.
 
 State keeps the original `firstpress.beta.v1` key so the existing file-preview data remains usable. Storage is browser/origin-specific: opening a newly hosted origin does not import another origin’s local data automatically.
 

@@ -946,6 +946,24 @@
         "Test a failed image leaves an accessible fallback without hiding a different artist picture.",
         "Run typecheck, unit tests, production/preview builds and isolated desktop/mobile browser checks."
       ]
+    },
+    {
+      "key": "B02",
+      "kind": "task",
+      "title": "Add inspectable monthly-listener history to artist pages",
+      "area": "identity",
+      "milestone": "M0",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [],
+      "summary": "Replace the decorative artist spark line with an inspectable monthly-listener chart. The beta uses clearly generated demo history; C04 will supply real collected observations through the same data interface.",
+      "acceptance": [
+        "Show monthly-listener values, 7/30/90-day range controls and range growth in the editorial app layout.",
+        "Support pointer, touch and keyboard inspection with accessible values and descriptions.",
+        "Label generated series explicitly as demo history, not Spotify observations.",
+        "Preserve actual verified observations and outages; support empty, one-point and invalid-reading states without backfill.",
+        "Verify the chart and 320px layout in isolated browser tests without changing backing or recording behavior."
+      ]
     }
   ]
 }
