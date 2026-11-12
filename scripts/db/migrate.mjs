@@ -10,15 +10,15 @@ try {
   await client.connect();
   await client.query("SELECT pg_advisory_lock(hashtextextended('first-press:migrations', 0))");
   const journal = JSON.parse(await readFile(new URL('../../drizzle/meta/_journal.json', import.meta.url), 'utf8'));
-  const hashes = new Set();
+  const expected = [];
   for (const entry of journal.entries) {
     const sql = await readFile(new URL(`../../drizzle/${entry.tag}.sql`, import.meta.url), 'utf8');
-    hashes.add(createHash('sha256').update(sql).digest('hex'));
+    expected.push({ hash: createHash('sha256').update(sql).digest('hex'), at: String(entry.when) });
   }
   const exists = await client.query("SELECT to_regclass('drizzle.__drizzle_migrations') AS table_name");
   if (exists.rows[0].table_name) {
-    const applied = await client.query('SELECT hash FROM drizzle.__drizzle_migrations');
-    if (applied.rows.some(row => !hashes.has(row.hash))) {
+    const applied = await client.query('SELECT hash, created_at FROM drizzle.__drizzle_migrations ORDER BY id');
+    if (applied.rows.some((row, index) => row.hash !== expected[index]?.hash || String(row.created_at) !== expected[index]?.at)) {
       throw new Error('Applied migration is missing or changed. Restore it and add a new forward migration.');
     }
   }

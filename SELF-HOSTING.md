@@ -51,3 +51,7 @@ On 2026-11-12, [hosted GitHub CI](https://github.com/ayadebbagh/first-press/acti
 Before public beta access, connect authenticated accounts and a transactional database for the Credits ledger, settlements, receipts, listener snapshots and community votes. This migration does not make local demo records server-verified.
 
 References: [Next.js standalone output](https://nextjs.org/docs/app/api-reference/config/next-config-js/output), [Next.js self-hosting](https://nextjs.org/docs/app/guides/self-hosting), [Docker’s Next.js guide](https://docs.docker.com/guides/nextjs/).
+
+## Optional PostgreSQL foundation
+
+[Database setup](docs/DATABASE.md) covers the separate `compose.db.yaml`, migration commands, exact accounting types and isolated seeds. The app container still serves the local demo without database configuration. Database migrations run from a release checkout with dev tooling installed, never automatically in the standalone web container. Production account/worker wiring and backup/restore are not enabled by adding this service.

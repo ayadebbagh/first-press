@@ -64,3 +64,7 @@ No open-source license has been selected. Bundled artist images and third-party 
 Dreamflasher remains pinned to its original Spotify release (`75Wgg4LerPD3mVO5hEyUN9`, April 4, 2025, 224,486 ms / 3:44). Its differing SoundCloud upload remains source metadata. How to Teleport is explicitly labeled as the current Spotify-profile 4:33 version, distinct from earlier releases. Corrected the catalog spelling PYRAMIDZE to Spotify’s PYRAMIDZ. SoundCloud recording-match metadata remains separate from Spotify release metadata; an official upload alone does not establish recording equality.
 
 Spotify uses the [official embed format](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed). No Spotify Web API credentials are required for this integration. Actual preview availability, playback length and listener eligibility remain controlled by Spotify; we do not extract, host or play raw preview URLs. For public launch, the previously identified [Spotify Widget Terms](https://developer.spotify.com/documentation/embeds/terms) requirement for written approval for game functionality still needs resolution.
+
+## Database foundation
+
+PostgreSQL schema, reviewed Drizzle migrations and opt-in isolated synthetic fixtures are available. See [database setup and verification](docs/DATABASE.md). The UI remains a local demo; account and backing services are subsequent issues.

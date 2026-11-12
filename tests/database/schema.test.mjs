@@ -39,7 +39,8 @@ async function buy(id = 'buy', user = 'alice', amount = '10001') {
 async function settledLot() {
   await buy();
   await query(`INSERT INTO settlement_batches (id,artist_id,cutoff,sealed_at,eligible_through,status,snapshot_id,executed_at) VALUES
-    ('batch','artist','2026-01-01T12:00Z','2026-01-01T12:01Z','2026-01-01T11:59:59.999Z','executed','execution','2026-01-01T12:07Z')`);
+    ('batch','artist','2026-01-01T12:00Z','2026-01-01T12:01Z','2026-01-01T11:59:59.999Z','sealed',NULL,NULL)`);
+  await query(`UPDATE settlement_batches SET status='executed',snapshot_id='execution',executed_at='2026-01-01T12:07Z' WHERE id='batch'`);
   await query(`UPDATE orders SET status='settled',settled_at='2026-01-01T12:07Z' WHERE id='buy'`);
   await query(`INSERT INTO settlements (order_id,user_id,artist_id,batch_id,executed_at,cash_cents) VALUES ('buy','alice','artist','batch','2026-01-01T12:07Z',10001)`);
   await query(`INSERT INTO position_lots (id,buy_order_id,user_id,artist_id,entry_snapshot_id,principal_cents,entry_listener_count,created_at)
