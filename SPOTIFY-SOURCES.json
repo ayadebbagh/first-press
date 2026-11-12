@@ -1,0 +1,2266 @@
+{
+  "schema_version": 2,
+  "checked_at": "2026-11-08T05:51:21.570Z",
+  "selection_policy": "Spotify first. SoundCloud only after an explicit not_found catalog review. Runtime errors and regional restrictions do not change providers.",
+  "tracks": [
+    {
+      "catalog_track_id": "track_001",
+      "catalog_artist": "fakemink",
+      "catalog_title": "Night , Blooming Jasmine .",
+      "title": "Night , Blooming Jasmine .",
+      "artist": "fakemink",
+      "id": "6gLXuUHVKVhVO40ZfmysPa",
+      "duration_ms": 178868,
+      "source_url": "https://open.spotify.com/embed/artist/0qc4BFxcwRFZfevTck4fOi",
+      "release_date": {
+        "isoString": "2026-05-22T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "fakemink",
+          "uri": "spotify:artist:0qc4BFxcwRFZfevTck4fOi"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6gLXuUHVKVhVO40ZfmysPa",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_002",
+      "catalog_artist": "fakemink",
+      "catalog_title": "Music and Me",
+      "title": "Music and Me",
+      "artist": "fakemink",
+      "id": "23c1TrkpPPYOcJT6DYRRPH",
+      "duration_ms": 126037,
+      "source_url": "https://open.spotify.com/embed/artist/0qc4BFxcwRFZfevTck4fOi",
+      "release_date": {
+        "isoString": "2025-04-01T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "fakemink",
+          "uri": "spotify:artist:0qc4BFxcwRFZfevTck4fOi"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/23c1TrkpPPYOcJT6DYRRPH",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_003",
+      "catalog_artist": "2hollis",
+      "catalog_title": "Hurt",
+      "title": "Hurt",
+      "artist": "2hollis",
+      "id": "3mDdkv8881MzLmSB7z8Ogy",
+      "duration_ms": 167272,
+      "source_url": "https://open.spotify.com/embed/artist/72NhFAGG5Pt91VbheJeEPG",
+      "release_date": {
+        "isoString": "2026-07-22T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "2hollis",
+          "uri": "spotify:artist:72NhFAGG5Pt91VbheJeEPG"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3mDdkv8881MzLmSB7z8Ogy",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_004",
+      "catalog_artist": "2hollis",
+      "catalog_title": "crush",
+      "title": "crush",
+      "artist": "2hollis",
+      "id": "2h7vLf7jv2KsRb7fV77w5H",
+      "duration_ms": 146225,
+      "source_url": "https://open.spotify.com/embed/artist/72NhFAGG5Pt91VbheJeEPG",
+      "release_date": {
+        "isoString": "2024-06-07T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "2hollis",
+          "uri": "spotify:artist:72NhFAGG5Pt91VbheJeEPG"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2h7vLf7jv2KsRb7fV77w5H",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_005",
+      "catalog_artist": "Jane Remover",
+      "catalog_title": "How To Teleport",
+      "title": "How to Teleport",
+      "artist": "Jane Remover",
+      "id": "5BUTPG0Csnl1fF5RFg5lUH",
+      "duration_ms": 273285,
+      "source_url": "https://open.spotify.com/embed/artist/2rLGlNI6htigNxx172qxLu",
+      "release_date": {
+        "isoString": "2025-12-05T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Jane Remover",
+          "uri": "spotify:artist:2rLGlNI6htigNxx172qxLu"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5BUTPG0Csnl1fF5RFg5lUH",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_006",
+      "catalog_artist": "Jane Remover",
+      "catalog_title": "Dreamflasher",
+      "title": "Dreamflasher",
+      "artist": "Jane Remover",
+      "id": "75Wgg4LerPD3mVO5hEyUN9",
+      "duration_ms": 224486,
+      "source_url": "https://open.spotify.com/embed/artist/2rLGlNI6htigNxx172qxLu",
+      "release_date": {
+        "isoString": "2025-04-04T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Jane Remover",
+          "uri": "spotify:artist:2rLGlNI6htigNxx172qxLu"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/75Wgg4LerPD3mVO5hEyUN9",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_007",
+      "catalog_artist": "Lucy Bedroque",
+      "catalog_title": "How to Pretend",
+      "title": "How to Pretend",
+      "artist": "Lucy Bedroque",
+      "id": "0H0eIjcXruQpntK0LuNa5v",
+      "duration_ms": 224086,
+      "source_url": "https://open.spotify.com/embed/artist/2I8H267eH5va9da4vGt38O",
+      "release_date": {
+        "isoString": "2024-10-04T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Lucy Bedroque",
+          "uri": "spotify:artist:2I8H267eH5va9da4vGt38O"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0H0eIjcXruQpntK0LuNa5v",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_008",
+      "catalog_artist": "Lucy Bedroque",
+      "catalog_title": "SPEED DEMON",
+      "title": "SPEED DEMON",
+      "artist": "Lucy Bedroque",
+      "id": "0EeOf7vFKG9BQeyX0XdkGE",
+      "duration_ms": 145777,
+      "source_url": "https://open.spotify.com/embed/artist/2I8H267eH5va9da4vGt38O",
+      "release_date": {
+        "isoString": "2026-09-18T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Lucy Bedroque",
+          "uri": "spotify:artist:2I8H267eH5va9da4vGt38O"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0EeOf7vFKG9BQeyX0XdkGE",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_009",
+      "catalog_artist": "che",
+      "catalog_title": "Nosferatu",
+      "title": "Nosferatu",
+      "artist": "Che",
+      "id": "0R9OsKMegkMrcMposu5uOX",
+      "duration_ms": 126315,
+      "source_url": "https://open.spotify.com/embed/album/5MTq5kbxQpO14SrJnWpqYX",
+      "release_date": {
+        "isoString": "2026-04-24T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Che",
+          "uri": "spotify:artist:5A7T1LAGJg5NXySBoIKUmF"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0R9OsKMegkMrcMposu5uOX",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_010",
+      "catalog_artist": "che",
+      "catalog_title": "BA$$",
+      "title": "BA$$",
+      "artist": "Che",
+      "id": "51OiK90giWwDI0RedEYBcg",
+      "duration_ms": 153658,
+      "source_url": "https://open.spotify.com/embed/artist/5A7T1LAGJg5NXySBoIKUmF",
+      "release_date": {
+        "isoString": "2025-07-18T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Che",
+          "uri": "spotify:artist:5A7T1LAGJg5NXySBoIKUmF"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/51OiK90giWwDI0RedEYBcg",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_011",
+      "catalog_artist": "OsamaSon",
+      "catalog_title": "Made Sum Plans",
+      "title": "Made Sum Plans",
+      "artist": "OsamaSon",
+      "id": "5sE9XpE2ukIwC2sYhIvUrs",
+      "duration_ms": 127152,
+      "source_url": "https://open.spotify.com/embed/artist/0uj6QiPsPfK8ywLC7uwBE1",
+      "release_date": {
+        "isoString": "2025-01-24T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "OsamaSon",
+          "uri": "spotify:artist:0uj6QiPsPfK8ywLC7uwBE1"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5sE9XpE2ukIwC2sYhIvUrs",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_012",
+      "catalog_artist": "OsamaSon",
+      "catalog_title": "Habits",
+      "title": "Habits",
+      "artist": "OsamaSon",
+      "id": "2XMwyntBTC3OgWE2N2wXoX",
+      "duration_ms": 199736,
+      "source_url": "https://open.spotify.com/embed/artist/0uj6QiPsPfK8ywLC7uwBE1",
+      "release_date": {
+        "isoString": "2025-10-10T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "OsamaSon",
+          "uri": "spotify:artist:0uj6QiPsPfK8ywLC7uwBE1"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2XMwyntBTC3OgWE2N2wXoX",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_013",
+      "catalog_artist": "Nettspend",
+      "catalog_title": "same language",
+      "title": "same language",
+      "artist": "Nettspend",
+      "id": "3h3hyEYG14FPS8tYZI7eFR",
+      "duration_ms": 141407,
+      "source_url": "https://open.spotify.com/embed/artist/2jl4qd6UbzeCmImT4nWbtA",
+      "release_date": {
+        "isoString": "2026-10-30T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Nettspend",
+          "uri": "spotify:artist:2jl4qd6UbzeCmImT4nWbtA"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3h3hyEYG14FPS8tYZI7eFR",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_014",
+      "catalog_artist": "Nettspend",
+      "catalog_title": "Nothing like uuu",
+      "title": "Nothing like uuu",
+      "artist": "Nettspend",
+      "id": "3h7QZ9cXhlOoh1ywJWS8GH",
+      "duration_ms": 112243,
+      "source_url": "https://open.spotify.com/embed/artist/2jl4qd6UbzeCmImT4nWbtA",
+      "release_date": {
+        "isoString": "2024-04-28T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Nettspend",
+          "uri": "spotify:artist:2jl4qd6UbzeCmImT4nWbtA"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3h7QZ9cXhlOoh1ywJWS8GH",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_015",
+      "catalog_artist": "xaviersobased",
+      "catalog_title": "Living Proof",
+      "title": "Living Proof",
+      "artist": "xaviersobased",
+      "id": "4W3QQYqMVv44ikh7ftIVG3",
+      "duration_ms": 125558,
+      "source_url": "https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1n2PwR",
+      "release_date": {
+        "isoString": "2026-10-31T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "xaviersobased",
+          "uri": "spotify:artist:2oM7LMPFu882oC6jSwEqjd"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/4W3QQYqMVv44ikh7ftIVG3",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_016",
+      "catalog_artist": "xaviersobased",
+      "catalog_title": "Love Hate",
+      "title": "love hate",
+      "artist": "xaviersobased",
+      "id": "7LqHM8vXewc8jxsM7VBVUj",
+      "duration_ms": 116080,
+      "source_url": "https://open.spotify.com/embed/artist/2oM7LMPFu882oC6jSwEqjd",
+      "release_date": {
+        "isoString": "2024-06-06T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "xaviersobased",
+          "uri": "spotify:artist:2oM7LMPFu882oC6jSwEqjd"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7LqHM8vXewc8jxsM7VBVUj",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_017",
+      "catalog_artist": "Nate Sib",
+      "catalog_title": "December",
+      "title": "December",
+      "artist": "nate sib",
+      "id": "0fRUI9Za9WmVqnN8U2fAZ2",
+      "duration_ms": 142274,
+      "source_url": "https://open.spotify.com/embed/artist/4TNu2ZIE566yKwEhOT8eTv",
+      "release_date": {
+        "isoString": "2026-10-16T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "nate sib",
+          "uri": "spotify:artist:4TNu2ZIE566yKwEhOT8eTv"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0fRUI9Za9WmVqnN8U2fAZ2",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_018",
+      "catalog_artist": "Nate Sib",
+      "catalog_title": "back & forth",
+      "title": "back & forth (feat. 2hollis)",
+      "artist": "nate sib, 2hollis",
+      "id": "6LK6tRsPgSZ3yKpY5zxrAw",
+      "duration_ms": 167066,
+      "source_url": "https://open.spotify.com/embed/artist/4TNu2ZIE566yKwEhOT8eTv",
+      "release_date": {
+        "isoString": "2025-05-16T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "nate sib",
+          "uri": "spotify:artist:4TNu2ZIE566yKwEhOT8eTv"
+        },
+        {
+          "name": "2hollis",
+          "uri": "spotify:artist:72NhFAGG5Pt91VbheJeEPG"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6LK6tRsPgSZ3yKpY5zxrAw",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_019",
+      "catalog_artist": "prettifun",
+      "catalog_title": "Nobody",
+      "title": "Nobody",
+      "artist": "prettifun",
+      "id": "3s72RIMx3B0V6s1BikStrA",
+      "duration_ms": 178433,
+      "source_url": "https://open.spotify.com/embed/artist/3J3ngZn7GjzjwCPBkqtz65",
+      "release_date": {
+        "isoString": "2026-08-21T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "prettifun",
+          "uri": "spotify:artist:3J3ngZn7GjzjwCPBkqtz65"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3s72RIMx3B0V6s1BikStrA",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_021",
+      "catalog_artist": "slayr",
+      "catalog_title": "Toxic",
+      "title": "Toxic",
+      "artist": "slayr",
+      "id": "3F1ostPsVmNFzFNDfPj7ua",
+      "duration_ms": 269875,
+      "source_url": "https://open.spotify.com/embed/artist/0SL3lfuoRP67mrvkdnwIMA",
+      "release_date": {
+        "isoString": "2026-03-06T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "slayr",
+          "uri": "spotify:artist:0SL3lfuoRP67mrvkdnwIMA"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3F1ostPsVmNFzFNDfPj7ua",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_022",
+      "catalog_artist": "slayr",
+      "catalog_title": "Daytona",
+      "title": "Daytona",
+      "artist": "slayr, Lucy Bedroque",
+      "id": "1z8YIll8YL4H0HqWH6MRH8",
+      "duration_ms": 164375,
+      "source_url": "https://open.spotify.com/embed/artist/0SL3lfuoRP67mrvkdnwIMA",
+      "release_date": {
+        "isoString": "2026-03-06T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "slayr",
+          "uri": "spotify:artist:0SL3lfuoRP67mrvkdnwIMA"
+        },
+        {
+          "name": "Lucy Bedroque",
+          "uri": "spotify:artist:2I8H267eH5va9da4vGt38O"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1z8YIll8YL4H0HqWH6MRH8",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_023",
+      "catalog_artist": "kuru",
+      "catalog_title": "U wld never do it",
+      "title": "U wld never do it",
+      "artist": "kuru",
+      "id": "2UrQ38DTGdUjzgWLex8nUo",
+      "duration_ms": 155298,
+      "source_url": "https://open.spotify.com/embed/artist/1KJ5ZZBncdHtz60i3fiQYu",
+      "release_date": {
+        "isoString": "2026-04-17T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "kuru",
+          "uri": "spotify:artist:1KJ5ZZBncdHtz60i3fiQYu"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2UrQ38DTGdUjzgWLex8nUo",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_024",
+      "catalog_artist": "kuru",
+      "catalog_title": "SSKY",
+      "title": "SSKY",
+      "artist": "ISOxo, Syzy, kuru",
+      "id": "4x8Mj0CTwq2sdvPetn5P24",
+      "duration_ms": 164571,
+      "source_url": "https://open.spotify.com/embed/artist/1KJ5ZZBncdHtz60i3fiQYu",
+      "release_date": {
+        "isoString": "2026-10-08T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "ISOxo",
+          "uri": "spotify:artist:4zVCMnjw54nkhGHU4e1Pav"
+        },
+        {
+          "name": "Syzy",
+          "uri": "spotify:artist:4Uu7oYMJmwNxi1qTXaeRDL"
+        },
+        {
+          "name": "kuru",
+          "uri": "spotify:artist:1KJ5ZZBncdHtz60i3fiQYu"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/4x8Mj0CTwq2sdvPetn5P24",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_025",
+      "catalog_artist": "Edward Skeletrix",
+      "catalog_title": "Slavery",
+      "title": "Slavery",
+      "artist": "Edward Skeletrix",
+      "id": "2BtWIxUGQUOeAjola8IOon",
+      "duration_ms": 270181,
+      "source_url": "https://open.spotify.com/embed/artist/0xWlWvXGQve3reUhtjlPrS",
+      "release_date": {
+        "isoString": "2026-05-01T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Edward Skeletrix",
+          "uri": "spotify:artist:0xWlWvXGQve3reUhtjlPrS"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2BtWIxUGQUOeAjola8IOon",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_026",
+      "catalog_artist": "Edward Skeletrix",
+      "catalog_title": "Fun",
+      "title": "Fun",
+      "artist": "Edward Skeletrix",
+      "id": "2Kl6IEzBM8i7QunIsGmPNB",
+      "duration_ms": 180070,
+      "source_url": "https://open.spotify.com/embed/artist/0xWlWvXGQve3reUhtjlPrS",
+      "release_date": {
+        "isoString": "2024-08-16T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Edward Skeletrix",
+          "uri": "spotify:artist:0xWlWvXGQve3reUhtjlPrS"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2Kl6IEzBM8i7QunIsGmPNB",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_027",
+      "catalog_artist": "bleood",
+      "catalog_title": "maybach key fob",
+      "title": "maybach key fob",
+      "artist": "bleood",
+      "id": "6RRpMHfjsLFMu2S8LUAtHj",
+      "duration_ms": 96031,
+      "source_url": "https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO2lL41v",
+      "release_date": {
+        "isoString": "2026-05-14T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "bleood",
+          "uri": "spotify:artist:41GfvEtCZu3KXaThpF01c1"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6RRpMHfjsLFMu2S8LUAtHj",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_028",
+      "catalog_artist": "bleood",
+      "catalog_title": "chrome dinosaur",
+      "title": "chrome dinosaur",
+      "artist": "bleood",
+      "id": "6xzsv7FcJYnklewXpUU5Qz",
+      "duration_ms": 135211,
+      "source_url": "https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO2lL41v",
+      "release_date": {
+        "isoString": "2026-05-14T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "bleood",
+          "uri": "spotify:artist:41GfvEtCZu3KXaThpF01c1"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6xzsv7FcJYnklewXpUU5Qz",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_029",
+      "catalog_artist": "EsDeeKid",
+      "catalog_title": "4 Raws",
+      "title": "4 Raws",
+      "artist": "EsDeeKid",
+      "id": "554qQSs9lpRVq6TlaaiIKT",
+      "duration_ms": 146666,
+      "source_url": "https://open.spotify.com/embed/artist/0EyhkwP3UnwGFBy6xwKjSy",
+      "release_date": {
+        "isoString": "2025-06-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "EsDeeKid",
+          "uri": "spotify:artist:0EyhkwP3UnwGFBy6xwKjSy"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/554qQSs9lpRVq6TlaaiIKT",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_030",
+      "catalog_artist": "EsDeeKid",
+      "catalog_title": "Bandit",
+      "title": "Bandit",
+      "artist": "EsDeeKid",
+      "id": "5xqqwC86B6OHPdLMekNIm4",
+      "duration_ms": 110142,
+      "source_url": "https://open.spotify.com/embed/artist/0EyhkwP3UnwGFBy6xwKjSy",
+      "release_date": {
+        "isoString": "2026-10-23T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "EsDeeKid",
+          "uri": "spotify:artist:0EyhkwP3UnwGFBy6xwKjSy"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5xqqwC86B6OHPdLMekNIm4",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_031",
+      "catalog_artist": "Rico Ace",
+      "catalog_title": "Phantom",
+      "title": "Phantom",
+      "artist": "EsDeeKid, Rico Ace",
+      "id": "57Z6TJCTMACXxdrcwZ3Zvf",
+      "duration_ms": 109759,
+      "source_url": "https://open.spotify.com/embed/artist/4sY0lTSkfDMMt27cVvFT6o",
+      "release_date": {
+        "isoString": "2025-06-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "EsDeeKid",
+          "uri": "spotify:artist:0EyhkwP3UnwGFBy6xwKjSy"
+        },
+        {
+          "name": "Rico Ace",
+          "uri": "spotify:artist:4sY0lTSkfDMMt27cVvFT6o"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/57Z6TJCTMACXxdrcwZ3Zvf",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_032",
+      "catalog_artist": "Rico Ace",
+      "catalog_title": "Palaces",
+      "title": "Palaces",
+      "artist": "EsDeeKid, Rico Ace",
+      "id": "2ZuMOcabaMzyXPPjFoYQGe",
+      "duration_ms": 113214,
+      "source_url": "https://open.spotify.com/embed/artist/4sY0lTSkfDMMt27cVvFT6o",
+      "release_date": {
+        "isoString": "2024-07-31T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "EsDeeKid",
+          "uri": "spotify:artist:0EyhkwP3UnwGFBy6xwKjSy"
+        },
+        {
+          "name": "Rico Ace",
+          "uri": "spotify:artist:4sY0lTSkfDMMt27cVvFT6o"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2ZuMOcabaMzyXPPjFoYQGe",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_033",
+      "catalog_artist": "Feng",
+      "catalog_title": "Princess",
+      "title": "Princess",
+      "artist": "Feng",
+      "id": "7hKUH1NXQXOt6bQjHhRZQg",
+      "duration_ms": 87272,
+      "source_url": "https://open.spotify.com/embed/artist/278vNvolx8H3sQJ2hgOMnh",
+      "release_date": {
+        "isoString": "2025-03-31T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Feng",
+          "uri": "spotify:artist:278vNvolx8H3sQJ2hgOMnh"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7hKUH1NXQXOt6bQjHhRZQg",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_034",
+      "catalog_artist": "Feng",
+      "catalog_title": "XY",
+      "title": "XY",
+      "artist": "Feng",
+      "id": "0DFKqhoeM3LGHTY4wIuS9V",
+      "duration_ms": 139665,
+      "source_url": "https://open.spotify.com/embed/artist/278vNvolx8H3sQJ2hgOMnh",
+      "release_date": {
+        "isoString": "2025-02-14T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Feng",
+          "uri": "spotify:artist:278vNvolx8H3sQJ2hgOMnh"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0DFKqhoeM3LGHTY4wIuS9V",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_035",
+      "catalog_artist": "YT",
+      "catalog_title": "Prada or Celine",
+      "title": "Prada or Celine",
+      "artist": "YT",
+      "id": "1Ad6LwiyMBJCralCXzUVJw",
+      "duration_ms": 140368,
+      "source_url": "https://open.spotify.com/embed/artist/0YsYhESxyHC1kuMm9Mbm3C",
+      "release_date": {
+        "isoString": "2025-03-28T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "YT",
+          "uri": "spotify:artist:0YsYhESxyHC1kuMm9Mbm3C"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1Ad6LwiyMBJCralCXzUVJw",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_036",
+      "catalog_artist": "YT",
+      "catalog_title": "Black & Tan",
+      "title": "Black & Tan",
+      "artist": "YT, Lancey Foux",
+      "id": "3HSWbb8RwYxKA4HDcm9emu",
+      "duration_ms": 138260,
+      "source_url": "https://open.spotify.com/embed/artist/0YsYhESxyHC1kuMm9Mbm3C",
+      "release_date": {
+        "isoString": "2025-03-28T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "YT",
+          "uri": "spotify:artist:0YsYhESxyHC1kuMm9Mbm3C"
+        },
+        {
+          "name": "Lancey Foux",
+          "uri": "spotify:artist:2LakckgvXEtJlKOYP6BO11"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3HSWbb8RwYxKA4HDcm9emu",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_037",
+      "catalog_artist": "fimiguerrero",
+      "catalog_title": "Skywalker (feat. fakemink)",
+      "title": "Skywalker",
+      "artist": "Fimiguerrero, fakemink",
+      "id": "3kv3dX8o6i1UUchHuYiKUo",
+      "duration_ms": 141839,
+      "source_url": "https://open.spotify.com/embed/artist/4M5b70A8aORXdyJVjRJ8du",
+      "release_date": {
+        "isoString": "2026-06-16T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Fimiguerrero",
+          "uri": "spotify:artist:4M5b70A8aORXdyJVjRJ8du"
+        },
+        {
+          "name": "fakemink",
+          "uri": "spotify:artist:0qc4BFxcwRFZfevTck4fOi"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3kv3dX8o6i1UUchHuYiKUo",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_038",
+      "catalog_artist": "fimiguerrero",
+      "catalog_title": "Mandy",
+      "title": "Mandy",
+      "artist": "Fimiguerrero",
+      "id": "2rSTewKrvP4zifuTE3ooEz",
+      "duration_ms": 90000,
+      "source_url": "https://open.spotify.com/embed/artist/4M5b70A8aORXdyJVjRJ8du",
+      "release_date": {
+        "isoString": "2024-08-16T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Fimiguerrero",
+          "uri": "spotify:artist:4M5b70A8aORXdyJVjRJ8du"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2rSTewKrvP4zifuTE3ooEz",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_039",
+      "catalog_artist": "Len",
+      "catalog_title": "pick up the phone",
+      "title": "pick up the phone",
+      "artist": "Len Lucci",
+      "id": "24U5LeBHMxyWufW7awCOfv",
+      "duration_ms": 144545,
+      "source_url": "https://open.spotify.com/embed/artist/2siXaXrok89Fp1PZI7sn0s",
+      "release_date": {
+        "isoString": "2026-08-14T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Len Lucci",
+          "uri": "spotify:artist:2siXaXrok89Fp1PZI7sn0s"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/24U5LeBHMxyWufW7awCOfv",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_040",
+      "catalog_artist": "Len",
+      "catalog_title": "CHAKRa",
+      "title": "CHAKRa",
+      "artist": "Len Lucci",
+      "id": "0X8wuklQTi8fVrdeNAj6Au",
+      "duration_ms": 135000,
+      "source_url": "https://open.spotify.com/embed/artist/2siXaXrok89Fp1PZI7sn0s",
+      "release_date": {
+        "isoString": "2024-08-23T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Len Lucci",
+          "uri": "spotify:artist:2siXaXrok89Fp1PZI7sn0s"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0X8wuklQTi8fVrdeNAj6Au",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_041",
+      "catalog_artist": "skaiwater",
+      "catalog_title": "rain",
+      "title": "rain",
+      "artist": "skaiwater",
+      "id": "1HG40IaElFC5OTyTsSQp8J",
+      "duration_ms": 165750,
+      "source_url": "https://open.spotify.com/embed/artist/1URVdcNYXigvk6Dj0fHYOM",
+      "release_date": {
+        "isoString": "2024-06-14T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "skaiwater",
+          "uri": "spotify:artist:1URVdcNYXigvk6Dj0fHYOM"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1HG40IaElFC5OTyTsSQp8J",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_043",
+      "catalog_artist": "Jim Legxacy",
+      "catalog_title": "stick",
+      "title": "stick",
+      "artist": "Jim Legxacy",
+      "id": "03zypUrD0e5vrFcmc80NJm",
+      "duration_ms": 139207,
+      "source_url": "https://open.spotify.com/embed/artist/7IrBqZo6diq3hV3GpUhrs2",
+      "release_date": {
+        "isoString": "2025-07-18T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Jim Legxacy",
+          "uri": "spotify:artist:7IrBqZo6diq3hV3GpUhrs2"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/03zypUrD0e5vrFcmc80NJm",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_044",
+      "catalog_artist": "Jim Legxacy",
+      "catalog_title": "idk idk",
+      "title": "idk idk",
+      "artist": "Jim Legxacy",
+      "id": "3CZ0ba4RIVdv40FbjHpOEA",
+      "duration_ms": 146526,
+      "source_url": "https://open.spotify.com/embed/artist/7IrBqZo6diq3hV3GpUhrs2",
+      "release_date": {
+        "isoString": "2026-03-24T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Jim Legxacy",
+          "uri": "spotify:artist:7IrBqZo6diq3hV3GpUhrs2"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3CZ0ba4RIVdv40FbjHpOEA",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_045",
+      "catalog_artist": "Lancey Foux",
+      "catalog_title": "25WAGG3DOU2",
+      "title": "25WAGG3DOU2",
+      "artist": "Lancey Foux",
+      "id": "4FbEljjTdoUcnY2aYsxDDh",
+      "duration_ms": 143413,
+      "source_url": "https://open.spotify.com/embed/artist/2LakckgvXEtJlKOYP6BO11",
+      "release_date": {
+        "isoString": "2021-11-19T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Lancey Foux",
+          "uri": "spotify:artist:2LakckgvXEtJlKOYP6BO11"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/4FbEljjTdoUcnY2aYsxDDh",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_047",
+      "catalog_artist": "Snow Strippers",
+      "catalog_title": "Under Your Spell",
+      "title": "Under Your Spell",
+      "artist": "Snow Strippers",
+      "id": "5q0N5SaFhROG9UQiPukv9p",
+      "duration_ms": 218500,
+      "source_url": "https://open.spotify.com/embed/artist/6TsAG8Ve1icEC8ydeHm3C8",
+      "release_date": {
+        "isoString": "2023-05-05T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Snow Strippers",
+          "uri": "spotify:artist:6TsAG8Ve1icEC8ydeHm3C8"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5q0N5SaFhROG9UQiPukv9p",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_048",
+      "catalog_artist": "Snow Strippers",
+      "catalog_title": "Just Your Doll",
+      "title": "Just Your Doll",
+      "artist": "Snow Strippers",
+      "id": "18n0voG6fG03ogJznGiyWD",
+      "duration_ms": 147234,
+      "source_url": "https://open.spotify.com/embed/artist/6TsAG8Ve1icEC8ydeHm3C8",
+      "release_date": {
+        "isoString": "2023-11-15T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Snow Strippers",
+          "uri": "spotify:artist:6TsAG8Ve1icEC8ydeHm3C8"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/18n0voG6fG03ogJznGiyWD",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_049",
+      "catalog_artist": "Frost Children",
+      "catalog_title": "Falling",
+      "title": "Falling",
+      "artist": "Frost Children",
+      "id": "43tkPQscsEOhXxf3rECI5X",
+      "duration_ms": 227272,
+      "source_url": "https://open.spotify.com/embed/artist/6R1kfr0GIWnwxY4zW11Vag",
+      "release_date": {
+        "isoString": "2025-09-12T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Frost Children",
+          "uri": "spotify:artist:6R1kfr0GIWnwxY4zW11Vag"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/43tkPQscsEOhXxf3rECI5X",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_050",
+      "catalog_artist": "Frost Children",
+      "catalog_title": "RADIO",
+      "title": "RADIO (feat. Kim Petras)",
+      "artist": "Frost Children, Kim Petras",
+      "id": "648EfIeWCsM2ssgEAB3s4k",
+      "duration_ms": 190222,
+      "source_url": "https://open.spotify.com/embed/artist/6R1kfr0GIWnwxY4zW11Vag",
+      "release_date": {
+        "isoString": "2025-09-12T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Frost Children",
+          "uri": "spotify:artist:6R1kfr0GIWnwxY4zW11Vag"
+        },
+        {
+          "name": "Kim Petras",
+          "uri": "spotify:artist:3Xt3RrJMFv5SZkCfUE8C1J"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/648EfIeWCsM2ssgEAB3s4k",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_051",
+      "catalog_artist": "underscores",
+      "catalog_title": "The Peace",
+      "title": "The Peace",
+      "artist": "underscores",
+      "id": "6wm3t4VpTxSFfOUgTMlHZM",
+      "duration_ms": 169500,
+      "source_url": "https://open.spotify.com/embed/artist/7HfUJxeVTgrvhk0eWHFzV7",
+      "release_date": {
+        "isoString": "2026-03-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "underscores",
+          "uri": "spotify:artist:7HfUJxeVTgrvhk0eWHFzV7"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6wm3t4VpTxSFfOUgTMlHZM",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_052",
+      "catalog_artist": "underscores",
+      "catalog_title": "Music",
+      "title": "Music",
+      "artist": "underscores",
+      "id": "6gPbjxlebqkFyCaLY4SRVm",
+      "duration_ms": 207296,
+      "source_url": "https://open.spotify.com/embed/artist/7HfUJxeVTgrvhk0eWHFzV7",
+      "release_date": {
+        "isoString": "2026-03-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "underscores",
+          "uri": "spotify:artist:7HfUJxeVTgrvhk0eWHFzV7"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6gPbjxlebqkFyCaLY4SRVm",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_053",
+      "catalog_artist": "Ninajirachi",
+      "catalog_title": "WannaCry",
+      "title": "WannaCry",
+      "artist": "Ninajirachi, Porter Robinson",
+      "id": "7JW8FRWVCOQDs40IjEXdPi",
+      "duration_ms": 219367,
+      "source_url": "https://open.spotify.com/embed/artist/3MekbRujJg5VZThubOlrkR",
+      "release_date": {
+        "isoString": "2026-07-28T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Ninajirachi",
+          "uri": "spotify:artist:3MekbRujJg5VZThubOlrkR"
+        },
+        {
+          "name": "Porter Robinson",
+          "uri": "spotify:artist:3dz0NnIZhtKKeXZxLOxCam"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7JW8FRWVCOQDs40IjEXdPi",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_054",
+      "catalog_artist": "Ninajirachi",
+      "catalog_title": "iPod Touch",
+      "title": "iPod Touch",
+      "artist": "Ninajirachi",
+      "id": "1xqT27jSG1Y15vOXfsV0gv",
+      "duration_ms": 196522,
+      "source_url": "https://open.spotify.com/embed/artist/3MekbRujJg5VZThubOlrkR",
+      "release_date": {
+        "isoString": "2025-08-08T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Ninajirachi",
+          "uri": "spotify:artist:3MekbRujJg5VZThubOlrkR"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1xqT27jSG1Y15vOXfsV0gv",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_055",
+      "catalog_artist": "Oklou",
+      "catalog_title": "harvest sky",
+      "title": "harvest sky",
+      "artist": "Oklou, underscores",
+      "id": "0HmF7RjPsMMijGxgPXLQqy",
+      "duration_ms": 233896,
+      "source_url": "https://open.spotify.com/embed/artist/6fFcUOFcbjeIuEomuUthkw",
+      "release_date": {
+        "isoString": "2025-02-07T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Oklou",
+          "uri": "spotify:artist:6fFcUOFcbjeIuEomuUthkw"
+        },
+        {
+          "name": "underscores",
+          "uri": "spotify:artist:7HfUJxeVTgrvhk0eWHFzV7"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0HmF7RjPsMMijGxgPXLQqy",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_056",
+      "catalog_artist": "Oklou",
+      "catalog_title": "blade bird",
+      "title": "blade bird",
+      "artist": "Oklou",
+      "id": "1zfPxWc0WSQ2MyVsGTLGtF",
+      "duration_ms": 198587,
+      "source_url": "https://open.spotify.com/embed/artist/6fFcUOFcbjeIuEomuUthkw",
+      "release_date": {
+        "isoString": "2025-02-07T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Oklou",
+          "uri": "spotify:artist:6fFcUOFcbjeIuEomuUthkw"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1zfPxWc0WSQ2MyVsGTLGtF",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_057",
+      "catalog_artist": "ericdoa",
+      "catalog_title": "Agoraphobia",
+      "title": "Agoraphobia",
+      "artist": "ericdoa",
+      "id": "3EkBE2PDW07X7qOjcsMCVS",
+      "duration_ms": 150000,
+      "source_url": "https://open.spotify.com/embed/artist/4hR6Bm9YYtktXzjmKhb1Cn",
+      "release_date": {
+        "isoString": "2026-05-22T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "ericdoa",
+          "uri": "spotify:artist:4hR6Bm9YYtktXzjmKhb1Cn"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3EkBE2PDW07X7qOjcsMCVS",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_058",
+      "catalog_artist": "ericdoa",
+      "catalog_title": "fantasize",
+      "title": "fantasize",
+      "artist": "ericdoa",
+      "id": "6U2sXLGhxJVmKskGUvJzI3",
+      "duration_ms": 150612,
+      "source_url": "https://open.spotify.com/embed/artist/4hR6Bm9YYtktXzjmKhb1Cn",
+      "release_date": {
+        "isoString": "2021-05-28T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "ericdoa",
+          "uri": "spotify:artist:4hR6Bm9YYtktXzjmKhb1Cn"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6U2sXLGhxJVmKskGUvJzI3",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_059",
+      "catalog_artist": "glaive",
+      "catalog_title": "MEANT TO BE",
+      "title": "MEANT TO BE",
+      "artist": "Tiffany Day, glaive",
+      "id": "7zJxlGeNQU0ABxIifFTStj",
+      "duration_ms": 178185,
+      "source_url": "https://open.spotify.com/embed/artist/4cJKDGSv4Dz9QycXYmo565",
+      "release_date": {
+        "isoString": "2026-10-13T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Tiffany Day",
+          "uri": "spotify:artist:5D5Qbe1lf3aMnLsPSzXItu"
+        },
+        {
+          "name": "glaive",
+          "uri": "spotify:artist:4cJKDGSv4Dz9QycXYmo565"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7zJxlGeNQU0ABxIifFTStj",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_060",
+      "catalog_artist": "glaive",
+      "catalog_title": "The Troubles",
+      "title": "The Troubles",
+      "artist": "glaive, kurtains",
+      "id": "70X7vgsB5zXDAkurNfaz8X",
+      "duration_ms": 116619,
+      "source_url": "https://open.spotify.com/embed/artist/4cJKDGSv4Dz9QycXYmo565",
+      "release_date": {
+        "isoString": "2026-05-08T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "glaive",
+          "uri": "spotify:artist:4cJKDGSv4Dz9QycXYmo565"
+        },
+        {
+          "name": "kurtains",
+          "uri": "spotify:artist:7b2FbxYmnpGMPqDe04QmyP"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/70X7vgsB5zXDAkurNfaz8X",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_061",
+      "catalog_artist": "brakence",
+      "catalog_title": "ready or noT",
+      "title": "ready or noT",
+      "artist": "brakence",
+      "id": "02HhWWBrEkvyp2D8tXvmux",
+      "duration_ms": 242240,
+      "source_url": "https://open.spotify.com/embed/artist/4kqFrZkeqDfOIEqTWqbOOV",
+      "release_date": {
+        "isoString": "2026-10-23T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "brakence",
+          "uri": "spotify:artist:4kqFrZkeqDfOIEqTWqbOOV"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/02HhWWBrEkvyp2D8tXvmux",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_062",
+      "catalog_artist": "brakence",
+      "catalog_title": "Problem Child",
+      "title": "Problem Child",
+      "artist": "brakence",
+      "id": "6bTsje5dpsVHLixQfgPXaY",
+      "duration_ms": 222440,
+      "source_url": "https://open.spotify.com/embed/artist/4kqFrZkeqDfOIEqTWqbOOV",
+      "release_date": {
+        "isoString": "2026-10-23T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "brakence",
+          "uri": "spotify:artist:4kqFrZkeqDfOIEqTWqbOOV"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6bTsje5dpsVHLixQfgPXaY",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_063",
+      "catalog_artist": "quinn",
+      "catalog_title": "i dont want that many friends in the first place",
+      "title": "i dont want that many friends in the first place",
+      "artist": "osquinn",
+      "id": "10P4luHAHr1o5kqDa8NDIU",
+      "duration_ms": 109033,
+      "source_url": "https://open.spotify.com/embed/album/44nPHmYq8LeqrjgwqcWyuQ",
+      "release_date": {
+        "isoString": "2019-10-31T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "osquinn",
+          "uri": "spotify:artist:2QpNu8tDPv9n7oY34J1TtN"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/10P4luHAHr1o5kqDa8NDIU",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_065",
+      "catalog_artist": "D0llywood1",
+      "catalog_title": "Ihonestlymightjustgiveup",
+      "title": "ihonestlymightjustgiveup",
+      "artist": "d0llywood1",
+      "id": "6AGhG5sCxbepvyjFilAVHq",
+      "duration_ms": 126177,
+      "source_url": "https://open.spotify.com/embed/artist/2KZogWZPYcACVe4NK80dmc",
+      "release_date": {
+        "isoString": "2020-08-01T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "d0llywood1",
+          "uri": "spotify:artist:2KZogWZPYcACVe4NK80dmc"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6AGhG5sCxbepvyjFilAVHq",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_066",
+      "catalog_artist": "D0llywood1",
+      "catalog_title": "Istillmissu",
+      "title": "istillmissu",
+      "artist": "d0llywood1",
+      "id": "5fQk5HDizV0v7iqNig5Z0V",
+      "duration_ms": 177235,
+      "source_url": "https://open.spotify.com/embed/artist/2KZogWZPYcACVe4NK80dmc",
+      "release_date": {
+        "isoString": "2019-11-01T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "d0llywood1",
+          "uri": "spotify:artist:2KZogWZPYcACVe4NK80dmc"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5fQk5HDizV0v7iqNig5Z0V",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_067",
+      "catalog_artist": "Dazegxd",
+      "catalog_title": "Emotion Engine (feat. Kaiyko)",
+      "title": "emotion engine",
+      "artist": "Dazegxd, Kaiyko",
+      "id": "1Yp70JEzA4E4jxy9PRDr30",
+      "duration_ms": 255238,
+      "source_url": "https://open.spotify.com/embed/artist/59e7YxjDTqYuyxi0kTt4fL",
+      "release_date": {
+        "isoString": "2022-05-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Dazegxd",
+          "uri": "spotify:artist:59e7YxjDTqYuyxi0kTt4fL"
+        },
+        {
+          "name": "Kaiyko",
+          "uri": "spotify:artist:2xvldSfqY7pk8Z0DWyCYyL"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1Yp70JEzA4E4jxy9PRDr30",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_069",
+      "catalog_artist": "egobreak",
+      "catalog_title": "darling (feat. Lucy Bedroque)",
+      "title": "darling (feat. Lucy Bedroque)",
+      "artist": "Egobreak, Lucy Bedroque",
+      "id": "5SDsIlan0VD3oSYPibpXTQ",
+      "duration_ms": 139867,
+      "source_url": "https://open.spotify.com/embed/playlist/74GJeccLyUGCgKTeF7zYus",
+      "release_date": {
+        "isoString": "2026-02-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Egobreak",
+          "uri": "spotify:artist:2Vcda6Z3Ugbq2ZlYnKGGfC"
+        },
+        {
+          "name": "Lucy Bedroque",
+          "uri": "spotify:artist:2I8H267eH5va9da4vGt38O"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5SDsIlan0VD3oSYPibpXTQ",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_070",
+      "catalog_artist": "egobreak",
+      "catalog_title": "nine (feat. Lucy Bedroque)",
+      "title": "nine",
+      "artist": "Egobreak, prettifun, Lucy Bedroque",
+      "id": "3GwqGuCKdEQUzMHvWRz9s4",
+      "duration_ms": 235500,
+      "source_url": "https://open.spotify.com/embed/album/0O3NSPYnpxX518CuAPvUsv",
+      "release_date": {
+        "isoString": "2024-05-10T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Egobreak",
+          "uri": "spotify:artist:2Vcda6Z3Ugbq2ZlYnKGGfC"
+        },
+        {
+          "name": "prettifun",
+          "uri": "spotify:artist:3J3ngZn7GjzjwCPBkqtz65"
+        },
+        {
+          "name": "Lucy Bedroque",
+          "uri": "spotify:artist:2I8H267eH5va9da4vGt38O"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3GwqGuCKdEQUzMHvWRz9s4",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_071",
+      "catalog_artist": "ezcodylee",
+      "catalog_title": "ALBUM OF THE YEAR !",
+      "title": "ALBUM OF THE YEAR !",
+      "artist": "ezcodylee",
+      "id": "5U2iSe276IiMC28OINqAU3",
+      "duration_ms": 167225,
+      "source_url": "https://open.spotify.com/embed/artist/4ZmwdJnMTqHie4HvzBd0rC",
+      "release_date": {
+        "isoString": "2026-03-24T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "ezcodylee",
+          "uri": "spotify:artist:4ZmwdJnMTqHie4HvzBd0rC"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5U2iSe276IiMC28OINqAU3",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_072",
+      "catalog_artist": "ezcodylee",
+      "catalog_title": "SHUT UP !",
+      "title": "SHUT UP !",
+      "artist": "ezcodylee",
+      "id": "08zBbaOHkkBnuodgp3ZjjT",
+      "duration_ms": 149396,
+      "source_url": "https://open.spotify.com/embed/artist/4ZmwdJnMTqHie4HvzBd0rC",
+      "release_date": {
+        "isoString": "2026-03-24T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "ezcodylee",
+          "uri": "spotify:artist:4ZmwdJnMTqHie4HvzBd0rC"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/08zBbaOHkkBnuodgp3ZjjT",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_074",
+      "catalog_artist": "Nokia Angel",
+      "catalog_title": "Raindrops",
+      "title": "Raindrops",
+      "artist": "Nokia Angel",
+      "id": "35y8Vc3Lyrv8v03gckuj6Q",
+      "duration_ms": 188403,
+      "source_url": "https://open.spotify.com/embed/artist/0G2xkjzM76THRB0rEgx7N8",
+      "release_date": {
+        "isoString": "2025-07-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Nokia Angel",
+          "uri": "spotify:artist:0G2xkjzM76THRB0rEgx7N8"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/35y8Vc3Lyrv8v03gckuj6Q",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_075",
+      "catalog_artist": "The Hellp",
+      "catalog_title": "Here I Am",
+      "title": "Here I Am",
+      "artist": "The Hellp",
+      "id": "5BOc5jsPrA7qvjjSTSJ74f",
+      "duration_ms": 226426,
+      "source_url": "https://open.spotify.com/embed/artist/5DslL3PUa3BcRlCCEP64A4",
+      "release_date": {
+        "isoString": "2025-11-21T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "The Hellp",
+          "uri": "spotify:artist:5DslL3PUa3BcRlCCEP64A4"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5BOc5jsPrA7qvjjSTSJ74f",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_076",
+      "catalog_artist": "The Hellp",
+      "catalog_title": "Ssx",
+      "title": "Ssx",
+      "artist": "The Hellp",
+      "id": "1AJHaJFNM2Q4UpJ1fG1bIi",
+      "duration_ms": 216198,
+      "source_url": "https://open.spotify.com/embed/artist/5DslL3PUa3BcRlCCEP64A4",
+      "release_date": {
+        "isoString": "2021-04-28T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "The Hellp",
+          "uri": "spotify:artist:5DslL3PUa3BcRlCCEP64A4"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1AJHaJFNM2Q4UpJ1fG1bIi",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_078",
+      "catalog_artist": "Nine Vicious",
+      "catalog_title": "Casino",
+      "title": "Casino",
+      "artist": "Nine Vicious",
+      "id": "3HNQr62f7YzwOqfLeISjLd",
+      "duration_ms": 322382,
+      "source_url": "https://open.spotify.com/embed/artist/6Rs7Ufqb4h0FTuVg6wlqOy",
+      "release_date": {
+        "isoString": "2026-09-11T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Nine Vicious",
+          "uri": "spotify:artist:6Rs7Ufqb4h0FTuVg6wlqOy"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3HNQr62f7YzwOqfLeISjLd",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_079",
+      "catalog_artist": "2slimey",
+      "catalog_title": "Legion",
+      "title": "Legion",
+      "artist": "2slimey",
+      "id": "20y1eL42SsAB7GquyYiES4",
+      "duration_ms": 259829,
+      "source_url": "https://open.spotify.com/embed/artist/0ZXbQLu4a7sk3iQ8tlgFy4",
+      "release_date": {
+        "isoString": "2026-02-06T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "2slimey",
+          "uri": "spotify:artist:0ZXbQLu4a7sk3iQ8tlgFy4"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/20y1eL42SsAB7GquyYiES4",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_080",
+      "catalog_artist": "2slimey",
+      "catalog_title": "times changin",
+      "title": "times changin",
+      "artist": "2slimey",
+      "id": "6qC0T5xZVKjgpyeQxKhhj5",
+      "duration_ms": 114399,
+      "source_url": "https://open.spotify.com/embed/artist/0ZXbQLu4a7sk3iQ8tlgFy4",
+      "release_date": {
+        "isoString": "2026-03-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "2slimey",
+          "uri": "spotify:artist:0ZXbQLu4a7sk3iQ8tlgFy4"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6qC0T5xZVKjgpyeQxKhhj5",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_081",
+      "catalog_artist": "smokedope2016",
+      "catalog_title": "In Da Party",
+      "title": "In Da Party",
+      "artist": "smokedope2016",
+      "id": "3N49gvnpF75KmNEoUROPjW",
+      "duration_ms": 141250,
+      "source_url": "https://open.spotify.com/embed/artist/3hGJ4nHdF99Vs0gQdXz5Nw",
+      "release_date": {
+        "isoString": "2025-01-17T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "smokedope2016",
+          "uri": "spotify:artist:3hGJ4nHdF99Vs0gQdXz5Nw"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/3N49gvnpF75KmNEoUROPjW",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_082",
+      "catalog_artist": "smokedope2016",
+      "catalog_title": "Frat",
+      "title": "Frat",
+      "artist": "smokedope2016",
+      "id": "7e8Li1mYxrbVjhSYrz1LXn",
+      "duration_ms": 200930,
+      "source_url": "https://open.spotify.com/embed/artist/3hGJ4nHdF99Vs0gQdXz5Nw",
+      "release_date": {
+        "isoString": "2024-05-24T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "smokedope2016",
+          "uri": "spotify:artist:3hGJ4nHdF99Vs0gQdXz5Nw"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7e8Li1mYxrbVjhSYrz1LXn",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_083",
+      "catalog_artist": "rommulas",
+      "catalog_title": "No Me Importa",
+      "title": "No Me Importa",
+      "artist": "rommulas",
+      "id": "4DlYy3xKzvB0jOFudqTn76",
+      "duration_ms": 133852,
+      "source_url": "https://open.spotify.com/embed/artist/4QsDoxai6urbmrML19OYa3",
+      "release_date": {
+        "isoString": "2025-07-18T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "rommulas",
+          "uri": "spotify:artist:4QsDoxai6urbmrML19OYa3"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/4DlYy3xKzvB0jOFudqTn76",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_084",
+      "catalog_artist": "rommulas",
+      "catalog_title": "left to right",
+      "title": "left to right",
+      "artist": "rommulas, 2hollis",
+      "id": "7jUrWOaYctEk6p2eYNRjb0",
+      "duration_ms": 154285,
+      "source_url": "https://open.spotify.com/embed/artist/4QsDoxai6urbmrML19OYa3",
+      "release_date": {
+        "isoString": "2025-05-23T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "rommulas",
+          "uri": "spotify:artist:4QsDoxai6urbmrML19OYa3"
+        },
+        {
+          "name": "2hollis",
+          "uri": "spotify:artist:72NhFAGG5Pt91VbheJeEPG"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7jUrWOaYctEk6p2eYNRjb0",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_085",
+      "catalog_artist": "Bladee",
+      "catalog_title": "Be Nice 2 Me",
+      "title": "Be Nice 2 Me",
+      "artist": "Bladee",
+      "id": "2TmqHjg7uhizGndzXQdFuf",
+      "duration_ms": 127791,
+      "source_url": "https://open.spotify.com/embed/artist/2xvtxDNInKDV4AvGmjw6d1",
+      "release_date": {
+        "isoString": "2018-12-29T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Bladee",
+          "uri": "spotify:artist:2xvtxDNInKDV4AvGmjw6d1"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2TmqHjg7uhizGndzXQdFuf",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_086",
+      "catalog_artist": "Bladee",
+      "catalog_title": "The Flag Is Raised",
+      "title": "The Flag is Raised",
+      "artist": "Bladee, Ecco2k",
+      "id": "7mebNFbb0ehL1IX1DMktdC",
+      "duration_ms": 179430,
+      "source_url": "https://open.spotify.com/embed/artist/2xvtxDNInKDV4AvGmjw6d1",
+      "release_date": {
+        "isoString": "2022-03-18T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Bladee",
+          "uri": "spotify:artist:2xvtxDNInKDV4AvGmjw6d1"
+        },
+        {
+          "name": "Ecco2k",
+          "uri": "spotify:artist:6hG0VsXXlD10l60TqiIHIX"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7mebNFbb0ehL1IX1DMktdC",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_087",
+      "catalog_artist": "Ecco2k",
+      "catalog_title": "Peroxide",
+      "title": "Peroxide",
+      "artist": "Ecco2k",
+      "id": "1fbmkoREwP13dkXJI5YGfn",
+      "duration_ms": 214187,
+      "source_url": "https://open.spotify.com/embed/artist/6hG0VsXXlD10l60TqiIHIX",
+      "release_date": {
+        "isoString": "2019-11-27T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Ecco2k",
+          "uri": "spotify:artist:6hG0VsXXlD10l60TqiIHIX"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/1fbmkoREwP13dkXJI5YGfn",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_088",
+      "catalog_artist": "Ecco2k",
+      "catalog_title": "Aldehydes and Ketones",
+      "title": "Aldehydes and Ketones",
+      "artist": "Ecco2k",
+      "id": "6n9heLkoKbQu2uOQFDRPaj",
+      "duration_ms": 242002,
+      "source_url": "https://open.spotify.com/embed/artist/6hG0VsXXlD10l60TqiIHIX",
+      "release_date": {
+        "isoString": "2026-10-22T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Ecco2k",
+          "uri": "spotify:artist:6hG0VsXXlD10l60TqiIHIX"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6n9heLkoKbQu2uOQFDRPaj",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_089",
+      "catalog_artist": "phreshboyswag",
+      "catalog_title": "inspire",
+      "title": "inspire",
+      "artist": "phreshboyswag",
+      "id": "2Db8PdHJhPpw9Hw4CFP3wl",
+      "duration_ms": 106393,
+      "source_url": "https://open.spotify.com/embed/artist/0t9kdK9L3xwr7T2xt8G80H",
+      "release_date": {
+        "isoString": "2023-02-08T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "phreshboyswag",
+          "uri": "spotify:artist:0t9kdK9L3xwr7T2xt8G80H"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2Db8PdHJhPpw9Hw4CFP3wl",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_090",
+      "catalog_artist": "phreshboyswag",
+      "catalog_title": "hottie",
+      "title": "hottie",
+      "artist": "phreshboyswag",
+      "id": "0RQGTSUyH4kPG4DpacyOT1",
+      "duration_ms": 121874,
+      "source_url": "https://open.spotify.com/embed/album/6tZBQpcl7nUus0beHqnnbI",
+      "release_date": {
+        "isoString": "2023-04-09T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "phreshboyswag",
+          "uri": "spotify:artist:0t9kdK9L3xwr7T2xt8G80H"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/0RQGTSUyH4kPG4DpacyOT1",
+      "is_playable_at_check": false,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "COUNTRY_RESTRICTED"
+    },
+    {
+      "catalog_track_id": "track_092",
+      "catalog_artist": "1oneam",
+      "catalog_title": "Vogue",
+      "title": "Vogue",
+      "artist": "1oneam",
+      "id": "7gdnMcpt7ZdvNhXj2FDEgF",
+      "duration_ms": 120093,
+      "source_url": "https://open.spotify.com/embed/artist/089ASSwOW4Cih3frNuDtUv",
+      "release_date": {
+        "isoString": "2024-08-23T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "1oneam",
+          "uri": "spotify:artist:089ASSwOW4Cih3frNuDtUv"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/7gdnMcpt7ZdvNhXj2FDEgF",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_094",
+      "catalog_artist": "Yhapojj",
+      "catalog_title": "Syracuse",
+      "title": "Syracuse",
+      "artist": "Yhapojj",
+      "id": "4kyl8oI17dX2BhsW6BrECc",
+      "duration_ms": 120301,
+      "source_url": "https://open.spotify.com/embed/album/6b9KPLlwlSv2yzzdR4xNUH",
+      "release_date": {
+        "isoString": "2025-05-02T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Yhapojj",
+          "uri": "spotify:artist:4mAsHgZzoZvU0eMbHOB60X"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/4kyl8oI17dX2BhsW6BrECc",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_095",
+      "catalog_artist": "Hardrock",
+      "catalog_title": "1of1",
+      "title": "1of1",
+      "artist": "Hardrock",
+      "id": "5Q5VN2LSPsWuriKiNkKRZc",
+      "duration_ms": 124000,
+      "source_url": "https://open.spotify.com/embed/album/2HOjaFJUdAbz4BuEzfeKtm",
+      "release_date": {
+        "isoString": "2023-08-18T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Hardrock",
+          "uri": "spotify:artist:1EM110Ljwqga6grZH2Dym3"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5Q5VN2LSPsWuriKiNkKRZc",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_096",
+      "catalog_artist": "Hardrock",
+      "catalog_title": "DIDITAGAIN",
+      "title": "DIDITAGAIN",
+      "artist": "Hardrock",
+      "id": "6mYpNza4sJ4OYRKlGGXTu4",
+      "duration_ms": 121787,
+      "source_url": "https://open.spotify.com/embed/album/46ixDrmU5HoGqMPhe275vk",
+      "release_date": {
+        "isoString": "2026-01-20T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Hardrock",
+          "uri": "spotify:artist:1EM110Ljwqga6grZH2Dym3"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/6mYpNza4sJ4OYRKlGGXTu4",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_099",
+      "catalog_artist": "damon r.",
+      "catalog_title": "tricked out",
+      "title": "tricked out",
+      "artist": "damon r.",
+      "id": "5HXgmD0Qbdjn8crHpTwlvm",
+      "duration_ms": 185142,
+      "source_url": "https://open.spotify.com/embed/artist/3LE39lgBs68N41XjxH5cLD",
+      "release_date": {
+        "isoString": "2024-09-30T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "damon r.",
+          "uri": "spotify:artist:3LE39lgBs68N41XjxH5cLD"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/5HXgmD0Qbdjn8crHpTwlvm",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_100",
+      "catalog_artist": "damon r.",
+      "catalog_title": "kiss up",
+      "title": "kiss up",
+      "artist": "damon r.",
+      "id": "2fzjwZP7S23XQEu53Mw7KZ",
+      "duration_ms": 176588,
+      "source_url": "https://open.spotify.com/embed/artist/3LE39lgBs68N41XjxH5cLD",
+      "release_date": {
+        "isoString": "2024-12-13T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "damon r.",
+          "uri": "spotify:artist:3LE39lgBs68N41XjxH5cLD"
+        }
+      ],
+      "verified_source_url": "https://open.spotify.com/embed/track/2fzjwZP7S23XQEu53Mw7KZ",
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_046",
+      "catalog_artist": "Lancey Foux",
+      "catalog_title": "INDIA",
+      "title": "INDIA",
+      "artist": "Lancey Foux",
+      "id": "5ogwXhiC0EbCGn0eiEPLp6",
+      "duration_ms": 109714,
+      "source_url": "https://open.spotify.com/embed/track/5ogwXhiC0EbCGn0eiEPLp6",
+      "verified_source_url": "https://open.spotify.com/embed/track/5ogwXhiC0EbCGn0eiEPLp6",
+      "release_date": {
+        "isoString": "2019-12-06T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "Lancey Foux",
+          "uri": "spotify:artist:2LakckgvXEtJlKOYP6BO11"
+        }
+      ],
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_064",
+      "catalog_artist": "quinn",
+      "catalog_title": "ok im cool",
+      "title": "ok im cool",
+      "artist": "osquinn",
+      "id": "2pDjxMXn7PLMIbd526fhRb",
+      "duration_ms": 167235,
+      "source_url": "https://open.spotify.com/embed/track/2pDjxMXn7PLMIbd526fhRb",
+      "verified_source_url": "https://open.spotify.com/embed/track/2pDjxMXn7PLMIbd526fhRb",
+      "release_date": {
+        "isoString": "2020-05-10T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "osquinn",
+          "uri": "spotify:artist:2QpNu8tDPv9n7oY34J1TtN"
+        }
+      ],
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_097",
+      "catalog_artist": "untiljapan",
+      "catalog_title": "PYRAMIDZE",
+      "title": "PYRAMIDZ",
+      "artist": "untiljapan",
+      "id": "7xMSw4yHm2HZ8g3MREmFUR",
+      "duration_ms": 182335,
+      "source_url": "https://open.spotify.com/embed/track/7xMSw4yHm2HZ8g3MREmFUR",
+      "verified_source_url": "https://open.spotify.com/embed/track/7xMSw4yHm2HZ8g3MREmFUR",
+      "release_date": {
+        "isoString": "2025-06-06T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "untiljapan",
+          "uri": "spotify:artist:4bXDZie6sqszxFN6D0Mi2K"
+        }
+      ],
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    },
+    {
+      "catalog_track_id": "track_098",
+      "catalog_artist": "untiljapan",
+      "catalog_title": "dogfood",
+      "title": "dogfood",
+      "artist": "untiljapan",
+      "id": "7FnOam6Gu2GQzvR956JKXP",
+      "duration_ms": 181578,
+      "source_url": "https://open.spotify.com/embed/track/7FnOam6Gu2GQzvR956JKXP",
+      "verified_source_url": "https://open.spotify.com/embed/track/7FnOam6Gu2GQzvR956JKXP",
+      "release_date": {
+        "isoString": "2026-03-27T00:00:00Z"
+      },
+      "spotify_artists": [
+        {
+          "name": "untiljapan",
+          "uri": "spotify:artist:4bXDZie6sqszxFN6D0Mi2K"
+        }
+      ],
+      "is_playable_at_check": true,
+      "checked_at": "2026-11-08T05:51:21.570Z",
+      "playability_at_check": "PLAYABLE"
+    }
+  ],
+  "pending": [
+    {
+      "catalog_track_id": "track_020",
+      "artist": "prettifun",
+      "title": "All Love!",
+      "status": "unchecked"
+    },
+    {
+      "catalog_track_id": "track_042",
+      "artist": "skaiwater",
+      "title": "radar, radar",
+      "status": "unchecked"
+    },
+    {
+      "catalog_track_id": "track_068",
+      "artist": "Dazegxd",
+      "title": "HATE UR FACE",
+      "status": "unchecked"
+    },
+    {
+      "catalog_track_id": "track_073",
+      "artist": "Nokia Angel",
+      "title": "I Wanna Be Adored",
+      "status": "unchecked"
+    },
+    {
+      "catalog_track_id": "track_077",
+      "artist": "Nine Vicious",
+      "title": "Anytime",
+      "status": "unchecked"
+    },
+    {
+      "catalog_track_id": "track_091",
+      "artist": "1oneam",
+      "title": "One Death",
+      "status": "unchecked"
+    },
+    {
+      "catalog_track_id": "track_093",
+      "artist": "Yhapojj",
+      "title": "I Start To Kry",
+      "status": "unchecked"
+    }
+  ]
+}

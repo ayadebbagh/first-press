@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.env*
+.dev.vars*
+.sites-runtime
+.openai
+outputs
+dist
+FIRST-PRESS-preview.html
+QA.md

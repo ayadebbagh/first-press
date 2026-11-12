@@ -1,0 +1,69 @@
+{
+  "observed_at": "2026-11-08T05:26:41.867918+00:00",
+  "method": "public track HTML sound metadata; native widget validation",
+  "tracks": {
+    "track_011": {
+      "id": 2015766395,
+      "title": "Made Sum Plans",
+      "permalink_url": "https://soundcloud.com/osamason/made-sum-plans",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_001": {
+      "id": 2304186656,
+      "title": "Night, Blooming Jasmine . (Prod Me)",
+      "permalink_url": "https://soundcloud.com/fakemink/night-blooming-jasmine-prod-me",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_015": {
+      "id": 2429911602,
+      "title": "Living Proof (Me n Ok)",
+      "permalink_url": "https://soundcloud.com/xaviersobased/living-proof-me-n-ok",
+      "streamable": true,
+      "policy": "ALLOW"
+    },
+    "track_003": {
+      "id": 2362300067,
+      "title": "Hurt",
+      "permalink_url": "https://soundcloud.com/2hollis/hurt",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_002": {
+      "id": 2066455600,
+      "title": "Music And Me (Prod OK)",
+      "permalink_url": "https://soundcloud.com/fakemink/music-and-me101",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_013": {
+      "id": 2424793566,
+      "title": "same language",
+      "permalink_url": "https://soundcloud.com/nettspend/same-language",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_009": {
+      "id": 2307488267,
+      "title": "Nosferatu",
+      "permalink_url": "https://soundcloud.com/che/nosferatu-2",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_008": {
+      "id": 2403337032,
+      "title": "SPEED DEMON",
+      "permalink_url": "https://soundcloud.com/lucybedroque/speed-demon-3",
+      "streamable": true,
+      "policy": "MONETIZE"
+    },
+    "track_012": {
+      "id": 2184739619,
+      "title": "Habits",
+      "permalink_url": "https://soundcloud.com/osamason/habits",
+      "streamable": true,
+      "policy": "MONETIZE"
+    }
+  }
+}

@@ -1,0 +1,933 @@
+{
+  "version": 1,
+  "repository": "ayadebbagh/first-press",
+  "project_title": "FIRST PRESS — Development",
+  "created": "2026-11-12",
+  "milestones": [
+    {
+      "key": "M0",
+      "title": "M0 — Reproducible foundation",
+      "description": "Repository, CI, real-server testing and resolved backend/economy choices."
+    },
+    {
+      "key": "M1",
+      "title": "M1 — Connected artist backing",
+      "description": "Authenticated, persistent and transactional artist backing in staging."
+    },
+    {
+      "key": "M2",
+      "title": "M2 — Trusted invite-only beta",
+      "description": "Traceable data, verified receipts, safe operations and release QA."
+    },
+    {
+      "key": "M3",
+      "title": "M3 — Daily habit and reputation",
+      "description": "Community rotation, badges and decided recurring Credits."
+    }
+  ],
+  "labels": [
+    {
+      "name": "epic",
+      "color": "5319e7",
+      "description": "Workstream tracking issue"
+    },
+    {
+      "name": "needs:decision",
+      "color": "fbca04",
+      "description": "Product or technical decision needed"
+    },
+    {
+      "name": "priority:P0",
+      "color": "b60205",
+      "description": "Milestone integrity or release gate"
+    },
+    {
+      "name": "priority:P1",
+      "color": "d93f0b",
+      "description": "Core planned behavior"
+    },
+    {
+      "name": "priority:P2",
+      "color": "0e8a16",
+      "description": "Enhancement"
+    },
+    {
+      "name": "area:foundation",
+      "color": "1d76db",
+      "description": "Foundation and delivery"
+    },
+    {
+      "name": "area:backing",
+      "color": "1d76db",
+      "description": "Accounts, ledger and backing"
+    },
+    {
+      "name": "area:data",
+      "color": "1d76db",
+      "description": "Music data and catalog"
+    },
+    {
+      "name": "area:identity",
+      "color": "1d76db",
+      "description": "Discovery, receipts and identity"
+    },
+    {
+      "name": "area:daily",
+      "color": "1d76db",
+      "description": "Daily rotation and reputation"
+    },
+    {
+      "name": "area:operations",
+      "color": "1d76db",
+      "description": "Self-hosting, quality and beta release"
+    }
+  ],
+  "issues": [
+    {
+      "key": "E01",
+      "kind": "epic",
+      "title": "[Epic] Foundation and delivery",
+      "area": "foundation",
+      "milestone": "M0",
+      "priority": "P1",
+      "effort": "L",
+      "dependencies": [],
+      "summary": "Track the foundation and delivery workstream. Child issues are the acceptance work; close this epic only after its children are complete.",
+      "acceptance": [
+        "All child issues below are completed or explicitly descoped with a recorded decision.",
+        "The workstream release gate is demonstrated in staging and documented."
+      ]
+    },
+    {
+      "key": "E02",
+      "kind": "epic",
+      "title": "[Epic] Accounts, ledger and backing",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P1",
+      "effort": "L",
+      "dependencies": [],
+      "summary": "Track the accounts, ledger and backing workstream. Child issues are the acceptance work; close this epic only after its children are complete.",
+      "acceptance": [
+        "All child issues below are completed or explicitly descoped with a recorded decision.",
+        "The workstream release gate is demonstrated in staging and documented."
+      ]
+    },
+    {
+      "key": "E03",
+      "kind": "epic",
+      "title": "[Epic] Music data and catalog",
+      "area": "data",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "L",
+      "dependencies": [],
+      "summary": "Track the music data and catalog workstream. Child issues are the acceptance work; close this epic only after its children are complete.",
+      "acceptance": [
+        "All child issues below are completed or explicitly descoped with a recorded decision.",
+        "The workstream release gate is demonstrated in staging and documented."
+      ]
+    },
+    {
+      "key": "E04",
+      "kind": "epic",
+      "title": "[Epic] Discovery, receipts and identity",
+      "area": "identity",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "L",
+      "dependencies": [],
+      "summary": "Track the discovery, receipts and identity workstream. Child issues are the acceptance work; close this epic only after its children are complete.",
+      "acceptance": [
+        "All child issues below are completed or explicitly descoped with a recorded decision.",
+        "The workstream release gate is demonstrated in staging and documented."
+      ]
+    },
+    {
+      "key": "E05",
+      "kind": "epic",
+      "title": "[Epic] Daily rotation and reputation",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P1",
+      "effort": "L",
+      "dependencies": [],
+      "summary": "Track the daily rotation and reputation workstream. Child issues are the acceptance work; close this epic only after its children are complete.",
+      "acceptance": [
+        "All child issues below are completed or explicitly descoped with a recorded decision.",
+        "The workstream release gate is demonstrated in staging and documented."
+      ]
+    },
+    {
+      "key": "E06",
+      "kind": "epic",
+      "title": "[Epic] Self-hosting, quality and beta release",
+      "area": "operations",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "L",
+      "dependencies": [],
+      "summary": "Track the self-hosting, quality and beta release workstream. Child issues are the acceptance work; close this epic only after its children are complete.",
+      "acceptance": [
+        "All child issues below are completed or explicitly descoped with a recorded decision.",
+        "The workstream release gate is demonstrated in staging and documented."
+      ]
+    },
+    {
+      "key": "F01",
+      "kind": "task",
+      "title": "Decide the self-hosted database and authentication approach",
+      "area": "foundation",
+      "milestone": "M0",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [],
+      "summary": "Choose the smallest maintainable backend for a real beta. Recommendation: PostgreSQL, typed migrations with Drizzle, and Better Auth; validate current compatibility and choose one login method before installation.",
+      "acceptance": [
+        "Record the options, selected versions, owner decision and recurring costs in an ADR.",
+        "Choose an invite/sign-in/recovery flow that does not assume paid email or a Spotify account.",
+        "Document local/staging/production configuration, migration ownership and secret boundaries."
+      ],
+      "decision": true
+    },
+    {
+      "key": "F02",
+      "kind": "task",
+      "title": "Run isolated browser tests against the actual Next.js server",
+      "area": "foundation",
+      "milestone": "M0",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "summary": "Existing native Brave testing used the file-preview React build because localhost binding was denied. Add an isolated Playwright browser and CI flow that never drives the founder's personal Brave window.",
+      "acceptance": [
+        "Install pinned test tooling and browser binaries through supported package sources; keep tests/fixtures separate from real user storage.",
+        "Test root redirect, direct app routes, invalid-route 404, hydration, search, buy/cancel/settle, receipt persistence and daily demo labeling against an HTTP Next.js production server.",
+        "Cover narrow mobile and desktop widths, keyboard navigation, page/console errors and provide traces/screenshots on failure.",
+        "Run in hosted CI if local binding remains blocked; record observed run URL/results, not only a configured workflow."
+      ],
+      "decision": false
+    },
+    {
+      "key": "F03",
+      "kind": "task",
+      "title": "Verify repository, Project workflows and collaborator onboarding",
+      "area": "foundation",
+      "milestone": "M0",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [],
+      "summary": "Finish repository operations after the first real CI run. The founder wants to add a collaborator with Admin access later; do not invite anyone until their username and timing are supplied.",
+      "acceptance": [
+        "Verify public repo metadata, CI permissions, dependency updates and successful check names; configure main-branch PR protections where the account plan supports them.",
+        "Create/link the Project; configure statuses Backlog, Ready, In progress, In review, Blocked, Done and priority/effort/workstream fields.",
+        "Verify closed issues move to Done and document Ready selection, labels, milestones and backlog/board views.",
+        "Document future collaborator Admin invitation and its security implications; record that no invitation was sent yet."
+      ],
+      "decision": false
+    },
+    {
+      "key": "F04",
+      "kind": "task",
+      "title": "Specify Credit precision, order eligibility and settlement rules",
+      "area": "foundation",
+      "milestone": "M0",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "summary": "Turn the accepted 1,000-Credit, artist-only, twice-daily queued backing concept into a versioned contract before implementing live balances.",
+      "acceptance": [
+        "Specify integer centi-Credits, position-unit precision, rounding direction, minimum order and any stake limits.",
+        "Choose UTC update boundaries, submission cutoff, eligible snapshot time, delayed observations, stale grace, cancellation cutoff and suspended-artist behavior.",
+        "Provide worked examples for buy, loss, partial/full sale, cancelled order, delayed update and source correction.",
+        "Separate committed-at, executed-at and metric-observed-at timestamps; decide which proves early support.",
+        "Leave weekly top-ups disabled and unspecified until D06; no cash/redemption or cross-platform substitution."
+      ],
+      "decision": true
+    },
+    {
+      "key": "C01",
+      "kind": "task",
+      "title": "Verify canonical identities for the 50-artist shortlist",
+      "area": "data",
+      "milestone": "M0",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "summary": "The shortlist and 93 checked Spotify track mappings do not establish verified Spotify artist identities or live listener baselines. Audit the artist catalog independently.",
+      "acceptance": [
+        "Map each artist to a stable internal ID and reviewed Spotify artist ID/profile URL; record reviewer, date and evidence.",
+        "Resolve aliases, duplicate names and collaborations without fuzzy auto-merging; separate artist identity from track credits.",
+        "Mark uncertain entries discovery-only until identity and valid baseline are available; keep shortlist language editorial."
+      ],
+      "decision": false
+    },
+    {
+      "key": "C02",
+      "kind": "task",
+      "title": "Resolve pending recordings and preserve version provenance",
+      "area": "data",
+      "milestone": "M1",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "C01"
+      ],
+      "summary": "Audit the seven unresolved tracks and retain the original-release policy the founder requested.",
+      "acceptance": [
+        "Resolve or explicitly leave pending All Love!, radar, radar, HATE UR FACE, I Wanna Be Adored, Anytime, One Death and I Start To Kry with evidence.",
+        "Keep Dreamflasher at Spotify 75Wgg4LerPD3mVO5hEyUN9 (3:44 original); keep How to Teleport's distinct 4:33 version label.",
+        "Test confirmed Spotify, unchecked availability, reviewed Spotify absence, geographic restriction and player failure; only reviewed absence permits SoundCloud.",
+        "Record source/release/duration/version metadata; an official upload alone must not assert recording equality."
+      ],
+      "decision": false
+    },
+    {
+      "key": "C03",
+      "kind": "task",
+      "title": "Investigate listener collection access, reliability and cost",
+      "area": "data",
+      "milestone": "M0",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "C01"
+      ],
+      "summary": "Bounded spike for the preferred twice-daily public-number collection. Assess source access and reliability without bypassing technical restrictions; no paid vendor purchase is part of this issue.",
+      "acceptance": [
+        "Record official source-use constraints, collection method, coverage, source update lag, freshness and access decision with dated links.",
+        "Test a small representative artist set and record success/failure/provenance without treating missing metrics as zero.",
+        "Estimate central requests for 50 artists × 2 updates/day plus retries and caching; no per-user polling.",
+        "Compare verified admin import and a priced licensed provider fallback only if automation is unsuitable; record recommendation and release limitations."
+      ],
+      "decision": true
+    },
+    {
+      "key": "C04",
+      "kind": "task",
+      "title": "Add immutable listener snapshots and validation",
+      "area": "data",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A01",
+        "C01"
+      ],
+      "summary": "Persist source-specific observations before any settlement can trust a number.",
+      "acceptance": [
+        "Store artist/provider/metric, count, observed-at, fetched-at, source URL/evidence reference, parser version and validation result.",
+        "Reject missing, nonnumeric, nonpositive and implausible/outlier readings into review; duplicate observations are idempotent.",
+        "Keep accepted snapshots immutable and corrections linked; distinguish rolling monthly listeners from streams, followers and cross-platform counts.",
+        "Test stale timestamps, duplicate fetches, provider mismatch and corrected observations."
+      ],
+      "decision": false
+    },
+    {
+      "key": "C05",
+      "kind": "task",
+      "title": "Implement verified import and the selected listener adapter",
+      "area": "data",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "C03",
+        "C04"
+      ],
+      "summary": "Use the approved source from C03 behind an adapter interface. Verified manual admin imports can unblock an invite-only beta while automation remains unresolved.",
+      "acceptance": [
+        "Provide a schema-validated, audited import with source/observation timestamps and reviewer identity.",
+        "If automated access is cleared, add bounded timeouts, request limits, caching, parser fixtures and no access-control bypass.",
+        "Never overwrite accepted numbers on an error; surface missing/stale/disputed states to admins and backing eligibility.",
+        "Run a documented sample import or collection and prove its snapshot provenance; synthetic fixtures never enter live history."
+      ],
+      "decision": false
+    },
+    {
+      "key": "C06",
+      "kind": "task",
+      "title": "Schedule twice-daily collection and durable settlement jobs",
+      "area": "data",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "C05",
+        "A06"
+      ],
+      "summary": "Run one shared worker rather than one collector per user. Coordinate via durable database claims before adding a queue service.",
+      "acceptance": [
+        "Use agreed UTC schedule and unique batch/job IDs; restarting or running two workers cannot settle the same order twice.",
+        "Allow bounded retries/backoff and manual replay; record job results and lag.",
+        "Collect/validate first, then settle only eligible valid snapshots; source failure does not fabricate a new price.",
+        "Test overlapping workers, missed interval, crash after commit and recovery without duplicate ledger or receipt events."
+      ],
+      "decision": false
+    },
+    {
+      "key": "C07",
+      "kind": "task",
+      "title": "Build audited catalog admission and artist-request administration",
+      "area": "data",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "A02",
+        "C04"
+      ],
+      "summary": "Keep the curated beta manageable and turn local-only suggestions into a real review queue.",
+      "acceptance": [
+        "Members can submit artist/profile suggestions with duplicate suppression and rate limits.",
+        "Only admins can admit, edit, suspend or reject artists, review identities and manage playback provenance.",
+        "New entries remain unbackable until reviewed identity and baseline meet policy; provide a user-facing status.",
+        "Record who changed catalog/eligibility and why; test ordinary members cannot invoke admin actions."
+      ],
+      "decision": false
+    },
+    {
+      "key": "C08",
+      "kind": "task",
+      "title": "Rehearse stale-data and bad-snapshot corrections",
+      "area": "data",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "F04",
+        "C04",
+        "A06"
+      ],
+      "summary": "Agree and implement incident handling before a live data error changes user positions.",
+      "acceptance": [
+        "Record the correction/freeze/refund policy and user-visible explanation; preserve the original accepted snapshot and settlement audit.",
+        "Implement controlled admin suspension and append-only correction events with authorization and reason.",
+        "Rehearse outlier import, source outage, mistakenly admitted artist and corrected baseline in staging.",
+        "Verify deterministic balances, retained receipt context and no silent retroactive platform/formula replacement."
+      ],
+      "decision": true
+    },
+    {
+      "key": "A01",
+      "kind": "task",
+      "title": "Create PostgreSQL schema, migrations and isolated seed data",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "F01",
+        "F04"
+      ],
+      "summary": "Establish the transactional persistence foundation selected in F01.",
+      "acceptance": [
+        "Model users, catalog, snapshots, ledger, reservations, orders, position lots, settlement batches and receipt events with constraints/indexes.",
+        "Document money/quantity precision and uniqueness for grants, requests and settlements; use UTC timestamps.",
+        "Support clean local setup and migration from empty staging DB; demo seeds are opt-in and clearly tagged.",
+        "Keep DB credentials server-only and make schema migrations repeatable without rewriting applied migrations."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A02",
+      "kind": "task",
+      "title": "Implement invite-only sessions and authorization",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A01"
+      ],
+      "summary": "Add the chosen sign-in flow with ownership enforcement; local storage must never establish identity.",
+      "acceptance": [
+        "Implement sign-in/sign-out, invite admission, session expiry and chosen recovery method with secure cookie/CSRF/origin protections.",
+        "Authorize every wallet/order/profile/admin operation server-side; test user A cannot read or mutate user B's private state.",
+        "Rate-limit authentication/abuse boundaries and separate member/admin roles.",
+        "Keep test identities isolated and describe handling of a lost account before releasing persistent backing."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A03",
+      "kind": "task",
+      "title": "Create an auditable Credit ledger and exactly-once starting grant",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A02"
+      ],
+      "summary": "Make the server authoritative for the initial 1,000 Credits, cash/reservations and immutable account events.",
+      "acceptance": [
+        "Grant 1,000 Credits once per eligible account with a unique ledger event; concurrent signup retries cannot duplicate it.",
+        "Use integer centi-Credits and transactional balance/reservation invariants; reject negative/overflow/invalid amounts.",
+        "Reconcile available Credits, reserved Credits and ledger totals through an admin diagnostic.",
+        "No client-editable value or demo balance import can mint Credits; weekly grants remain disabled."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A04",
+      "kind": "task",
+      "title": "Implement server-backed buy reservations and cancellation",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A03",
+        "C04"
+      ],
+      "summary": "Deliver the first full backing vertical slice with pending state visible to the user.",
+      "acceptance": [
+        "Validate member, eligible artist, amount, current snapshot state and idempotency key in a transaction.",
+        "Reserve Credits atomically and persist order boundary/price-estimate context; retries return the same order.",
+        "Cancel pending buys once, release the reservation and prevent cancellation after settlement wins a race.",
+        "Test insufficient funds, double submit, simultaneous buys, ineligible artist and cancel/settle races."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A05",
+      "kind": "task",
+      "title": "Implement queued partial/full exits and quantity reservations",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A04"
+      ],
+      "summary": "Sales must reserve position quantities, not promise a fixed payout based on the order-time estimate.",
+      "acceptance": [
+        "Queue explicit units/lot allocation using the agreed precision; prevent overlapping sales from overselling.",
+        "Support partial and full exits, cancellation and idempotent resubmission.",
+        "Show that estimated proceeds may change at execution; release reserved units exactly once on cancellation.",
+        "Test fractional lots, rounding, duplicate sale, simultaneous exits and retention of early-support history."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A06",
+      "kind": "task",
+      "title": "Settle eligible orders transactionally at accepted snapshots",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "L",
+      "dependencies": [
+        "A05",
+        "C04",
+        "F04"
+      ],
+      "summary": "Implement the core next-valid-update executor against controlled snapshots first, then integrate the approved data adapter.",
+      "acceptance": [
+        "Apply the versioned cutoff and snapshot eligibility; record execution snapshot, units, cash movements, lots and immutable receipt event atomically.",
+        "Execute buys and sells using deterministic precision/cost-basis rules, including partial exits.",
+        "Unique settlement keys and durable batches make retries safe; a crash cannot debit without its matching position/event.",
+        "Reject stale, disputed, missing or mismatched metrics and apply the agreed freeze/cancel policy.",
+        "Test competing workers, replayed batch, old orders, insufficient/invalid snapshot and boundaries around the update cutoff."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A07",
+      "kind": "task",
+      "title": "Connect portfolio and artist backing screens to owned APIs",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "A06"
+      ],
+      "summary": "Replace demo account authority with server reads/mutations while preserving the editorial UI.",
+      "acceptance": [
+        "Show actual available/reserved Credits, positions, pending orders and update eligibility on artist/collection screens.",
+        "Handle optimistic/loading/error/retry states without double orders; refresh after settlement and cancellation.",
+        "Keep demo mode clearly separate, with no automatic promotion of local Credits/receipts into verified history.",
+        "Verify account switching, refresh, multiple tabs/devices and expired sessions cannot leak or corrupt another wallet."
+      ],
+      "decision": false
+    },
+    {
+      "key": "A08",
+      "kind": "task",
+      "title": "Test ledger invariants, authorization and settlement concurrency",
+      "area": "backing",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A06"
+      ],
+      "summary": "Validate the accounting contract using integration tests against real PostgreSQL transactions, not only mocks of the demo engine.",
+      "acceptance": [
+        "Exercise concurrent buys/exits/cancel/settle, repeated signup, worker replay and transaction rollback.",
+        "Reconcile all ledger, reservation and position invariants after generated sequences and partial failures.",
+        "Cover per-user authorization, invalid units and duplicate idempotency keys with differing payloads.",
+        "Add CI database setup, migration and isolation/cleanup; document the precision tolerances and expected vectors."
+      ],
+      "decision": false
+    },
+    {
+      "key": "R01",
+      "kind": "task",
+      "title": "Issue server-verifiable early-support receipts",
+      "area": "identity",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A07",
+        "C04"
+      ],
+      "summary": "Turn the cultural early-support screenshot into a verifiable record with a stable URL, without pretending a local card is proof.",
+      "acceptance": [
+        "Create receipts from committed server backing events, with unique IDs and no client-set timestamps or listener values.",
+        "Show artist identity, committed/executed/metric-observed times, source snapshot, committed Credits and later exit/correction context.",
+        "Provide a verification route and shareable card; unchanged public URL verifies against server history after refresh/device change.",
+        "Keep receipt evidence after selling, respect privacy/deletion policy and state what the record actually proves."
+      ],
+      "decision": false
+    },
+    {
+      "key": "R02",
+      "kind": "task",
+      "title": "Define and implement pseudonymous public profiles and sharing",
+      "area": "identity",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "R01",
+        "R05"
+      ],
+      "summary": "Let members flex early support without forcing their entire wallet or personal identity into public view.",
+      "acceptance": [
+        "Decide public/private defaults and fields, profile handles, selectively shared receipts and block/report entry points.",
+        "Validate handles and sanitize display fields; avoid exposing email, session data or private holdings via public APIs.",
+        "Explain how hiding/deleting a profile affects shared receipts and audit retention.",
+        "Test public, private, signed-out and removed-account views across copied URLs."
+      ],
+      "decision": true
+    },
+    {
+      "key": "R03",
+      "kind": "task",
+      "title": "Persist watchlists and member artist suggestions",
+      "area": "identity",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "A02",
+        "C07"
+      ],
+      "summary": "Save discovery intent across devices and provide real delivery of requests rather than the demo's local-only form.",
+      "acceptance": [
+        "Watch/unwatch is authorized and idempotent; saved artists persist across sessions and devices.",
+        "Suggestions enter C07's review queue and show submitted/duplicate/reviewed states.",
+        "Use safe optimistic UI and handle timeouts/offline/retry without duplicates.",
+        "Do not import another user's local state automatically or promise requests have been reviewed before they are."
+      ],
+      "decision": false
+    },
+    {
+      "key": "R04",
+      "kind": "task",
+      "title": "Build onboarding and clear freshness/pending-state explanations",
+      "area": "identity",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "A07",
+        "C05"
+      ],
+      "summary": "A new member should understand artist backing without reading an investment dashboard.",
+      "acceptance": [
+        "Explain virtual nonredeemable Credits, initial allocation, listener-based movement and queued execution in compact contextual UI.",
+        "Make available/reserved Credits, pending estimates, observation times, stale/suspended data and losses understandable.",
+        "Provide a clear demo versus connected-beta mode boundary and prevent faux community totals.",
+        "Test first-use/back/refresh and 320px keyboard-accessible flows with the existing editorial style."
+      ],
+      "decision": false
+    },
+    {
+      "key": "R05",
+      "kind": "task",
+      "title": "Implement privacy, retention, export and account deletion policy",
+      "area": "identity",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "A02"
+      ],
+      "summary": "Decide how private identity, public receipts and necessary accounting audit records coexist before collecting real accounts.",
+      "acceptance": [
+        "Document minimum collected data, retention, processing providers and public-profile choices; do not publish private account identifiers.",
+        "Provide account data export and a deletion/redaction workflow with defined receipt/audit consequences.",
+        "Implement authorization and confirmation for destructive account actions, plus admin access audit.",
+        "Review invite-beta terms/community reporting and third-party embed disclosures; record owner decisions before public launch."
+      ],
+      "decision": false
+    },
+    {
+      "key": "O01",
+      "kind": "task",
+      "title": "Provision an isolated self-hosted staging environment",
+      "area": "operations",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "F01",
+        "A01"
+      ],
+      "summary": "Choose the host/domain/budget with the founder and implement the documented Docker deployment without assuming Vercel or a paid data service.",
+      "acceptance": [
+        "Record selected host, monthly budget, region and domain; no purchase is made without authorization.",
+        "Run app, private PostgreSQL and worker with persistent storage, server-only secrets and HTTPS reverse proxy.",
+        "Use separate staging/production credentials/data; expose readiness and restart policies.",
+        "Deploy a selected commit to staging, exercise direct URLs/health and document update/rollback commands."
+      ],
+      "decision": false
+    },
+    {
+      "key": "O02",
+      "kind": "task",
+      "title": "Test database backups, restore and release recovery",
+      "area": "operations",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "O01",
+        "A06"
+      ],
+      "summary": "A backup is useful only when the portfolio and support history can be restored consistently.",
+      "acceptance": [
+        "Schedule encrypted off-host backups with selected retention, least-privilege access and failure visibility.",
+        "Restore into an isolated environment and reconcile ledger/snapshots/receipts; record measured recovery time and maximum data-loss window.",
+        "Document compatible app/schema rollback or forward-fix procedure and simulate a failed deployment.",
+        "Verify secrets and private data never enter the public repository or CI artifacts."
+      ],
+      "decision": false
+    },
+    {
+      "key": "O03",
+      "kind": "task",
+      "title": "Add operational visibility and failure controls",
+      "area": "operations",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [
+        "O01",
+        "C06"
+      ],
+      "summary": "Keep collection and settlement failures visible without buying an observability stack prematurely.",
+      "acceptance": [
+        "Provide structured redacted logs and counters for snapshot age, collection success, queue age, failed settlements and ledger reconciliation.",
+        "Separate liveness/readiness and show an accurate user-facing last-update/stale state.",
+        "Define alert thresholds, operator ownership and runbooks for worker outage, bad data and unavailable DB.",
+        "Rehearse an outage and ensure retries/recovery are visible without leaking identities or tokens."
+      ],
+      "decision": false
+    },
+    {
+      "key": "O04",
+      "kind": "task",
+      "title": "Complete invite-beta end-to-end, accessibility and abuse verification",
+      "area": "operations",
+      "milestone": "M2",
+      "priority": "P0",
+      "effort": "L",
+      "dependencies": [
+        "F02",
+        "A08",
+        "R01",
+        "R03",
+        "R04",
+        "R05",
+        "C06",
+        "C08",
+        "O02",
+        "O03",
+        "O06"
+      ],
+      "summary": "Verify the entire connected product in staging before inviting real members; a file-preview test is insufficient.",
+      "acceptance": [
+        "Run sign-in → starting grant → discovery/playback → queued buy → accepted update → position → partial/full exit → retained verified receipt across devices.",
+        "Verify keyboard/focus/dialogs, reduced motion, 320px/mobile and desktop, empty/error/offline states, and supported browser differences.",
+        "Exercise authorization, rate limiting, no duplicate grants/orders, admin boundaries, stale sources, failed jobs and private-profile URLs.",
+        "Record evidence, version, open defects and release/no-release decision; close critical integrity/privacy issues before invitations."
+      ],
+      "decision": false
+    },
+    {
+      "key": "O05",
+      "kind": "task",
+      "title": "Define first-party beta analytics and the pilot feedback loop",
+      "area": "operations",
+      "milestone": "M2",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [
+        "R04"
+      ],
+      "summary": "Measure whether discovery and early-support evidence are useful, with minimal data collection.",
+      "acceptance": [
+        "Define activation as a meaningful completed action such as first settled backing; specify D1/D7 return, saves and receipt use with clear denominators.",
+        "Agree invite cohort size, success thresholds and review cadence with the founder instead of inventing targets.",
+        "Implement a small privacy-aware event vocabulary without third-party tracking by default; keep playback-provider metrics distinct.",
+        "Provide a feedback/report channel and weekly findings template; do not recruit or message others automatically."
+      ],
+      "decision": false
+    },
+    {
+      "key": "O06",
+      "kind": "task",
+      "title": "Review media redistribution and select the source-code license",
+      "area": "operations",
+      "milestone": "M0",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [],
+      "summary": "Public source and third-party artwork need distinct rights decisions. Source attribution alone is not permission to redistribute artist images.",
+      "acceptance": [
+        "Review bundled images/source metadata and remove, replace or obtain permission for assets without a suitable redistribution basis before wider release.",
+        "Choose and record the owner's intended source-code license; leave code unlicensed until selected rather than inventing an MIT grant.",
+        "Check public history for secrets, personal paths and generated tool output; use a separate asset notice where appropriate.",
+        "Document embed attribution/provider requirements and ensure sample media does not imply artist endorsement."
+      ],
+      "decision": true
+    },
+    {
+      "key": "D01",
+      "kind": "task",
+      "title": "Design connected daily matchups and global ranking rules",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P0",
+      "effort": "M",
+      "dependencies": [],
+      "summary": "Four fixed disconnected pairs cannot establish a meaningful full ranking of eight songs. Vary assignments across members so the aggregated comparison graph connects all eight.",
+      "acceptance": [
+        "Specify balanced matching/exposure, one eligible vote per assigned pair, rotation identity and deterministic aggregation.",
+        "Define ties, minimum votes/graph coverage, low-data fallback, time zone/cutoff and prediction-lock/reveal rules.",
+        "Simulate sparse and biased participation and verify the estimator does not present disconnected-pair win rates as an exact global preference order.",
+        "Record founder decision and examples; daily participation remains separate from artist backing."
+      ],
+      "decision": true
+    },
+    {
+      "key": "D02",
+      "kind": "task",
+      "title": "Resolve Spotify content use for the public daily mechanic",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [],
+      "summary": "Spotify Widget Terms IV.2.d require written approval for game functionality using Spotify content. Discovery embeds do not establish approval for the daily game.",
+      "acceptance": [
+        "Record dated official terms and choose an approved/permitted daily design or documented approval before public enablement.",
+        "Keep server-enforced release gating while unresolved; never imply approval was received.",
+        "Confirm any substitute content/provider actually permits the intended use and recording version; do not silently switch the agreed discovery provider.",
+        "No external outreach is sent under this issue unless the founder separately authorizes it."
+      ],
+      "decision": true
+    },
+    {
+      "key": "D03",
+      "kind": "task",
+      "title": "Persist daily rotations, vote assignments and locked predictions",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "D01",
+        "D02",
+        "A02",
+        "C07"
+      ],
+      "summary": "Implement a real daily rotation only after aggregation design and provider-use gates are resolved.",
+      "acceptance": [
+        "Admins publish a versioned eight-track rotation with matching/recording provenance.",
+        "Assign and persist balanced pairs, accept authorized idempotent votes and prevent post-cutoff or duplicate submissions.",
+        "Persist predictions before results become visible; protect against changing votes/guesses after reveal.",
+        "Define account/rate limits and server timestamps; test midnight boundaries, offline retries and rotation changes."
+      ],
+      "decision": false
+    },
+    {
+      "key": "D04",
+      "kind": "task",
+      "title": "Publish community ranking results honestly",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "D03"
+      ],
+      "summary": "Replace the illustrative demo ranking with server aggregates and reproducible scoring.",
+      "acceptance": [
+        "Calculate the agreed estimator and score locked predictions against a fixed published result version.",
+        "Display participation/coverage and insufficient-data/tie states without fabricated consensus.",
+        "Make reveal timing deterministic and prevent result leakage before prediction lock.",
+        "Test disconnected/sparse inputs, late jobs, duplicate votes and a corrected result version."
+      ],
+      "decision": false
+    },
+    {
+      "key": "D05",
+      "kind": "task",
+      "title": "Define and implement credible early-backer badges",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P1",
+      "effort": "M",
+      "dependencies": [
+        "R01",
+        "C08"
+      ],
+      "summary": "Recognition should reward meaningful early support rather than editable screenshots, cancelled reservations or tiny spam positions.",
+      "acceptance": [
+        "Decide minimum committed Credits, entry listener tiers, settlement requirement, calculation version and retention after exit.",
+        "Derive awards idempotently from server events; show evidence and criteria on profiles/receipts.",
+        "Handle corrected snapshots, deleted profiles and disqualified/abusive accounts with an auditable policy.",
+        "Test cancelled orders never qualify and duplicate job execution cannot duplicate awards."
+      ],
+      "decision": true
+    },
+    {
+      "key": "D06",
+      "kind": "task",
+      "title": "Decide and implement recurring Credit top-ups",
+      "area": "daily",
+      "milestone": "M3",
+      "priority": "P2",
+      "effort": "M",
+      "dependencies": [
+        "A03",
+        "A08"
+      ],
+      "summary": "The weekly top-up concept is desired but amount and eligibility are not yet decided. Keep it off until the founder chooses the economy.",
+      "acceptance": [
+        "Record amount, cap, week boundary, active-account eligibility and anti-multi-account limits with worked examples.",
+        "Use a unique account/week ledger event and server scheduling; retries cannot grant twice.",
+        "Show grant history and expected eligibility without promising cash value or growth.",
+        "Test concurrent workers, eligibility changes, missed week and migration between economy versions."
+      ],
+      "decision": true
+    }
+  ]
+}

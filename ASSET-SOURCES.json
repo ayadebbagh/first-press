@@ -1,0 +1,130 @@
+[
+  {
+    "artist_id": "artist_001",
+    "source_image_url": "https://i.scdn.co/image/ab6761610000e5eb3dde4f8aba0fb23d963cf08e"
+  },
+  {
+    "artist_id": "artist_002",
+    "source_image_url": "https://cdn.sanity.io/images/pu3h3rl5/production/f1e119ecaa758ee5dea6e38cd4b41299cff21557-1000x750.png?w=900&q=85&auto=format"
+  },
+  {
+    "artist_id": "artist_003",
+    "source_image_url": "https://pbs.twimg.com/media/GnePFPjW8AAMeQ8.jpg"
+  },
+  {
+    "artist_id": "artist_004",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/da/e3/d4/dae3d457-df85-5878-7828-aa3b6c4700e8/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_028",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/aa/a9/b2/aaa9b2ea-f4e0-954c-6640-889d5596a86b/4d4c7de8-5917-4a3e-bfed-1d5dad5b857f_ami-identity-e2f12304d24c4e9ddffdc726faf127a5-2024-09-09T12-03-57.334Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_045",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e2/da/90/e2da90ab-4baa-d87a-20cd-0384a39a444f/cover_0197632972734.jpg/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_012",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2b/a2/28/2ba228f7-2639-cc5b-fb05-efacdee40374/8398.jpg/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_024",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a2/b6/b1/a2b6b165-c2fd-eb5d-62cc-a74ee44fc3c0/pr_source.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_008",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/5a/54/ae/5a54ae8a-0472-2a08-c28f-6ab90ff3acb7/artwork.jpg/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_048",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/0e/7c/05/0e7c05b5-42c9-e69c-23c7-9e64498c3117/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_009",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/9f/a1/0b/9fa10bca-0ec7-a265-7d52-5bbfa30369d7/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_025",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/8c/db/98/8cdb98d7-f1b4-1d09-0e67-57934ef0b503/ami-identity-eb73cfe45589302c9cb4ba42a4368435-2026-06-16T00-57-46.328Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_033",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages126/v4/ef/0e/21/ef0e21d3-f81e-e075-ecb1-4f6f00e4119c/a8675589-c9b1-428d-beff-632d41718e1f_file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_013",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/d5/11/ed/d511ed7d-dcb7-4daf-f61b-2c52f6d3e2ca/artwork.jpg/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_029",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages126/v4/6b/f6/99/6bf6995a-916a-23a4-7936-c765ba1b061e/724fb2c3-acff-453f-b5d8-6905c0d2a6b0_ami-identity-23670549deda7d019b0071aefd20f673-2023-11-03T21-31-57.346Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_034",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/9c/cb/91/9ccb9120-0ead-7afb-f167-5a77c390bbe7/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_038",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages211/v4/b5/62/05/b5620543-58f2-fb4b-7337-e67dd470ddb9/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_043",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Features122/v4/a2/36/75/a2367526-b38a-0090-6913-4ee2aa2d6841/mzl.lbexhlqp.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_015",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Features221/v4/2c/09/31/2c0931cf-8a2e-aae5-d09c-8af6b20138f4/mzl.eaxqhfii.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_042",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Features211/v4/1b/9b/87/1b9b873c-674e-40c5-d3ca-2181e7ef6bc3/mzl.dcqmtvxj.jpg/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_019",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages126/v4/16/3e/42/163e4245-6ff6-f2f9-a5e9-33f93303f147/57cd4a4b-ed43-4c1a-9d1e-9eb275b64357_ami-identity-f535fd0d20e7b7f1be9516ded3dd7ddb-2023-02-03T22-45-59.578Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_020",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/6e/0e/d4/6e0ed452-90d2-ea77-b7d5-d88e9ba8e05b/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_041",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/aa/77/84/aa778402-474c-e56c-d119-3090e1b8e297/b675b8c8-6a6d-4902-b63c-5e6b79c02d77_ami-identity-ce0bcd999b5bb56e9272b0301e621bbe-2024-06-10T20-27-21.312Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_040",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages211/v4/b9/22/1e/b9221e3f-7c36-4e94-0f6a-e5c41c5a03ae/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_021",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages122/v4/9f/ce/69/9fce692a-a370-fea8-7ce9-e5e39c1b2b5f/87d90241-aac5-4eaa-9d58-5f297103524e_ami-identity-0858391796e57553f0227d5910e8d691-2024-03-22T20-30-50.354Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_006",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages211/v4/59/0f/89/590f8998-7e63-2906-f809-39adac29c55b/file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_026",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/Features125/v4/7d/69/4c/7d694ca3-8eda-06cd-783f-d1860a4f9ed5/pr_source.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_030",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages211/v4/7d/7c/b7/7d7cb793-a32e-d79d-73b0-d8f918e59d52/ami-identity-5bf2ef183df81bdd3a00e074686e6f1a-2024-10-11T17-21-06.169Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_031",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/10/22/e3/1022e335-c4cf-48ba-a31d-f740654a7506/ami_U003aidentity_U003a46defe0d82e709da0ff338cf4d1b0ddb-2026-09-24T19-29-31.380Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_027",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/95/55/bb/9555bba3-fa50-58a4-3601-af8eafbeff11/ami-identity-a05c68e4658150a6e55ca42f8bbfc15e-2025-02-25T10-10-17.903Z_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_007",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages211/v4/9d/d9/93/9dd993fa-2181-f4fc-b6c5-5a89cf6747ab/2e4cf5a1-e3d1-4580-9347-d0715e861338_file_cropped.png/600x600bb.webp"
+  },
+  {
+    "artist_id": "artist_011",
+    "source_image_url": "https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages221/v4/96/7d/eb/967deb4e-dbf5-b27b-72a2-a2922fce6b6a/file_cropped.png/600x600bb.webp"
+  }
+]

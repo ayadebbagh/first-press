@@ -1,0 +1,178 @@
+{
+  "repository": "ayadebbagh/first-press",
+  "issues": {
+    "E01": {
+      "number": 1,
+      "url": "https://github.com/ayadebbagh/first-press/issues/1"
+    },
+    "E02": {
+      "number": 2,
+      "url": "https://github.com/ayadebbagh/first-press/issues/2"
+    },
+    "E03": {
+      "number": 3,
+      "url": "https://github.com/ayadebbagh/first-press/issues/3"
+    },
+    "E04": {
+      "number": 4,
+      "url": "https://github.com/ayadebbagh/first-press/issues/4"
+    },
+    "E05": {
+      "number": 5,
+      "url": "https://github.com/ayadebbagh/first-press/issues/5"
+    },
+    "E06": {
+      "number": 6,
+      "url": "https://github.com/ayadebbagh/first-press/issues/6"
+    },
+    "F01": {
+      "number": 7,
+      "url": "https://github.com/ayadebbagh/first-press/issues/7"
+    },
+    "F02": {
+      "number": 8,
+      "url": "https://github.com/ayadebbagh/first-press/issues/8"
+    },
+    "F03": {
+      "number": 9,
+      "url": "https://github.com/ayadebbagh/first-press/issues/9"
+    },
+    "F04": {
+      "number": 10,
+      "url": "https://github.com/ayadebbagh/first-press/issues/10"
+    },
+    "C01": {
+      "number": 11,
+      "url": "https://github.com/ayadebbagh/first-press/issues/11"
+    },
+    "C02": {
+      "number": 12,
+      "url": "https://github.com/ayadebbagh/first-press/issues/12"
+    },
+    "C03": {
+      "number": 13,
+      "url": "https://github.com/ayadebbagh/first-press/issues/13"
+    },
+    "C04": {
+      "number": 14,
+      "url": "https://github.com/ayadebbagh/first-press/issues/14"
+    },
+    "C05": {
+      "number": 15,
+      "url": "https://github.com/ayadebbagh/first-press/issues/15"
+    },
+    "C06": {
+      "number": 16,
+      "url": "https://github.com/ayadebbagh/first-press/issues/16"
+    },
+    "C07": {
+      "number": 17,
+      "url": "https://github.com/ayadebbagh/first-press/issues/17"
+    },
+    "C08": {
+      "number": 18,
+      "url": "https://github.com/ayadebbagh/first-press/issues/18"
+    },
+    "A01": {
+      "number": 19,
+      "url": "https://github.com/ayadebbagh/first-press/issues/19"
+    },
+    "A02": {
+      "number": 20,
+      "url": "https://github.com/ayadebbagh/first-press/issues/20"
+    },
+    "A03": {
+      "number": 21,
+      "url": "https://github.com/ayadebbagh/first-press/issues/21"
+    },
+    "A04": {
+      "number": 22,
+      "url": "https://github.com/ayadebbagh/first-press/issues/22"
+    },
+    "A05": {
+      "number": 23,
+      "url": "https://github.com/ayadebbagh/first-press/issues/23"
+    },
+    "A06": {
+      "number": 24,
+      "url": "https://github.com/ayadebbagh/first-press/issues/24"
+    },
+    "A07": {
+      "number": 25,
+      "url": "https://github.com/ayadebbagh/first-press/issues/25"
+    },
+    "A08": {
+      "number": 26,
+      "url": "https://github.com/ayadebbagh/first-press/issues/26"
+    },
+    "R01": {
+      "number": 27,
+      "url": "https://github.com/ayadebbagh/first-press/issues/27"
+    },
+    "R02": {
+      "number": 28,
+      "url": "https://github.com/ayadebbagh/first-press/issues/28"
+    },
+    "R03": {
+      "number": 29,
+      "url": "https://github.com/ayadebbagh/first-press/issues/29"
+    },
+    "R04": {
+      "number": 30,
+      "url": "https://github.com/ayadebbagh/first-press/issues/30"
+    },
+    "R05": {
+      "number": 31,
+      "url": "https://github.com/ayadebbagh/first-press/issues/31"
+    },
+    "O01": {
+      "number": 32,
+      "url": "https://github.com/ayadebbagh/first-press/issues/32"
+    },
+    "O02": {
+      "number": 33,
+      "url": "https://github.com/ayadebbagh/first-press/issues/33"
+    },
+    "O03": {
+      "number": 34,
+      "url": "https://github.com/ayadebbagh/first-press/issues/34"
+    },
+    "O04": {
+      "number": 35,
+      "url": "https://github.com/ayadebbagh/first-press/issues/35"
+    },
+    "O05": {
+      "number": 36,
+      "url": "https://github.com/ayadebbagh/first-press/issues/36"
+    },
+    "O06": {
+      "number": 37,
+      "url": "https://github.com/ayadebbagh/first-press/issues/37"
+    },
+    "D01": {
+      "number": 38,
+      "url": "https://github.com/ayadebbagh/first-press/issues/38"
+    },
+    "D02": {
+      "number": 39,
+      "url": "https://github.com/ayadebbagh/first-press/issues/39"
+    },
+    "D03": {
+      "number": 40,
+      "url": "https://github.com/ayadebbagh/first-press/issues/40"
+    },
+    "D04": {
+      "number": 41,
+      "url": "https://github.com/ayadebbagh/first-press/issues/41"
+    },
+    "D05": {
+      "number": 42,
+      "url": "https://github.com/ayadebbagh/first-press/issues/42"
+    },
+    "D06": {
+      "number": 43,
+      "url": "https://github.com/ayadebbagh/first-press/issues/43"
+    }
+  },
+  "milestones": {}
+}
