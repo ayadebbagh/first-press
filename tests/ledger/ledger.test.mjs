@@ -77,7 +77,7 @@ test('concurrent reservations cannot spend the same available Credits twice',asy
 test('exceptions and incomplete cash-hold transactions roll back money and ledger together',async()=>{
   const id=await member();await initializeWallet(db,id);const o=await order(id);
   await assert.rejects(db.transaction(async tx=>{await postOrderMovement(tx,id,{kind:'buy_reserve',orderId:o.id,amountCents:o.amount,idempotencyKey:'rollback'});throw Error('fixture failure');}),/fixture failure/);
-  await assert.rejects(db.transaction(tx=>postOrderMovement(tx,id,{kind:'buy_reserve',orderId:o.id,amountCents:o.amount,idempotencyKey:'incomplete'})),e=>e.code==='23514');
+  await assert.rejects(db.transaction(tx=>postOrderMovement(tx,id,{kind:'buy_reserve',orderId:o.id,amountCents:o.amount,idempotencyKey:'incomplete'})),e=>(e.code??e.cause?.code)==='23514');
   const report=await reconcileWallet(db,id);assert.equal(report.ok,true);assert.equal(report.ledger.eventCount,'1');assert.equal(report.wallet.availableCents,'100000');
 });
 
