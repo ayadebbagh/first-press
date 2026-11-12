@@ -1,27 +1,27 @@
 {
   "version": 1,
   "repository": "ayadebbagh/first-press",
-  "project_title": "FIRST PRESS — Development",
+  "project_title": "FIRST PRESS \u2014 Development",
   "created": "2026-11-12",
   "milestones": [
     {
       "key": "M0",
-      "title": "M0 — Reproducible foundation",
+      "title": "M0 \u2014 Reproducible foundation",
       "description": "Repository, CI, real-server testing and resolved backend/economy choices."
     },
     {
       "key": "M1",
-      "title": "M1 — Connected artist backing",
+      "title": "M1 \u2014 Connected artist backing",
       "description": "Authenticated, persistent and transactional artist backing in staging."
     },
     {
       "key": "M2",
-      "title": "M2 — Trusted invite-only beta",
+      "title": "M2 \u2014 Trusted invite-only beta",
       "description": "Traceable data, verified receipts, safe operations and release QA."
     },
     {
       "key": "M3",
-      "title": "M3 — Daily habit and reputation",
+      "title": "M3 \u2014 Daily habit and reputation",
       "description": "Community rotation, badges and decided recurring Credits."
     }
   ],
@@ -297,7 +297,7 @@
       "acceptance": [
         "Record official source-use constraints, collection method, coverage, source update lag, freshness and access decision with dated links.",
         "Test a small representative artist set and record success/failure/provenance without treating missing metrics as zero.",
-        "Estimate central requests for 50 artists × 2 updates/day plus retries and caching; no per-user polling.",
+        "Estimate central requests for 50 artists \u00d7 2 updates/day plus retries and caching; no per-user polling.",
         "Compare verified admin import and a priced licensed provider fallback only if automation is unsuitable; record recommendation and release limitations."
       ],
       "decision": true
@@ -763,7 +763,7 @@
       ],
       "summary": "Verify the entire connected product in staging before inviting real members; a file-preview test is insufficient.",
       "acceptance": [
-        "Run sign-in → starting grant → discovery/playback → queued buy → accepted update → position → partial/full exit → retained verified receipt across devices.",
+        "Run sign-in \u2192 starting grant \u2192 discovery/playback \u2192 queued buy \u2192 accepted update \u2192 position \u2192 partial/full exit \u2192 retained verified receipt across devices.",
         "Verify keyboard/focus/dialogs, reduced motion, 320px/mobile and desktop, empty/error/offline states, and supported browser differences.",
         "Exercise authorization, rate limiting, no duplicate grants/orders, admin boundaries, stale sources, failed jobs and private-profile URLs.",
         "Record evidence, version, open defects and release/no-release decision; close critical integrity/privacy issues before invitations."
@@ -963,6 +963,23 @@
         "Label generated series explicitly as demo history, not Spotify observations.",
         "Preserve actual verified observations and outages; support empty, one-point and invalid-reading states without backfill.",
         "Verify the chart and 320px layout in isolated browser tests without changing backing or recording behavior."
+      ]
+    },
+    {
+      "key": "B03",
+      "kind": "task",
+      "title": "Fix file-preview account navigation and center the account initial",
+      "area": "identity",
+      "milestone": "M0",
+      "priority": "P1",
+      "effort": "S",
+      "dependencies": [],
+      "summary": "The account anchor used an absolute app route in the generated file preview, so the browser attempted to open a local account file. Use the navigation provider for both file and server contexts and keep the account initial centered.",
+      "acceptance": [
+        "Account navigation stays inside the file preview and shows an honest preview-only account screen, including direct reload and a working return link.",
+        "The running Next.js app still opens its actual account route, including keyboard activation.",
+        "Center the account initial horizontally and vertically at desktop and narrow mobile widths.",
+        "Regenerate the local preview and verify actual file and HTTP behavior in isolated desktop/mobile browser tests; preserve local demo state and keep server sign-in out of the file preview."
       ]
     }
   ]

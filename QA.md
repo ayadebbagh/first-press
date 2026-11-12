@@ -1,6 +1,12 @@
 # Beta verification — 2026-11-08
 
 
+## File-preview account navigation — 2026-11-12
+
+B03 / issue #53 fixes a reported regression: the shell used a raw `/account` anchor, which a file-open browser resolved as a local account file. The account bubble now uses the existing navigation provider, so file previews open `#/account` and Next.js retains `/account`. The preview renders an explicit file-only account status with a working discovery return link; it never imitates a server sign-in or imports demo records. The initial is centered with inline-flex and a separate text span; the status dot remains absolutely positioned.
+
+The local HTML preview was regenerated successfully. New isolated browser cases open the actual `file://` artifact, exercise account click/reload/return, ensure no auth requests, check mobile width and measure both initial-center offsets. The HTTP case checks the real account route and keyboard activation. Both cases run at desktop and 320px mobile widths, with screenshots for visual review. Full results are recorded on the implementing PR when CI completes.
+
 ## Invite-only identity and recovery — 2026-11-12
 
 A02 adds gated connected identity while retaining the independent synthetic backing demo. [Branch preflight 43306204008](https://github.com/ayadebbagh/first-press/actions/runs/43306204008) passed 35 unit checks, 14 PostgreSQL schema/migration cases, 10 auth handler cases and 24 browser checks (18 demo + 6 connected-account, across desktop and 320px mobile). Frozen installation, typechecking, production/preview builds, drift and Compose checks also passed. Final PR/main checks are the canonical evidence for the polished revision.
