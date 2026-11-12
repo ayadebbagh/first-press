@@ -15,3 +15,32 @@
 .version-label{display:block;font-family:monospace;font-size:7px;letter-spacing:.15px;line-height:1.7;color:#999985}.version-label.different{color:#e7a98b}.duel-copy>.version-label{min-height:32px;margin:-9px 0 13px}.artist-track-copy{display:block;min-width:0}.artist-track-copy>.version-label{margin-top:4px}.track-info>.version-label{font-size:6px}.recording-note{border-left:2px solid #999780;padding:10px 12px;background:#dedbcb;margin:18px 0 0}.recording-note.different{border-left-color:#c14d34}.recording-note>strong{font-size:10px;display:block}.recording-note>p{font-size:9px;line-height:1.8;color:#77735d;margin-top:5px}.recording-note+.soundcloud-player{margin-top:16px}@media(max-width:580px){.duel-copy>.version-label{font-size:6px;min-height:34px;margin-top:-8px}.version-label{font-size:6px}}
 
 .spotify-player{display:block;width:100%;min-width:280px;margin-top:17px;border:0;background:#242424}@media(max-width:580px){.modal.spotify-modal{width:calc(100% - 16px);padding-left:12px;padding-right:12px}.spotify-modal>.eyebrow,.spotify-modal>h2,.spotify-modal>p,.spotify-modal>.text-link,.spotify-modal>.listen-footer,.spotify-modal>.recording-note{margin-left:8px;margin-right:8px}}
+
+/* Listener history: plain ink, rules and an inspectable audience line. */
+.listener-history{margin:24px 0;border-top:1px solid #b9b7aa;padding-top:18px;min-width:0}
+.history-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.history-source{font-family:var(--mono);font-size:9px;letter-spacing:.08em;border:1px solid currentColor;padding:3px 5px}
+.history-source.demo{color:#a52e20}
+.history-ranges{display:flex;gap:4px;margin:14px 0}
+.history-ranges button{font-family:var(--mono);font-size:11px;min-width:45px;min-height:32px;border:1px solid #a9a799;background:transparent;color:inherit;cursor:pointer}
+.history-ranges button[aria-pressed=true]{background:#181914;color:#ece9dd;border-color:#181914}
+.history-ranges button:focus-visible{outline:2px solid #bb3426;outline-offset:3px}
+.history-readout{display:flex;justify-content:space-between;align-items:start;gap:10px;margin-bottom:16px}
+.history-readout>div{min-width:0}
+.history-value{display:block;font-family:var(--display);font-size:clamp(25px,3vw,35px);letter-spacing:-.04em;line-height:1.15;overflow-wrap:anywhere}
+.history-selected-date{display:block;font-family:var(--mono);font-size:10px;margin-top:5px}
+.history-change{font-family:var(--mono);font-size:14px;text-align:right;white-space:nowrap;padding-top:4px}
+.history-change small{display:block;font-size:8px;margin-top:4px;font-weight:400}
+.history-graph{display:grid;grid-template-columns:42px minmax(0,1fr);gap:6px}
+.history-y{height:180px;display:flex;flex-direction:column;justify-content:space-between;padding:10px 0;font-family:var(--mono);font-size:9px;text-align:right;opacity:.7}
+.history-plot{min-width:0;touch-action:pan-y;cursor:crosshair;border:1px solid transparent}
+.history-plot:focus-visible{outline:2px solid #b73626;outline-offset:3px}
+.history-plot svg{display:block;width:100%;height:180px;overflow:visible}
+.history-grid{stroke:currentColor;opacity:.18;stroke-width:1;fill:none}
+.history-line{fill:none;stroke:#bd3b2b;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.history-crosshair{stroke:currentColor;stroke-width:1;stroke-dasharray:3 4;opacity:.45}
+.history-dot{fill:#bd3b2b;stroke:#ece9dd;stroke-width:2}
+.history-x{display:flex;justify-content:space-between;margin:5px 0 0 48px;gap:8px}
+.history-help,.history-provenance{font-size:10px;line-height:1.6;margin:12px 0 0}
+.history-provenance{font-family:var(--mono);font-size:9px;padding-left:8px;border-left:2px solid #bd3b2b}
+.history-empty{font-size:13px;padding:22px 0;line-height:1.6}

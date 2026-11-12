@@ -152,3 +152,36 @@ test('Dreamflasher keeps the original Spotify recording',async({page})=>{
   await expect(page.locator('iframe.soundcloud-player')).toHaveCount(0);
   await expect(page.getByRole('link',{name:/Open this recording on Spotify/})).toHaveAttribute('href','https://open.spotify.com/track/75Wgg4LerPD3mVO5hEyUN9');
 });
+
+test('monthly-listener history supports periods, keyboard, pointer or touch and demo updates',async({page},testInfo)=>{
+  await openArtist(page,'artist_001','fakemink');
+  const chart=page.getByRole('region',{name:'Monthly listener history'});
+  await expect(chart.getByText('Generated demo history — not collected Spotify data.',{exact:true})).toBeVisible();
+  await expect(chart.getByRole('button',{name:'7 days',exact:true})).toHaveAttribute('aria-pressed','true');
+  const current=await page.locator('.listener-stat strong').innerText();
+  await expect(chart.locator('.history-value')).toHaveText(current);
+  await chart.getByRole('button',{name:'30 days',exact:true}).click();
+  await expect(chart.getByRole('button',{name:'30 days',exact:true})).toHaveAttribute('aria-pressed','true');
+  await chart.getByRole('button',{name:'90 days',exact:true}).click();
+  const plot=chart.getByRole('slider',{name:'Inspect monthly listener history'});
+  await plot.focus();
+  await plot.press('Home');
+  await expect(plot).toHaveAttribute('aria-valuenow','0');
+  await expect(chart.locator('.history-selected-date')).toContainText('90d earlier');
+  await plot.press('ArrowRight');
+  await expect(plot).toHaveAttribute('aria-valuenow','1');
+  await plot.press('End');
+  await expect(chart.locator('.history-selected-date')).toHaveText('Latest sample');
+  if(testInfo.project.name==='mobile')await plot.tap({position:{x:15,y:80}});
+  else await plot.hover({position:{x:15,y:80}});
+  await expect(chart.locator('.history-selected-date')).not.toHaveText('Latest sample');
+  await chart.getByRole('button',{name:'7 days',exact:true}).click();
+  await page.getByRole('button',{name:'Demo controls',exact:true}).click();
+  await page.getByRole('button',{name:/^Run demo update/}).click();
+  await expect(chart.locator('.history-value')).not.toHaveText(current);
+  await expect(chart.locator('.history-value')).toHaveText(await page.locator('.listener-stat strong').innerText());
+  await expect(page.locator('#toast')).not.toHaveClass(/show/);
+  await chart.evaluate(element=>element.scrollIntoView({block:'start'}));
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+  await page.screenshot({path:testInfo.outputPath('listener-history.png')});
+});
