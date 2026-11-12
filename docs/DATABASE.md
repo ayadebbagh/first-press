@@ -22,7 +22,7 @@ The migration CLI deliberately reads injected process environment. For pnpm comm
 
 | Records | Purpose and invariants |
 | --- | --- |
-| user, session, account, verification | Generated core identity/session tables; unique email, session token and provider/account identity. No auth HTTP routes yet. |
+| user, session, account, verification | Generated core identity/session tables; unique email, session token and provider/account identity. A02 supplies gated account/recovery HTTP routes. |
 | members, wallets | Server-only role and profile privacy; one bounded nonnegative wallet per user. |
 | artists, tracks, watchlists | Stable internal and Spotify identities, reviewed status, explicit recording versions and reviewed SoundCloud fallback. |
 | listener_snapshots, snapshot_annotations | Provider/metric, count, observation/fetch/accept instants and evidence; invalid readings quarantined, disputes appended. Accepted counts are positive integers ≤10^12. Rows are append-only, including quarantines: insert a reviewed successor. |
@@ -42,7 +42,7 @@ These constraints do **not** implement a balanced wallet service. A03–A08 must
 
 ## Migrations and generated auth schema
 
-Better Auth's pinned CLI generates only the core schema from `scripts/db/auth-schema-config.ts`. That config has no runtime routes, provider credentials or invite implementation. To regenerate for an intentional A02 schema change:
+Better Auth's pinned CLI generates only the core schema from `scripts/db/auth-schema-config.ts`. That generation-only config has no provider credentials or connections; runtime behavior is in `src/server/auth/core.ts`. To regenerate for an intentional A02 schema change:
 
 ```sh
 pnpm auth:schema
@@ -50,11 +50,11 @@ node scripts/db/normalize-auth-schema.mjs
 pnpm db:generate --name=describe_change
 ```
 
-Review the diff. Normalization uses TIMESTAMPTZ; the reviewed provider-identity uniqueness is maintained separately in the custom migration. Future generator changes must preserve that index. Auth configuration, social linking, invite enforcement, verified email and reset flows are A02; merely creating these tables does not enable sign-in.
+Review the diff. Normalization uses TIMESTAMPTZ; the reviewed provider-identity uniqueness is maintained separately in the custom migration. Future generator changes must preserve that index. A02 adds auth configuration, explicit linking, invite enforcement and verification/reset flows. See [authentication operations](AUTHENTICATION.md); merely applying migrations does not enable sign-in.
 
 Commit SQL and Drizzle's journal/snapshots together. Review SQL before applying. Use only `pnpm db:migrate` (or the env-file Node command), never `drizzle-kit push`, an independent auth migrate command or ad hoc schema edits on shared data. The wrapper checks all previously applied migration hashes/timestamps and serializes release invocations with a session advisory lock; Drizzle Kit remains the migration writer. A changed/missing applied migration blocks the release. New forward migrations are the only supported change path.
 
-The first migration creates tables/constraints; the second adds append-only/provenance triggers and the provider identity index. Keep its custom SQL: Drizzle Kit snapshots do not describe trigger bodies. CI rejects domain schema drift but a trigger change requires a new reviewed custom migration and integration tests.
+The first migration creates tables/constraints; the second adds append-only/provenance triggers and the provider identity index. A02 appends the third/fourth migrations for admission, throttling, outbox and revocation; the applied foundation files remain byte-for-byte unchanged. Keep its custom SQL: Drizzle Kit snapshots do not describe trigger bodies. CI rejects domain schema drift but a trigger change requires a new reviewed custom migration and integration tests.
 
 On staging: back up, apply from a release checkout with an injected staging URL, rerun to prove no-op replay, then run the release smoke checks. On failure inspect the migration transaction and journal using an operator account, preserve evidence, and fix forward. Never stamp a failed migration as applied or rewrite an applied file. Backup/restore and actual production rollout are O01/O02, not evidence supplied by CI.
 

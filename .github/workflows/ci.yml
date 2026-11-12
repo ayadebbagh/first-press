@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main, feat/20-invite-auth]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -102,7 +102,6 @@ jobs:
       TEST_AUTH_DATABASE_URL: postgresql://first_press_ci:isolated_ci_only@127.0.0.1:5432/first_press_auth_test
       TEST_SMTP_KEY: /tmp/first-press-smtp-key.pem
       TEST_SMTP_CERT: /tmp/first-press-smtp-cert.pem
-      NODE_EXTRA_CA_CERTS: /tmp/first-press-smtp-cert.pem
       SMTP_HOST: 127.0.0.1
       SMTP_PORT: '2587'
       AUTH_EMAIL_FROM: FIRST PRESS Test <noreply@example.invalid>
@@ -124,6 +123,8 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:auth:e2e
+        env:
+          NODE_EXTRA_CA_CERTS: /tmp/first-press-smtp-cert.pem
       - name: Keep isolated account reports and failure traces
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6

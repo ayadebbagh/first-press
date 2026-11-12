@@ -1,6 +1,16 @@
 # Beta verification — 2026-11-08
 
 
+## Invite-only identity and recovery — 2026-11-12
+
+A02 adds gated connected identity while retaining the independent synthetic backing demo. [Branch preflight 43306204008](https://github.com/ayadebbagh/first-press/actions/runs/43306204008) passed 35 unit checks, 14 PostgreSQL schema/migration cases, 10 auth handler cases and 24 browser checks (18 demo + 6 connected-account, across desktop and 320px mobile). Frozen installation, typechecking, production/preview builds, drift and Compose checks also passed. Final PR/main checks are the canonical evidence for the polished revision.
+
+The connected flow uses the actual Next.js server, PostgreSQL, durable outbox, Nodemailer worker and an isolated STARTTLS SMTP fixture with a trusted test CA. It covers invited registration, blocked unverified access, delivered verification, sign-in/out, profile persistence, string-valued owned wallet/order reads, cross-user/origin/role rejection, admin admission and session invalidation. Core handler tests additionally cover forged/expired sessions, generic single-use/expired reset handling, persistent throttling across instances, Secure/HttpOnly/SameSite cookies, and Google signature/claims plus explicit linking. Google uses a local RSA/JWKS fixture; real Google credentials/consent-screen and real relay/domain delivery remain rollout checks, not claims supplied by fixture tests.
+
+The first browser pass caught a password-help string being included in the accessible field name; the hint now uses aria-describedby separately from its label. The corrected flow passed, and desktop/mobile screenshots were downloaded, hash-verified and visually inspected. Final polish adds semantic main landmarks, safe wrapping for long names and a smaller mobile heading so the form is reached sooner. Optional fonts are stubbed in deterministic browser tests, and personal Brave/storage is untouched.
+
+Auth remains explicitly disabled until configured. No demo balance, wallet grant, public receipt or live settlement is created by signing up. [Authentication setup and limits](docs/AUTHENTICATION.md) documents operator steps, SMTP worker supervision, admission/recovery and remaining release gates. Local npm/network restrictions still prevent a complete local dependency installation; the interrupted attempt's existing Next link was restored, and full dependency/build/runtime verification runs in hosted CI.
+
 ## PostgreSQL foundation — 2026-11-12
 
 [A01 / PR #51](https://github.com/ayadebbagh/first-press/pull/51) adds persistence tooling without switching the UI to real accounts. The [initial PostgreSQL job](https://github.com/ayadebbagh/first-press/actions/runs/43299923068/job/131468146763) passed all 12 database integration cases on the official PostgreSQL 18.6 image: empty/repeated/concurrent migrations, changed-migration rejection, exact bounded amounts, grant uniqueness, cross-account reservations/exits, immutable quotes/receipts, lot precision and isolated repeatable demo seeding. Drizzle found no uncommitted schema drift; Compose validation passed. Two additional stale/quarantined-baseline and strict-cutoff cases are included in the final PR checks; its CI is the final release evidence.
