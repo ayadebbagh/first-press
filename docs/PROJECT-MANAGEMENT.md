@@ -4,7 +4,7 @@ The repository is the source of truth for code and issues. GitHub Projects is th
 
 ## Backlog and board
 
-Six epics group 37 actionable issues. Each task has a stable key, acceptance criteria, dependency keys, milestone, priority and relative effort. Do not assign all work immediately. Leave ownership open until someone takes it; do not invite collaborators automatically.
+Six epics group 38 actionable issues. Each task has a stable key, acceptance criteria, dependency keys, milestone, priority and relative effort. Do not assign all work immediately. Leave ownership open until someone takes it; do not invite collaborators automatically.
 
 Desired workflow: Backlog → Ready → In progress → In review → Done; use Blocked when an external dependency prevents progress. On a newly created GitHub Project, default Status options may be Todo / In Progress / Done; configure the desired options in its settings. The bootstrap script preserves existing statuses rather than replacing them. Native issue closure should move linked project items to Done once the built-in workflow is verified.
 

@@ -15,7 +15,7 @@ test('catalog contains 50 unique artists and 100 unique discovery tracks',()=>{
 test('every daily pick has a confirmed player; local artwork exists',async()=>{
  const {access}=await import('node:fs/promises');
  for(const a of artists.slice(0,8))assert.equal(getPlayback(getDailyTrack(a)).provider,'spotify',a.name+' needs a daily sound check');
- for(const a of artists.filter(a=>a.image?.startsWith('assets/')))await access(new URL('../public/'+a.image,import.meta.url));
+ for(const a of artists){assert.ok(a.image?.startsWith('assets/'),a.name+' needs a catalog picture');await access(new URL('../public/'+a.image,import.meta.url));}
 });
 test('queued buy reserves cash without creating a holding or receipt',()=>{
  const initial=initialState(),s=buy(initial,250);
