@@ -180,7 +180,8 @@ test('monthly-listener history supports periods, keyboard, pointer or touch and 
   await page.getByRole('button',{name:/^Run demo update/}).click();
   await expect(chart.locator('.history-value')).not.toHaveText(current);
   await expect(chart.locator('.history-value')).toHaveText(await page.locator('.listener-stat strong').innerText());
-  await chart.scrollIntoViewIfNeeded();
+  await expect(page.locator('#toast')).not.toHaveClass(/show/);
+  await chart.evaluate(element=>element.scrollIntoView({block:'start'}));
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
   await page.screenshot({path:testInfo.outputPath('listener-history.png')});
 });
