@@ -26,8 +26,8 @@
     "react-dom": "19.3.1",
     "drizzle-orm": "0.45.4",
     "pg": "8.23.1",
-    "better-auth": "1.7.22",
-    "@better-auth/drizzle-adapter": "1.7.22",
+    "better-auth": "1.7.21",
+    "@better-auth/drizzle-adapter": "1.7.21",
     "server-only": "0.0.1"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "playwright": "1.65.0",
     "drizzle-kit": "0.31.11",
     "@types/pg": "8.23.1",
-    "auth": "1.7.22"
+    "auth": "1.7.21"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {
