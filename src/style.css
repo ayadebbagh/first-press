@@ -63,7 +63,7 @@
 .auth-paper input{display:block;width:100%;min-width:0;box-sizing:border-box;margin-top:7px;padding:12px;border:1px solid #55564d;background:#fffcef;color:#171713;font-size:16px;border-radius:0}
 .auth-paper small{font-size:11px;display:block;margin-top:6px;font-weight:400}
 .auth-button,.auth-google{display:block;box-sizing:border-box;width:100%;border:1px solid #171713;padding:14px 12px;text-align:center;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;border-radius:0}
-.auth-button{background:#ff4736;color:#171713}.auth-google{background:#171713;color:#f4f0df;margin-top:24px}
+.auth-paper .auth-button{background:#ff4736;color:#171713}.auth-paper .auth-google{background:#171713;color:#f4f0df;margin-top:24px}
 .auth-paper button:disabled{cursor:wait;opacity:.55}.auth-paper :focus-visible,.auth-header a:focus-visible{outline:3px solid #ff4736;outline-offset:4px}
 .auth-divider{display:flex;align-items:center;justify-content:center;gap:12px;font-size:9px;letter-spacing:1px;margin:23px 0}.auth-divider:before,.auth-divider:after{content:'';height:1px;background:#9b9a8c;flex:1}
 .auth-message{min-height:20px}.auth-links{border-top:1px solid #9b9a8c;padding-top:12px;display:flex;flex-direction:column;align-items:flex-start;gap:15px}

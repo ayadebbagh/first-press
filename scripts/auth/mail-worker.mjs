@@ -1,10 +1,9 @@
-import { randomUUID } from 'node:crypto';
 import nodemailer from 'nodemailer';
 import { databaseClient } from '../db/connection.mjs';
 
 const port = Number(process.env.SMTP_PORT || 587);
-if (!process.env.SMTP_HOST || !process.env.AUTH_EMAIL_FROM || ![465,587].includes(port)) {
-  console.error('Mail worker requires SMTP_HOST, AUTH_EMAIL_FROM and TLS SMTP port 465 or 587.');
+if (!process.env.SMTP_HOST || !process.env.AUTH_EMAIL_FROM || (!Number.isInteger(port) || port<1 || port>65535)) {
+  console.error('Mail worker requires SMTP_HOST, AUTH_EMAIL_FROM and a valid TLS SMTP port.');
   process.exit(1);
 }
 const transport = nodemailer.createTransport({ host: process.env.SMTP_HOST, port,

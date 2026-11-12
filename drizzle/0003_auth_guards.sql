@@ -2,6 +2,9 @@
 CREATE FUNCTION fp_invite_admission() RETURNS trigger LANGUAGE plpgsql AS $$
 DECLARE invitation beta_invites;
 BEGIN
+  IF EXISTS (SELECT 1 FROM database_identity WHERE purpose='demo') THEN
+    RAISE EXCEPTION 'Demo databases cannot admit accounts' USING ERRCODE='23514';
+  END IF;
   NEW.email := lower(trim(NEW.email));
   SELECT * INTO invitation FROM beta_invites WHERE email=NEW.email FOR UPDATE;
   IF NOT FOUND OR invitation.revoked_at IS NOT NULL OR invitation.claimed_by IS NOT NULL

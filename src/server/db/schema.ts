@@ -3,8 +3,8 @@ import {
   pgTable, pgEnum, text, boolean, timestamp, bigint, integer, numeric, jsonb,
   primaryKey, unique, uniqueIndex, index, check, foreignKey,
 } from 'drizzle-orm/pg-core';
-import { user } from './auth.generated';
-export * from './auth.generated';
+import { user } from './auth.generated.ts';
+export * from './auth.generated.ts';
 
 // Exact amounts hydrate as bigint; NUMERIC(60,0) hydrates as strings, never Number.
 const cents = (name: string) => bigint(name, { mode: 'bigint' });

@@ -32,7 +32,7 @@ export function createAuthentication(db: NodePgDatabase<typeof schema>, config: 
       expiresIn: 30 * 60,
       sendVerificationEmail: ({ user, url }) => queueMail(user.email, url, 'verification'),
     },
-    socialProviders: config.google ? { google: { ...config.google, prompt: 'select_account' } } : {},
+    socialProviders: config.google ? { google: { ...config.google, prompt: 'select_account', requireEmailVerification: true } } : {},
     account: { accountLinking: { enabled: true, disableImplicitLinking: true, allowDifferentEmails: false, requireLocalEmailVerified: true } },
     session: { expiresIn: 7 * 24 * 60 * 60, updateAge: 24 * 60 * 60, freshAge: 15 * 60, cookieCache: { enabled: false } },
     user: { changeEmail: { enabled: false }, deleteUser: { enabled: false } },
