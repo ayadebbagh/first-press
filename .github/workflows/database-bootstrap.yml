@@ -1,0 +1,30 @@
+# Temporary dependency/schema generation for A01; removed once reviewed outputs are committed.
+name: Database dependency preparation
+on:
+  pull_request:
+    paths:
+      - 'package.json'
+      - 'scripts/db/auth-schema-config.ts'
+      - '.github/workflows/database-bootstrap.yml'
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: '22'
+      - run: npm install --global pnpm@11.25.0
+      - name: Resolve explicit dependency update using normal pnpm checks
+        run: pnpm install --no-frozen-lockfile
+      - run: pnpm auth:schema
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: database-preparation
+          path: |
+            pnpm-lock.yaml
+            src/server/db/auth.generated.ts
+          retention-days: 3
