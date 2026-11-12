@@ -10,14 +10,14 @@ Selected dependency baseline, verified against official package metadata on 2026
 
 | Component | Baseline | Notes |
 | --- | --- | --- |
-| PostgreSQL | 18.7 | Pin the concrete image/digest during A01 provisioning and keep security minors current. PostgreSQL 18 is in the supported release family. |
+| PostgreSQL | 18.x | A01 development/CI pins the available official 18.6-bookworm image. Upstream 18.7 was announced today but its image is not published yet; upgrade/retest before live deployment. Keep security minors current. |
 | Drizzle ORM | 0.45.4 | Stable release; use its Relations v1 adapter path initially. |
 | Drizzle Kit | 0.31.11 | Sole application/auth schema migration runner. |
 | node-postgres | 8.23.1 | Compatible with Node 22; use a bounded pool. |
-| Better Auth | 1.7.22 | Declares peers for Next 16, React 19, pg 8 and Drizzle 0.45. |
-| @better-auth/drizzle-adapter | 1.7.22 | Match the Better Auth release and use provider `pg`. |
+| Better Auth | 1.7.21 | Declares peers for Next 16, React 19, pg 8 and Drizzle 0.45. |
+| @better-auth/drizzle-adapter | 1.7.21 | Match the Better Auth release and use provider `pg`. |
 
-These packages are not installed by this ADR. Their official published peer ranges fit the existing Next.js 16.4.5 / React 19.3.1 / Node 22 stack. This is a documentation/metadata compatibility check; actual database, migration, cookie and provider integration tests belong to A01/A02. Recheck the baseline before installing if development occurs later.
+A01 pins Better Auth and its CLI/adapter to 1.7.21: the initially proposed same-day 1.7.22 release is inside pnpm’s minimum release-age window. Keep that policy enabled and upgrade through a later tested dependency PR. Their official published peer ranges fit the existing Next.js 16.4.5 / React 19.3.1 / Node 22 stack. The ADR initially checked metadata compatibility. A01 adds real PostgreSQL migration/constraint checks; cookie and provider integration tests still belong to A02. Recheck the baseline before installing if development occurs later.
 
 ## Why this direction
 
@@ -48,4 +48,4 @@ A01 provides an empty-database setup, migration tests and opt-in isolated demo s
 - [Better Auth Drizzle adapter and migrations](https://better-auth.com/docs/adapters/drizzle).
 - [Google provider and redirect setup](https://better-auth.com/docs/authentication/google).
 - [Email/password, verification and recovery](https://better-auth.com/docs/authentication/email-password).
-- Package metadata: [Better Auth](https://registry.npmjs.org/better-auth/1.7.22), [Drizzle ORM](https://registry.npmjs.org/drizzle-orm/0.45.4), [Drizzle Kit](https://registry.npmjs.org/drizzle-kit/0.31.11), [pg](https://registry.npmjs.org/pg/8.23.1), [adapter](https://registry.npmjs.org/@better-auth/drizzle-adapter/1.7.22).
+- Package metadata: [Better Auth](https://registry.npmjs.org/better-auth/1.7.21), [Drizzle ORM](https://registry.npmjs.org/drizzle-orm/0.45.4), [Drizzle Kit](https://registry.npmjs.org/drizzle-kit/0.31.11), [pg](https://registry.npmjs.org/pg/8.23.1), [adapter](https://registry.npmjs.org/@better-auth/drizzle-adapter/1.7.21).

@@ -13,19 +13,32 @@
     "project:check": "node scripts/planning.mjs",
     "project:render": "node scripts/planning.mjs --render",
     "project:sync": "node scripts/project-sync.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node scripts/db/migrate.mjs",
+    "db:seed:demo": "node scripts/db/seed-demo.mjs",
+    "test:db": "node --experimental-strip-types --test tests/database/*.test.mjs",
+    "auth:schema": "auth generate --config scripts/db/auth-schema-config.ts --adapter drizzle --dialect postgresql --output src/server/db/auth.generated.ts --yes"
   },
   "dependencies": {
     "next": "16.4.5",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "drizzle-orm": "0.45.4",
+    "pg": "8.23.1",
+    "better-auth": "1.7.21",
+    "@better-auth/drizzle-adapter": "1.7.21",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "22.20.5",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "typescript": "5.9.3",
-    "playwright": "1.65.0"
+    "playwright": "1.65.0",
+    "drizzle-kit": "0.31.11",
+    "@types/pg": "8.23.1",
+    "auth": "1.7.21"
   },
   "packageManager": "pnpm@11.25.0",
   "engines": {
