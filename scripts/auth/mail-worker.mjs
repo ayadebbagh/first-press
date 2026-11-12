@@ -27,7 +27,7 @@ try {
     if (mail) {
       try {
         await transport.sendMail({ from: process.env.AUTH_EMAIL_FROM, to: mail.recipient, subject: mail.subject,
-          text: mail.body, messageId: `<${mail.id}@first-press.invalid>` });
+          text: mail.body });
         await client.query("UPDATE mail_outbox SET status='sent',body=NULL,sent_at=now(),lease_at=NULL WHERE id=$1", [mail.id]);
         console.log('Authentication email delivered.');
       } catch {

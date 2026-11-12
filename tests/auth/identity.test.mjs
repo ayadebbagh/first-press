@@ -74,6 +74,10 @@ test('password recovery is generic, single-use and revokes previous sessions',as
   assert.notEqual((await call('/reset-password',{token,newPassword:'another-long-password-123'})).status,200);
   assert.notEqual((await call('/sign-in/email',{email:'recovery@example.invalid',password:'test-only-long-password-123'})).status,200);
   assert.equal((await call('/sign-in/email',{email:'recovery@example.invalid',password:'a-new-long-password-123'})).status,200);
+  await call('/request-password-reset',{email:'recovery@example.invalid',redirectTo:baseURL+'/reset-password'});
+  const expired=new URL(await lastLink('recovery@example.invalid','reset')).pathname.split('/').at(-1);
+  await pool.query("UPDATE verification SET expires_at=now()-interval '1 second' WHERE identifier LIKE 'reset-password:%'");
+  assert.notEqual((await call('/reset-password',{token:expired,newPassword:'expired-reset-password-123'})).status,200);
 });
 
 test('suspension and role changes revoke sessions and suspension blocks new sign-in',async()=>{
@@ -118,4 +122,22 @@ test('same-email Google sign-in cannot silently link an existing password accoun
   const result=await call('/sign-in/social',{provider:'google',idToken:{token:await googleToken('existing')}});
   assert.notEqual(result.status,200);
   assert.equal((await pool.query("SELECT count(*)::int AS n FROM account WHERE provider_id='google'")).rows[0].n,0);
+});
+
+test('HTTPS sessions use Secure, HttpOnly and SameSite cookies',async()=>{
+  await fresh();await invite('secure@example.invalid');await signup('secure@example.invalid');await verify('secure@example.invalid');
+  auth=createAuthentication(db,{...config,baseURL:'https://beta.example.invalid'});
+  const result=await auth.handler(new Request('https://beta.example.invalid/api/auth/sign-in/email',{method:'POST',headers:{origin:'https://beta.example.invalid','content-type':'application/json'},body:JSON.stringify({email:'secure@example.invalid',password:'test-only-long-password-123'})}));
+  assert.equal(result.status,200,await result.text());
+  const cookie=result.headers.getSetCookie().find(x=>x.includes('session_token='));
+  assert.match(cookie,/; Secure/i);assert.match(cookie,/; HttpOnly/i);assert.match(cookie,/; SameSite=Lax/i);
+});
+
+test('verified members can explicitly link Google without silently linking at sign-in',async()=>{
+  await fresh();await invite('link@example.invalid');await signup('link@example.invalid');await verify('link@example.invalid');
+  const cookies=await signin('link@example.invalid');const token=await googleToken('link');
+  const result=await call('/link-social',{provider:'google',idToken:{token}},cookies);
+  assert.equal(result.status,200,await result.text());
+  assert.equal((await pool.query("SELECT count(*)::int AS n FROM account WHERE provider_id='google'")).rows[0].n,1);
+  assert.equal((await call('/sign-in/social',{provider:'google',idToken:{token}})).status,200);
 });

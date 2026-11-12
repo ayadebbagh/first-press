@@ -92,5 +92,12 @@ test('owned APIs reject another member’s order, role injection, cross-origin w
   expect((await context.request.patch('/api/account/profile',{headers:{origin:'https://attacker.invalid'},data:{name:'stolen'}})).status()).toBe(403);
   expect((await other.request.post('/api/admin/invites',{headers:{origin:base},data:{email:email(),reason:'fixture'}})).status()).toBe(403);
   await db.query("UPDATE members SET status='suspended' WHERE user_id=$1",[a.id]);expect((await context.request.get('/api/account/profile')).status()).toBe(401);
+  const {rows:[b]}=await db.query('SELECT id FROM "user" WHERE email=$1',[otherEmail]);
+  await db.query("UPDATE members SET role='admin' WHERE user_id=$1",[b.id]);
+  expect((await other.request.get('/api/account/profile')).status()).toBe(401);
+  expect((await other.request.post('/api/auth/sign-in/email',{headers:{origin:base},data:{email:otherEmail,password}})).ok()).toBeTruthy();
+  const invited=email();expect((await other.request.post('/api/admin/invites',{headers:{origin:base},data:{email:invited,reason:'Approved fixture invite'}})).status()).toBe(201);
+  expect((await db.query('SELECT created_by FROM beta_invites WHERE email=$1',[invited])).rows[0].created_by).toBe(b.id);
+  expect((await db.query('SELECT count(*)::int AS n FROM mail_outbox WHERE recipient=$1',[invited])).rows[0].n).toBe(0);
   await other.close();
 });

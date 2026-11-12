@@ -68,3 +68,7 @@ Spotify uses the [official embed format](https://developer.spotify.com/documenta
 ## Database foundation
 
 PostgreSQL schema, reviewed Drizzle migrations and opt-in isolated synthetic fixtures are available. See [database setup and verification](docs/DATABASE.md). The UI remains a local demo; account and backing services are subsequent issues.
+
+## Connected identity
+
+Invite-only email/password and Google account code is available behind an explicit server flag. See [authentication setup and rollout checks](docs/AUTHENTICATION.md). Real Google/SMTP configuration and supervised mail delivery are required before live admission. Signing in does not import demo Credits. The [organization transfer plan](docs/REPOSITORY-TRANSFER.md) records the agreed `first-press-app` destination and intended collaborator admin access; the move has not occurred.

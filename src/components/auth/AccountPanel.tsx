@@ -46,7 +46,7 @@ function SessionPanel({ google }: { google: boolean }) {
     <form onSubmit={submit}>
       {mode==='signup'&&<label>Display name<input name="name" required minLength={1} maxLength={50} autoComplete="nickname"/></label>}
       <label>Email<input name="email" type="email" required maxLength={254} autoComplete="email"/></label>
-      {mode!=='forgot'&&<label>Password<input name="password" type="password" required minLength={mode==='signup'?12:1} maxLength={128} autoComplete={mode==='signup'?'new-password':'current-password'}/>{mode==='signup'&&<small>At least 12 characters.</small>}</label>}
+      {mode!=='forgot'&&<label>Password<input name="password" type="password" required minLength={mode==='signup'?12:1} maxLength={128} autoComplete={mode==='signup'?'new-password':'current-password'} aria-describedby={mode==='signup'?'password-help':undefined}/></label>}{mode==='signup'&&<small id="password-help">At least 12 characters.</small>}
       <button className="auth-button" disabled={busy} type="submit">{busy?'One moment…':mode==='signup'?'Create account ↗':mode==='forgot'?'Send reset link ↗':'Sign in ↗'}</button>
     </form>
     <p className="auth-message" role="status">{message}</p>
