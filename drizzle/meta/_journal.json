@@ -29,6 +29,13 @@
       "when": 1794516314750,
       "tag": "0003_auth_guards",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794519268485,
+      "tag": "0004_wallet_integrity",
+      "breakpoints": true
     }
   ]
 }
