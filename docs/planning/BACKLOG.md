@@ -1,6 +1,6 @@
 # Development backlog
 
-Generated from [backlog.json](backlog.json). 6 epics and 39 actionable tasks. Relative effort is not a delivery-date estimate.
+Generated from [backlog.json](backlog.json). 6 epics and 40 actionable tasks. Relative effort is not a delivery-date estimate.
 
 Read [the roadmap](../ROADMAP.md) for sequencing and release gates. Live publication status is in [PUBLICATION.md](PUBLICATION.md).
 
@@ -19,6 +19,7 @@ Repository, CI, real-server testing and resolved backend/economy choices.
 | O06 | [Review media redistribution and select the source-code license](issues/O06.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/37) | P0 | S | — |
 | B01 | [Fill missing beta artist pictures and verify image coverage](issues/B01.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/45) | P1 | S | — |
 | B02 | [Add inspectable monthly-listener history to artist pages](issues/B02.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/48) | P1 | M | — |
+| B03 | [Fix file-preview account navigation and center the account initial](issues/B03.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/53) | P1 | S | — |
 
 ## M1 — Connected artist backing
 

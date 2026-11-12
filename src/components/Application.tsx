@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 import {artists} from '../catalog.ts';
 import {useApp} from '../state/AppContext.tsx';
 import {useNavigation} from '../state/Navigation.tsx';
+import {AccountPreview} from '../views/AccountPreview.tsx';
 import {AppShell} from './AppShell.tsx';
 import {Dialogs} from './Dialogs.tsx';
 import {NotFound} from './Primitives.tsx';
@@ -21,6 +22,7 @@ export function Application(){
   case undefined:case 'discover':content=<Discover/>;break;
   case 'catalog':case 'tracks':content=<Catalog tracks={page==='tracks'}/>;break;
   case 'artist':{const artist=artists.find(a=>a.id===id);content=artist?<Artist key={artist.id} artist={artist}/>:<NotFound/>;break;}
+  case 'account':content=<AccountPreview/>;break;
   case 'collection':content=<Collection/>;break;
   case 'daily':content=<Daily/>;break;
   case 'receipts':content=<Receipts/>;break;
