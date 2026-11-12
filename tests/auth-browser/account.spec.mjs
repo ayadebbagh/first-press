@@ -76,7 +76,7 @@ test('owned APIs reject another member’s order, role injection, cross-origin w
   const address=email();await register(context,address);
   const other=await browser.newContext({baseURL:base});const otherEmail=email();await register(other,otherEmail);
   const {rows:[a]}=await db.query('SELECT id FROM "user" WHERE email=$1',[address]);
-  await db.query('INSERT INTO wallets(user_id,available_cents) VALUES ($1,12345)',[a.id]);
+  expect((await context.request.post('/api/account/wallet',{headers:{origin:base},data:{}})).status()).toBe(201);
   const now=new Date(),observed=new Date(now.getTime()-60000),accepted=new Date(now.getTime()-30000),cutoff=new Date((Math.floor(now.getTime()/43200000)+1)*43200000);
   const snapshot=randomUUID(),order=randomUUID();
   await db.query("INSERT INTO artists(id,slug,name,spotify_artist_id,status) VALUES ('auth-fixture-artist','auth-fixture-artist','Fixture Artist','3333333333333333333333','active') ON CONFLICT DO NOTHING");
@@ -86,7 +86,7 @@ test('owned APIs reject another member’s order, role injection, cross-origin w
     VALUES ($1,$2,'auth-fixture-artist','buy',100,$1,repeat('a',64),$3,$4,$5)`,[order,a.id,snapshot,now,cutoff]);
   expect((await context.request.get('/api/account/orders/'+order)).status()).toBe(200);
   expect((await other.request.get('/api/account/orders/'+order)).status()).toBe(404);
-  expect((await(await context.request.get('/api/account/wallet?userId=someone-else')).json()).wallet.availableCents).toBe('12345');
+  expect((await(await context.request.get('/api/account/wallet?userId=someone-else')).json()).wallet.availableCents).toBe('100000');
   expect((await(await other.request.get('/api/account/wallet?userId='+a.id)).json()).wallet).toBeNull();
   expect((await other.request.patch('/api/account/profile',{headers:{origin:base},data:{name:'stolen',userId:a.id,role:'admin'}})).status()).toBe(400);
   expect((await context.request.patch('/api/account/profile',{headers:{origin:'https://attacker.invalid'},data:{name:'stolen'}})).status()).toBe(403);
@@ -99,5 +99,25 @@ test('owned APIs reject another member’s order, role injection, cross-origin w
   const invited=email();expect((await other.request.post('/api/admin/invites',{headers:{origin:base},data:{email:invited,reason:'Approved fixture invite'}})).status()).toBe(201);
   expect((await db.query('SELECT created_by FROM beta_invites WHERE email=$1',[invited])).rows[0].created_by).toBe(b.id);
   expect((await db.query('SELECT count(*)::int AS n FROM mail_outbox WHERE recipient=$1',[invited])).rows[0].n).toBe(0);
+  await other.close();
+});
+
+test('server wallet grant is fixed, exactly once and cannot target another member or import demo Credits',async({context,browser})=>{
+  const address=email();await register(context,address);
+  const other=await browser.newContext({baseURL:base});const otherEmail=email();await register(other,otherEmail);
+  const {rows:[b]}=await db.query('SELECT id FROM "user" WHERE email=$1',[otherEmail]);
+  expect((await context.request.post('/api/account/wallet',{headers:{origin:'https://attacker.invalid'},data:{}})).status()).toBe(403);
+  for(const data of [{amountCents:'999999999'},{credits:999999999},{userId:b.id}])expect((await context.request.post('/api/account/wallet',{headers:{origin:base},data})).status()).toBe(400);
+  const grants=await Promise.all(Array.from({length:5},()=>context.request.post('/api/account/wallet',{headers:{origin:base},data:{}})));
+  expect(grants.filter(x=>x.status()===201)).toHaveLength(1);expect(grants.filter(x=>x.status()===200)).toHaveLength(4);
+  const values=await Promise.all(grants.map(x=>x.json()));for(const value of values)expect(value.wallet).toEqual({availableCents:'100000',reservedCents:'0'});
+  expect(new Set(values.map(x=>x.startingGrantEventId)).size).toBe(1);
+  expect((await(await other.request.get('/api/account/wallet')).json()).wallet).toBeNull();
+  expect((await context.request.get('/api/admin/ledger')).status()).toBe(403);
+  await db.query("UPDATE members SET role='admin' WHERE user_id=$1",[b.id]);
+  expect((await other.request.post('/api/auth/sign-in/email',{headers:{origin:base},data:{email:otherEmail,password}})).ok()).toBeTruthy();
+  const profile=await(await context.request.get('/api/account/profile')).json();
+  const diagnostic=await(await other.request.get('/api/admin/ledger?userId='+profile.id)).json();
+  expect(diagnostic.ok).toBe(true);expect(diagnostic.ledger.startingGrantCount).toBe('1');expect(diagnostic.ledger.eventCount).toBe('1');expect(diagnostic.heldReservationCents).toBe('0');
   await other.close();
 });

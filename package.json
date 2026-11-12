@@ -23,7 +23,8 @@
     "auth:invite": "node scripts/auth/manage.mjs invite",
     "auth:member": "node scripts/auth/manage.mjs member",
     "test:auth": "node --experimental-strip-types --test tests/auth/*.test.mjs",
-    "test:auth:e2e": "playwright test --config playwright.auth.config.mjs"
+    "test:auth:e2e": "playwright test --config playwright.auth.config.mjs",
+    "test:ledger": "node --experimental-strip-types --test tests/ledger/*.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",
