@@ -53,7 +53,7 @@ after(async () => { await client.end(); });
 
 test('empty database migrations replay safely and all stored instants are timezone-aware', async () => {
   mustPass(migration());
-  assert.equal((await query('SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations')).rows[0].n, 5);
+  assert.equal((await query('SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations')).rows[0].n, 7);
   const wrong = await query(`SELECT table_name,column_name FROM information_schema.columns WHERE table_schema='public' AND data_type='timestamp without time zone'`);
   assert.deepEqual(wrong.rows, []);
   const pending = await query('SELECT count(*)::int AS n FROM artists');

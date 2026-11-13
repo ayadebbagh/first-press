@@ -121,3 +121,29 @@ test('server wallet grant is fixed, exactly once and cannot target another membe
   expect(diagnostic.ok).toBe(true);expect(diagnostic.ledger.startingGrantCount).toBe('1');expect(diagnostic.ledger.eventCount).toBe('1');expect(diagnostic.heldReservationCents).toBe('0');
   await other.close();
 });
+
+test('listener intake requires admin origin, preserves quarantine and replays captures idempotently',async({context,browser})=>{
+  const address=email();await register(context,address);
+  const endpoint='/api/admin/listener-observations';
+  expect((await context.request.post(endpoint,{headers:{origin:base},data:{}})).status()).toBe(403);
+  const anonymous=await browser.newContext({baseURL:base});expect((await anonymous.request.get(endpoint+'?id=x&artistId=x')).status()).toBe(401);await anonymous.close();
+  const {rows:[user]}=await db.query('SELECT id FROM "user" WHERE email=$1',[address]);
+  await db.query("UPDATE members SET role='admin' WHERE user_id=$1",[user.id]);
+  expect((await context.request.post('/api/auth/sign-in/email',{headers:{origin:base},data:{email:address,password}})).ok()).toBeTruthy();
+  const artist=randomUUID(),spotify=artist.replaceAll('-','').slice(0,22);
+  await db.query("INSERT INTO artists(id,slug,name,spotify_artist_id,status) VALUES ($1,$1,'Intake Fixture',$2,'active')",[artist,spotify]);
+  const payload={artistId:artist,sourceEventKey:randomUUID(),provider:'spotify',metric:'monthly_listeners',providerArtistId:spotify,listenerCount:'10000',sourceUrl:'https://open.spotify.com/artist/'+spotify,
+    evidence:{reference:'fixture/'+artist+'.png',sha256:'a'.repeat(64)},parserVersion:'manual-fixture-v1',observedAt:new Date(Date.now()-60000).toISOString(),fetchedAt:new Date(Date.now()-59000).toISOString(),sourceUpdatedAt:null};
+  expect((await context.request.post(endpoint,{headers:{origin:'https://attacker.invalid'},data:payload})).status()).toBe(403);
+  expect((await context.request.post(endpoint,{headers:{origin:base},data:{...payload,status:'accepted'}})).status()).toBe(400);
+  expect((await context.request.post(endpoint,{headers:{origin:base},data:{...payload,reviewReason:'x'.repeat(17000)}})).status()).toBe(413);
+  const created=await context.request.post(endpoint,{headers:{origin:base},data:payload});expect(created.status()).toBe(201);expect(created.headers()['cache-control']).toContain('no-store');
+  const observation=await created.json();expect(observation.status).toBe('accepted');expect(observation.snapshotId).toBeTruthy();
+  const replay=await context.request.post(endpoint,{headers:{origin:base},data:payload});expect(replay.status()).toBe(200);expect((await replay.json()).id).toBe(observation.id);
+  expect((await context.request.post(endpoint,{headers:{origin:base},data:{...payload,listenerCount:'99999'}})).status()).toBe(409);
+  const bad=await context.request.post(endpoint,{headers:{origin:base},data:{...payload,sourceEventKey:randomUUID(),listenerCount:0}});expect(bad.status()).toBe(201);
+  const quarantined=await bad.json();expect(quarantined.status).toBe('quarantined');expect(quarantined.snapshotId).toBeNull();
+  const review=await context.request.get(endpoint+'?id='+quarantined.id+'&artistId='+artist);expect(review.status()).toBe(200);
+  const detail=await review.json();expect(detail.payload.listenerCount).toBe(0);expect(detail.actorId).toBe(user.id);expect(detail.reasons).toContain('invalid_listener_count');
+  expect((await db.query('SELECT count(*)::int n FROM listener_snapshots WHERE artist_id=$1',[artist])).rows[0].n).toBe(1);
+});
