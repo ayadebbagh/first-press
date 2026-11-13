@@ -95,6 +95,34 @@ export const snapshotAnnotations = pgTable('snapshot_annotations', {
   createdAt: instant('created_at').notNull().defaultNow(),
 }, t => [check('annotation_kind', sql`${t.kind} IN ('disputed', 'reviewed', 'prospective_correction')`), index('annotation_snapshot_idx').on(t.snapshotId)]);
 
+// Raw submissions retain invalid metrics, counts and timestamps without coercing
+// them into a normalized Spotify quote. Only accepted submissions have a quote.
+export const listenerObservations = pgTable('listener_observations', {
+  id: text('id').primaryKey(),
+  artistId: text('artist_id').notNull().references(() => artists.id, { onDelete: 'restrict' }),
+  sourceEventKey: text('source_event_key').notNull(),
+  payloadHash: text('payload_hash').notNull(),
+  payload: jsonb('payload').notNull(),
+  status: observationStatus('status').notNull(),
+  reasons: jsonb('reasons').notNull(),
+  validationVersion: text('validation_version').notNull(),
+  snapshotId: text('snapshot_id').unique(),
+  correctsObservationId: text('corrects_observation_id'),
+  actorId: text('actor_id').notNull().references(() => user.id, { onDelete: 'restrict' }),
+  receivedAt: instant('received_at').notNull().defaultNow(),
+}, t => [
+  unique('observation_artist_id').on(t.id,t.artistId),
+  unique('observation_source_event').on(t.artistId,t.sourceEventKey),
+  foreignKey({name:'observation_quote_artist',columns:[t.snapshotId,t.artistId],foreignColumns:[listenerSnapshots.id,listenerSnapshots.artistId]}),
+  foreignKey({name:'observation_correction_artist',columns:[t.correctsObservationId,t.artistId],foreignColumns:[t.id,t.artistId]}),
+  index('observation_review_idx').on(t.status,t.receivedAt),
+  check('observation_envelope',sql`length(${t.sourceEventKey}) BETWEEN 1 AND 200 AND ${t.payloadHash} ~ '^[a-f0-9]{64}$' AND jsonb_typeof(${t.payload}) = 'object' AND ${t.validationVersion} = 'spotify-listeners-v1'`),
+  check('observation_result',sql`CASE WHEN jsonb_typeof(${t.reasons}) = 'array' THEN
+    (${t.status} = 'accepted' AND ${t.snapshotId} IS NOT NULL AND jsonb_array_length(${t.reasons}) = 0) OR
+    (${t.status} = 'quarantined' AND ${t.snapshotId} IS NULL AND jsonb_array_length(${t.reasons}) > 0) ELSE false END`),
+  check('observation_no_self_correction',sql`${t.correctsObservationId} IS NULL OR ${t.correctsObservationId} <> ${t.id}`),
+]);
+
 export const wallets = pgTable('wallets', {
   userId: text('user_id').primaryKey().references(() => user.id, { onDelete: 'restrict' }),
   availableCents: cents('available_cents').notNull().default(sql`0`),

@@ -36,6 +36,20 @@
       "when": 1794519268485,
       "tag": "0004_wallet_integrity",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794535291369,
+      "tag": "0005_listener_observations",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794535326686,
+      "tag": "0006_observation_guards",
+      "breakpoints": true
     }
   ]
 }
