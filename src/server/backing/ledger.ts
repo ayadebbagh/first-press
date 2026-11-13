@@ -40,6 +40,12 @@ async function lockedWallet(tx: LedgerTransaction,userId: string) {
   if(wallet.availableCents!==BigInt(String(sums.rows[0].available))||wallet.reservedCents!==BigInt(String(sums.rows[0].reserved)))throw new LedgerError('drift','Wallet accounting needs review.');
   return wallet;
 }
+// Internal owning services call this after the artist lock and before any order
+// lock. Holding only an order before entering the ledger can deadlock admission.
+export async function lockBackingAccount(tx: LedgerTransaction,userId: string) {
+  await lockEligibleOwner(tx,userId);
+  return lockedWallet(tx,userId);
+}
 async function append(tx: LedgerTransaction,userId: string,balance: Balance,event: {
   kind: typeof schema.ledgerEvents.$inferInsert.kind; idempotencyKey: string;
   orderId?: string;artistId?: string;availableDelta: bigint;reservedDelta: bigint;
@@ -71,8 +77,7 @@ export async function postOrderMovement(tx: LedgerTransaction,userId: string,inp
   if(!input||!['buy_reserve','buy_cancel','buy_settle','sell_settle'].includes(input.kind)||
     typeof input.orderId!=='string'||!input.orderId||typeof input.idempotencyKey!=='string'||input.idempotencyKey.length<1||input.idempotencyKey.length>200)throw new LedgerError('invalid','Invalid ledger movement.');
   bounded(input.amountCents);
-  await lockEligibleOwner(tx,userId);
-  const wallet=await lockedWallet(tx,userId);
+  const wallet=await lockBackingAccount(tx,userId);
   const [order]=await tx.select().from(schema.orders).where(and(eq(schema.orders.id,input.orderId),eq(schema.orders.userId,userId))).for('update');
   if(!order)throw new LedgerError('ineligible','Owned order required.');
   if((input.kind==='sell_settle')!==(order.side==='sell')||(order.side==='buy'&&input.amountCents!==order.amountCents))throw new LedgerError('invalid','Movement must match the order intent.');

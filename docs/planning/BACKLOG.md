@@ -1,6 +1,6 @@
 # Development backlog
 
-Generated from [backlog.json](backlog.json). 6 epics and 40 actionable tasks. Relative effort is not a delivery-date estimate.
+Generated from [backlog.json](backlog.json). 6 epics and 41 actionable tasks. Relative effort is not a delivery-date estimate.
 
 Read [the roadmap](../ROADMAP.md) for sequencing and release gates. Live publication status is in [PUBLICATION.md](PUBLICATION.md).
 
@@ -32,11 +32,12 @@ Authenticated, persistent and transactional artist backing in staging.
 | A01 | [Create PostgreSQL schema, migrations and isolated seed data](issues/A01.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/19) | P0 | M | F01, F04 |
 | A02 | [Implement invite-only sessions and authorization](issues/A02.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/20) | P0 | M | A01 |
 | A03 | [Create an auditable Credit ledger and exactly-once starting grant](issues/A03.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/21) | P0 | M | A02 |
-| A04 | [Implement server-backed buy reservations and cancellation](issues/A04.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/22) | P0 | M | A03, C04 |
+| A04 | [Implement server-backed buy reservations and cancellation](issues/A04.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/22) | P0 | M | A03, C04, C09 |
 | A05 | [Implement queued partial/full exits and quantity reservations](issues/A05.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/23) | P0 | M | A04 |
 | A06 | [Settle eligible orders transactionally at accepted snapshots](issues/A06.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/24) | P0 | L | A05, C04, F04 |
 | A07 | [Connect portfolio and artist backing screens to owned APIs](issues/A07.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/25) | P1 | M | A06 |
 | A08 | [Test ledger invariants, authorization and settlement concurrency](issues/A08.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/26) | P0 | M | A06 |
+| C09 | [Preserve correction ancestry and scope outlier confirmations](issues/C09.md) · [GitHub](https://github.com/ayadebbagh/first-press/issues/57) | P0 | S | C04 |
 
 ## M2 — Trusted invite-only beta
 

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { createAuthClient } from 'better-auth/react';
+import { BackingPanel } from './BackingPanel';
 const authClient = createAuthClient();
 
 export function AccountPanel({ enabled, google }: { enabled: boolean; google: boolean }) {
@@ -40,7 +41,7 @@ function SessionPanel({ google }: { google: boolean }) {
   }
   if (isPending) return <div className="auth-paper" role="status">Checking your session…</div>;
   if (error) return <div className="auth-paper"><h2>Temporarily off the record.</h2><p>We could not reach the account service.</p><button className="auth-button" onClick={()=>refetch()}>Try again</button></div>;
-  if (session) return <div className="auth-paper"><span className="auth-kicker">CONNECTED ACCOUNT</span><h2>Good to see you,<br/>{session.user.name}.</h2><p className="auth-email">{session.user.email}</p><p>Your identity is saved on the server. Backing and verified receipts are coming next; the demo’s Credits and collection stay on this device.</p><ProfileForm name={session.user.name} onSaved={()=>refetch()}/>{google&&<button className="auth-secondary" disabled={busy} onClick={()=>social(true)}>Connect Google to this account ↗</button>}<button className="auth-secondary" disabled={busy} onClick={async()=>{setBusy(true);try{const result=await authClient.signOut();if(result.error)setMessage('Could not sign out. Please try again.');else await refetch();}catch{setMessage('Could not sign out. Please try again.');}finally{setBusy(false);}}}>Sign out</button><p role="status">{message}</p></div>;
+  if (session) return <div className="connected-account-stack"><div className="auth-paper"><span className="auth-kicker">CONNECTED ACCOUNT</span><h2>Good to see you,<br/>{session.user.name}.</h2><p className="auth-email">{session.user.email}</p><p>Your identity is saved on the server. Manage your server wallet and queued backing below. The demo’s Credits and collection stay on this device.</p><ProfileForm name={session.user.name} onSaved={()=>refetch()}/>{google&&<button className="auth-secondary" disabled={busy} onClick={()=>social(true)}>Connect Google to this account ↗</button>}<button className="auth-secondary" disabled={busy} onClick={async()=>{setBusy(true);try{const result=await authClient.signOut();if(result.error)setMessage('Could not sign out. Please try again.');else await refetch();}catch{setMessage('Could not sign out. Please try again.');}finally{setBusy(false);}}}>Sign out</button><p role="status">{message}</p></div><BackingPanel key={session.user.id} userId={session.user.id}/></div>;
   return <div className="auth-paper"><span className="auth-kicker">INVITE-ONLY BETA / 001</span><h2>{mode==='signup'?'Get on record.':mode==='forgot'?'Find your way back.':'Your ears. Your account.'}</h2><p>{mode==='signup'?'Use the email address that was invited. Verify it before your first sign-in.':mode==='forgot'?'We’ll send a short-lived link if there’s an account for your email.':'Sign in to your connected beta account.'}</p>
     {mode!=='forgot'&&google&&<><button className="auth-google" onClick={()=>social()} disabled={busy}>Continue with Google ↗</button><span className="auth-divider">OR USE EMAIL</span></>}
     <form onSubmit={submit}>

@@ -1,6 +1,6 @@
 # Invite-only identity (A02)
 
-A connected identity is separate from the local-storage demo. Account creation does not grant Credits, import browser balances, or publish verified receipts. A03 supplies the [server ledger](LEDGER.md) and explicit initialization endpoint; A04–A08 implement orders and connected portfolio UI. `/account` and `/reset-password` are independent app screens; demo discovery stays available when accounts are disabled.
+A connected identity is separate from the local-storage demo. Account creation does not grant Credits, import browser balances, or publish verified receipts. A03 supplies the [server ledger](LEDGER.md) and explicit initialization endpoint; A04 adds the [connected buy/cancel panel](BUY-ORDERS.md) on `/account`. Exits, settlement and the full portfolio remain A05–A08 work. `/account` and `/reset-password` are independent app screens; demo discovery stays available when accounts are disabled.
 
 ## Enable on an isolated host
 

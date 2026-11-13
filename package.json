@@ -25,7 +25,8 @@
     "test:auth": "node --experimental-strip-types --test tests/auth/*.test.mjs",
     "test:auth:e2e": "playwright test --config playwright.auth.config.mjs",
     "test:ledger": "node --experimental-strip-types --test tests/ledger/*.test.mjs",
-    "test:observations": "node --experimental-strip-types --test tests/observations/*.test.mjs"
+    "test:observations": "node --experimental-strip-types --test tests/observations/*.test.mjs",
+    "test:orders": "node --experimental-strip-types --test tests/orders/*.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

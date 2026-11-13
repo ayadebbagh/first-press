@@ -74,9 +74,66 @@ test('accepted-source corrections and disputes cannot silently reprice history',
   const f=await fixture(),original=await f.submit();
   const corrected=await f.submit({sourceEventKey:randomUUID(),correctsObservationId:original.id,listenerCount:'11000',observedAt:new Date(Date.now()-120000).toISOString(),fetchedAt:new Date(Date.now()-119000).toISOString()});
   assert.equal(corrected.status,'quarantined');assert.ok(corrected.reasons.includes('accepted_correction_requires_incident_review'));
+  let parent=corrected.id;
+  for(let i=0;i<4;i++){
+    const descendant=await f.submit({sourceEventKey:randomUUID(),correctsObservationId:parent,listenerCount:'11000',observedAt:new Date(Date.now()-110000+i*1000).toISOString(),fetchedAt:new Date(Date.now()-109000+i*1000).toISOString()});
+    assert.equal(descendant.status,'quarantined');assert.equal(descendant.snapshotId,null);assert.ok(descendant.reasons.includes('accepted_correction_requires_incident_review'));parent=descendant.id;
+  }
   await pool.query("INSERT INTO snapshot_annotations(id,snapshot_id,kind,reason,actor_id) VALUES ($1,$2,'disputed','Fixture incident',$3)",[randomUUID(),original.snapshotId,f.actor]);
   const disputed=await f.submit({sourceEventKey:randomUUID(),observedAt:new Date(Date.now()-60000).toISOString(),fetchedAt:new Date(Date.now()-59000).toISOString()});
   assert.equal(disputed.status,'quarantined');assert.ok(disputed.reasons.includes('disputed_history_requires_incident_review'));assert.equal((await snapshot(original.snapshotId)).listener_count,'10000');
+});
+test('outlier confirmations cannot reuse a quarantine for different count, time or evidence',async()=>{
+  const f=await fixture();await f.submit();
+  const candidate={sourceEventKey:randomUUID(),listenerCount:'20000',observedAt:new Date(Date.now()-120000).toISOString(),fetchedAt:new Date(Date.now()-119000).toISOString()};
+  const quarantined=await f.submit(candidate);assert.equal(quarantined.status,'quarantined');
+  for(const patch of [{listenerCount:'1000000000000'},{observedAt:new Date(Date.now()-100000).toISOString(),fetchedAt:new Date(Date.now()-99000).toISOString()},{evidence:{reference:'different.png',sha256:'b'.repeat(64)}}]){
+    const result=await f.submit({...candidate,...patch,sourceEventKey:randomUUID(),correctsObservationId:quarantined.id,reviewReason:'Explicitly reviewed the archived source count and evidence.'});
+    assert.equal(result.status,'quarantined');assert.equal(result.snapshotId,null);assert.ok(result.reasons.includes('outlier_review_capture_mismatch'));
+  }
+  const confirmed=await f.submit({...candidate,sourceEventKey:randomUUID(),correctsObservationId:quarantined.id,reviewReason:'Explicitly reviewed this exact archived source count and evidence.'});assert.equal(confirmed.status,'accepted');
+  const reused=await f.submit({...candidate,sourceEventKey:randomUUID(),correctsObservationId:quarantined.id,reviewReason:'Attempted to reuse the old confirmation for the same capture.'});assert.equal(reused.status,'quarantined');assert.ok(reused.reasons.includes('out_of_order_observation'));
+});
+test('correcting malformed parent evidence retains a deliberate candidate quarantine instead of a SQL error',async()=>{
+  const f=await fixture();await f.submit();
+  const candidate={sourceEventKey:randomUUID(),listenerCount:'20000',observedAt:new Date(Date.now()-120000).toISOString(),fetchedAt:new Date(Date.now()-119000).toISOString()};
+  const bad=await f.submit({...candidate,evidence:{...f.input.evidence,unexpected:'remove'}});assert.equal(bad.status,'quarantined');assert.ok(bad.reasons.includes('invalid_evidence'));
+  const corrected=await f.submit({...candidate,sourceEventKey:randomUUID(),correctsObservationId:bad.id,reviewReason:'Removed unsupported metadata and reviewed the archived evidence.'});
+  assert.equal(corrected.status,'quarantined');assert.ok(corrected.reasons.includes('outlier_review_capture_mismatch'));
+  const confirmed=await f.submit({...candidate,sourceEventKey:randomUUID(),correctsObservationId:corrected.id,reviewReason:'Confirmed this corrected candidate against the exact evidence.'});assert.equal(confirmed.status,'accepted');
+});
+test('PostgreSQL-incompatible Unicode is a deliberate envelope error, not a transient database failure',async()=>{
+  const f=await fixture();
+  for(const patch of [{listenerCount:'bad\u0000count'},{listenerCount:'bad\ud800count'},{listenerCount:'bad\udc00count'},{evidence:{reference:'bad\u0000reference',sha256:'a'.repeat(64)}},{sourceEventKey:'bad\u0000key'}])await assert.rejects(f.submit(patch),error('invalid'));
+  const valid=await f.submit({evidence:{reference:'fixtures/é-音楽-🎵.png',sha256:'a'.repeat(64)}});assert.equal(valid.status,'accepted');
+});
+test('database guards independently reject laundering and mismatched outlier confirmations',async()=>{
+  const f=await fixture(),accepted=await f.submit();
+  const candidate={...f.input,listenerCount:'20000',sourceEventKey:randomUUID(),observedAt:new Date(Date.now()-120000).toISOString(),fetchedAt:new Date(Date.now()-119000).toISOString()};
+  const outlier=await f.submit(candidate),incident=await f.submit({...candidate,listenerCount:'11000',sourceEventKey:randomUUID(),correctsObservationId:accepted.id});
+  for(const [parent,payload,reason] of [[incident.id,{...candidate,listenerCount:'11000'},'ancestry'],[outlier.id,{...candidate,listenerCount:'30000'},'candidate']]){
+    const client=await pool.connect(),id=randomUUID(),quote=randomUUID(),now=new Date();
+    await client.query('BEGIN');
+    try{
+      const evidence={...payload.evidence,observationId:id,validationVersion:'spotify-listeners-v2'};
+      await client.query(`INSERT INTO listener_snapshots(id,artist_id,status,listener_count,source_url,source_event_key,evidence,parser_version,observed_at,fetched_at,accepted_at,reviewed_by)
+        VALUES ($1,$2,'accepted',$3,$4,$5,$6,$7,$8,$9,$10,$11)`,[quote,f.artist,payload.listenerCount,payload.sourceUrl,'observation:'+id,evidence,payload.parserVersion,payload.observedAt,payload.fetchedAt,now,f.actor]);
+      await assert.rejects(client.query(`INSERT INTO listener_observations(id,artist_id,source_event_key,payload_hash,payload,status,reasons,validation_version,snapshot_id,corrects_observation_id,actor_id,received_at)
+        VALUES ($1,$2,$1,repeat('a',64),$3,'accepted','[]','spotify-listeners-v2',$4,$5,$6,$7)`,[id,f.artist,payload,quote,parent,f.actor,now]),e=>e.code==='23514'&&e.message.includes(reason));
+    }finally{await client.query('ROLLBACK');client.release();}
+    assert.equal(await snapshot(quote),undefined);
+  }
+  // Bulk import cannot hide a just-inserted intermediary from ancestry checks.
+  const client=await pool.connect(),parent=randomUUID(),id=randomUUID(),quote=randomUUID(),now=new Date();
+  const payload={...candidate,listenerCount:'11000',correctsObservationId:parent};
+  await client.query('BEGIN');
+  try{
+    await client.query(`INSERT INTO listener_snapshots(id,artist_id,status,listener_count,source_url,source_event_key,evidence,parser_version,observed_at,fetched_at,accepted_at,reviewed_by)
+      VALUES ($1,$2,'accepted',$3,$4,$5,$6,$7,$8,$9,$10,$11)`,[quote,f.artist,payload.listenerCount,payload.sourceUrl,'observation:'+id,{...payload.evidence,observationId:id,validationVersion:'spotify-listeners-v2'},payload.parserVersion,payload.observedAt,payload.fetchedAt,now,f.actor]);
+    await assert.rejects(client.query(`INSERT INTO listener_observations(id,artist_id,source_event_key,payload_hash,payload,status,reasons,validation_version,snapshot_id,corrects_observation_id,actor_id,received_at) VALUES
+      ($1,$3,$1,repeat('a',64),'{}','quarantined','["accepted_correction_requires_incident_review"]','spotify-listeners-v2',NULL,$4,$5,$6),
+      ($2,$3,$2,repeat('b',64),$7,'accepted','[]','spotify-listeners-v2',$8,$1,$5,$6)`,[parent,id,f.artist,accepted.id,f.actor,now,payload,quote]),e=>e.code==='23514'&&e.message.includes('ancestry'));
+  }finally{await client.query('ROLLBACK');client.release();}
 });
 test('admission rejects non-admin/unverified/suspended callers and preserves the demo boundary',async()=>{
   for(const options of [{role:'member'},{verified:false}]){const f=await fixture(options);await assert.rejects(f.submit(),error('forbidden'));}

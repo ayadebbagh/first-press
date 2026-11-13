@@ -2,7 +2,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import * as schema from '../db/schema.ts';
-import { isRecord, LISTENER_VALIDATION_VERSION, MAX_OBSERVATION_BYTES, observationEnvelope, validateListenerObservation } from '../../domain/listener-validation.ts';
+import { isRecord, isPostgresText, LISTENER_VALIDATION_VERSION, MAX_OBSERVATION_BYTES, observationEnvelope, validateListenerObservation } from '../../domain/listener-validation.ts';
 
 type Database = NodePgDatabase<typeof schema>;
 export class ObservationError extends Error {
@@ -13,8 +13,9 @@ export class ObservationError extends Error {
 // evidence and the original raw count representation do have semantic effect.
 function canonical(value: unknown, depth = 0): string {
   if (depth > 12) throw new Error('Observation JSON is too deeply nested.');
+  if(typeof value==='string'&&!isPostgresText(value))throw new Error('Observation JSON has unsupported Unicode.');
   if (Array.isArray(value)) return '['+value.map(item=>canonical(item,depth+1)).join(',')+']';
-  if (isRecord(value)) return '{'+Object.keys(value).sort().map(key=>JSON.stringify(key)+':'+canonical(value[key],depth+1)).join(',')+'}';
+  if (isRecord(value)) return '{'+Object.keys(value).sort().map(key=>canonical(key,depth+1)+':'+canonical(value[key],depth+1)).join(',')+'}';
   return JSON.stringify(value);
 }
 export function observationResult(row: typeof schema.listenerObservations.$inferSelect, created = false) {
@@ -53,14 +54,15 @@ export async function submitListenerObservation(db: Database, actorId: string, r
       if (!correction) throw new ObservationError('not_found','Correction parent not found for this artist.');
     }
     const [previous] = await tx.select().from(schema.listenerSnapshots).where(and(eq(schema.listenerSnapshots.artistId,artist.id),eq(schema.listenerSnapshots.status,'accepted'),eq(schema.listenerSnapshots.synthetic,false))).orderBy(desc(schema.listenerSnapshots.observedAt),desc(schema.listenerSnapshots.acceptedAt)).limit(1);
-    const dispute = await tx.execute(sql`SELECT 1 FROM snapshot_annotations a JOIN listener_snapshots s ON s.id=a.snapshot_id
-      WHERE s.artist_id=${artist.id} AND a.kind='disputed' LIMIT 1`);
+    const dispute = await tx.execute(sql`SELECT EXISTS(SELECT 1 FROM snapshot_annotations a JOIN listener_snapshots s ON s.id=a.snapshot_id
+      WHERE s.artist_id=${artist.id} AND a.kind='disputed') OR fp_observation_artist_needs_review(${artist.id}) AS blocked`);
+    const ancestry=correction?await tx.execute(sql`SELECT fp_observation_incident_ancestry(${correction.id}) AS blocked`):null;
     // clock_timestamp, rather than transaction start, reflects lock wait time.
     const clock = await tx.execute(sql`SELECT clock_timestamp() AS now`);
     const now = clock.rows[0].now instanceof Date ? clock.rows[0].now : new Date(String(clock.rows[0].now));
-    const validation = validateListenerObservation(input,{now,artist,disputed:dispute.rows.length>0,
+    const validation = validateListenerObservation(input,{now,artist,disputed:dispute.rows[0].blocked===true,
       previous:previous?.listenerCount ? {listenerCount:previous.listenerCount,observedAt:previous.observedAt} : undefined,
-      correction:correction ? {status:correction.status,reasons:correction.reasons as string[]} : undefined});
+      correction:correction ? {status:correction.status,reasons:correction.reasons as string[],payload:correction.payload as Record<string,unknown>,incidentBlocked:ancestry?.rows[0].blocked===true} : undefined});
     const id = randomUUID(), snapshotId = validation.status === 'accepted' ? randomUUID() : null;
     if (snapshotId) await tx.insert(schema.listenerSnapshots).values({
       id:snapshotId,artistId:artist.id,status:'accepted',listenerCount:validation.listenerCount,
