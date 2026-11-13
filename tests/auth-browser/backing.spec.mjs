@@ -102,7 +102,7 @@ async function capture(page,info,state){
   await page.screenshot({path:info.outputPath(`backing-${state}-${info.project.name}.png`),fullPage:true});
 }
 async function prepareBuy(page,amount='250.37'){
-  await page.getByLabel('Artist',{exact:true}).selectOption(artist.id);
+  await page.getByRole('combobox',{name:'Artist',exact:true}).selectOption(artist.id);
   await page.getByLabel('Credits to reserve',{exact:true}).fill(amount);
 }
 
@@ -269,14 +269,14 @@ test('lost response after real POST commit survives reload and retries exactly o
   expect(committed.order.status).toBe('queued');
   await page.reload();await balances(page,'982.57','17.43');
   await expect(row(page).getByText('QUEUED',{exact:true})).toBeVisible();
-  await expect(page.getByLabel('Artist',{exact:true})).toBeDisabled();
+  await expect(page.getByRole('combobox',{name:'Artist',exact:true})).toBeDisabled();
   await expect(page.getByLabel('Credits to reserve',{exact:true})).toHaveValue('17.43');
   const replayed=page.waitForResponse(response=>new URL(response.url()).pathname==='/api/account/orders'&&response.request().method()==='POST');
   await page.getByRole('button',{name:'Retry this same backing ↗',exact:true}).click();
   const response=await replayed;expect(response.request().postDataJSON()).toEqual(intent);expect(response.status()).toBe(200);
   const result=await response.json();expect(result.created).toBe(false);expect(result.order.id).toBe(committed.order.id);
   await expect(page.getByRole('button',{name:'Queue server backing ↗',exact:true})).toBeVisible();
-  await expect(page.getByLabel('Artist',{exact:true})).toBeEnabled();await expect(row(page)).toHaveCount(1);
+  await expect(page.getByRole('combobox',{name:'Artist',exact:true})).toBeEnabled();await expect(row(page)).toHaveCount(1);
   await balances(page,'982.57','17.43');
   const {rows:[proof]}=await db.query(`SELECT
     (SELECT count(*)::int FROM orders WHERE user_id=$1) orders,
@@ -302,7 +302,7 @@ test('request dropped before the server unlocks only after a paused artist retry
   expect((await db.query('SELECT count(*)::int n FROM orders WHERE user_id=$1',[member.id])).rows[0].n).toBe(0);
   await db.query("UPDATE artists SET status='suspended' WHERE id=$1",[artist.id]);
   await page.reload();
-  await expect(page.getByLabel('Artist',{exact:true})).toBeDisabled();
+  await expect(page.getByRole('combobox',{name:'Artist',exact:true})).toBeDisabled();
   const retried=page.waitForResponse(response=>new URL(response.url()).pathname==='/api/account/orders'&&response.request().method()==='POST');
   await page.getByRole('button',{name:'Retry this same backing ↗',exact:true}).click();
   const response=await retried;expect(response.request().postDataJSON()).toEqual(intent);expect(response.status()).toBe(422);
