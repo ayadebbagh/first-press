@@ -33,18 +33,22 @@ test('50 percent listener changes require explicit confirmation on a quarantined
   const previous={listenerCount:10000n,observedAt:new Date('2026-11-12T11:58:00.000Z')};
   for(const listenerCount of ['5000','15000','1000000000000'])assert.ok(check({listenerCount},{previous}).reasons.includes('listener_change_requires_review'));
   assert.equal(check({listenerCount:'14999'},{previous}).status,'accepted');
-  const correction={status:'quarantined',reasons:['listener_change_requires_review']};
+  const correction={status:'quarantined',reasons:['listener_change_requires_review'],payload:{...input(),listenerCount:'20000'}};
   const reviewed={listenerCount:'20000',correctsObservationId:'quarantine',reviewReason:'Compared the archived artist profile and confirmed the count.'};
   assert.equal(check(reviewed,{previous,correction}).status,'accepted');
   assert.equal(check({...reviewed,metric:'followers'},{previous,correction}).status,'quarantined');
   assert.equal(check({...reviewed,reviewReason:'ok'},{previous,correction}).status,'quarantined');
   assert.equal(check({...reviewed,correctsObservationId:undefined},{previous}).status,'quarantined');
+  for(const patch of [{listenerCount:'30000'},{observedAt:'2026-11-12T11:58:59.000Z'},{evidence:{reference:'different',sha256:'a'.repeat(64)}}])assert.ok(check({...reviewed,...patch},{previous,correction}).reasons.includes('outlier_review_capture_mismatch'));
+  assert.ok(check(reviewed,{previous,correction:{...correction,payload:{...correction.payload,evidence:{...input().evidence,unexpected:'remove'}}}}).reasons.includes('outlier_review_capture_mismatch'));
 });
 test('accepted corrections and disputed history stay blocked for the incident process',()=>{
   assert.ok(check({correctsObservationId:'accepted'},{correction:{status:'accepted',reasons:[]}}).reasons.includes('accepted_correction_requires_incident_review'));
   assert.equal(check({}, {disputed:true}).status,'quarantined');
   for(const status of ['review','suspended','archived'])assert.equal(check({}, {artist:{...artist,status}}).status,'quarantined');
   assert.equal(check({}, {artist:{...artist,synthetic:true}}).status,'quarantined');
+  assert.equal(check({correctsObservationId:'intermediary'},{correction:{status:'quarantined',reasons:['accepted_correction_requires_incident_review']}}).status,'quarantined');
+  assert.equal(check({correctsObservationId:'descendant'},{correction:{status:'quarantined',reasons:[],incidentBlocked:true}}).status,'quarantined');
 });
 test('missing evidence and parser provenance cannot create accepted quotes',()=>{
   for(const patch of [{evidence:null},{evidence:{reference:'x',sha256:'invalid'}},{evidence:{reference:'',sha256:'a'.repeat(64)}},{parserVersion:''}])assert.equal(check(patch).status,'quarantined');

@@ -116,7 +116,7 @@ export const listenerObservations = pgTable('listener_observations', {
   foreignKey({name:'observation_quote_artist',columns:[t.snapshotId,t.artistId],foreignColumns:[listenerSnapshots.id,listenerSnapshots.artistId]}),
   foreignKey({name:'observation_correction_artist',columns:[t.correctsObservationId,t.artistId],foreignColumns:[t.id,t.artistId]}),
   index('observation_review_idx').on(t.status,t.receivedAt),
-  check('observation_envelope',sql`length(${t.sourceEventKey}) BETWEEN 1 AND 200 AND ${t.payloadHash} ~ '^[a-f0-9]{64}$' AND jsonb_typeof(${t.payload}) = 'object' AND ${t.validationVersion} = 'spotify-listeners-v1'`),
+  check('observation_envelope',sql`length(${t.sourceEventKey}) BETWEEN 1 AND 200 AND ${t.payloadHash} ~ '^[a-f0-9]{64}$' AND jsonb_typeof(${t.payload}) = 'object' AND ${t.validationVersion} IN ('spotify-listeners-v1','spotify-listeners-v2')`),
   check('observation_result',sql`CASE WHEN jsonb_typeof(${t.reasons}) = 'array' THEN
     (${t.status} = 'accepted' AND ${t.snapshotId} IS NOT NULL AND jsonb_array_length(${t.reasons}) = 0) OR
     (${t.status} = 'quarantined' AND ${t.snapshotId} IS NULL AND jsonb_array_length(${t.reasons}) > 0) ELSE false END`),

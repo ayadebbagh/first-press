@@ -1,4 +1,4 @@
-export const LISTENER_VALIDATION_VERSION = 'spotify-listeners-v1';
+export const LISTENER_VALIDATION_VERSION = 'spotify-listeners-v2';
 export const MAX_OBSERVATION_BYTES = 16_384;
 const DAY = 86_400_000;
 type RecordValue = Record<string, unknown>;
@@ -19,6 +19,15 @@ export interface ObservationInput extends RecordValue {
   reviewReason?: string;
 }
 export const isRecord = (value: unknown): value is RecordValue => !!value && typeof value === 'object' && !Array.isArray(value);
+export function isPostgresText(value:string){
+  for(let i=0;i<value.length;i++){
+    const code=value.charCodeAt(i);
+    if(code===0)return false;
+    if(code>=0xd800&&code<=0xdbff){const next=value.charCodeAt(++i);if(!(next>=0xdc00&&next<=0xdfff))return false;}
+    else if(code>=0xdc00&&code<=0xdfff)return false;
+  }
+  return true;
+}
 const shortText = (value: unknown, max: number): value is string => typeof value === 'string' && value.trim().length > 0 && value.length <= max;
 export function observationEnvelope(value: unknown): ObservationInput {
   const fields = ['artistId','sourceEventKey','provider','metric','providerArtistId','listenerCount','sourceUrl','evidence','parserVersion','observedAt','fetchedAt','sourceUpdatedAt','correctsObservationId','reviewReason'];
@@ -49,7 +58,7 @@ export interface ValidationContext {
   artist: { spotifyArtistId: string; status: string; synthetic: boolean };
   previous?: { listenerCount: bigint; observedAt: Date };
   disputed: boolean;
-  correction?: { status: 'accepted'|'quarantined'; reasons: string[] };
+  correction?: { status: 'accepted'|'quarantined'; reasons: string[]; payload?:RecordValue; incidentBlocked?:boolean };
 }
 export function validateListenerObservation(input: ObservationInput, context: ValidationContext) {
   const reasons: string[] = [];
@@ -83,11 +92,18 @@ export function validateListenerObservation(input: ObservationInput, context: Va
   const outlier = value !== null && prior !== undefined && (value > prior ? value-prior : prior-value)*100n >= prior*50n;
   // A separate successor of a quarantined outlier can record an operator's
   // explicit confirmation. A generic reason can never bypass hard failures.
-  const confirmedOutlier = context.correction?.status === 'quarantined' &&
+  const parent=context.correction?.payload;
+  const parentEvidence=parent&&isRecord(parent.evidence)?parent.evidence:null;
+  const sameCandidate=!!parent&&['listenerCount','provider','metric','providerArtistId','sourceUrl','parserVersion','observedAt','fetchedAt'].every(key=>input[key]===parent[key])&&
+    (input.sourceUpdatedAt??null)===(parent.sourceUpdatedAt??null)&&isRecord(input.evidence)&&!!parentEvidence&&Object.keys(parentEvidence).length===2&&
+    input.evidence.reference===parentEvidence.reference&&input.evidence.sha256===parentEvidence.sha256;
+  const parentOutlier=context.correction?.reasons.includes('listener_change_requires_review')??false;
+  const confirmedOutlier = context.correction?.status === 'quarantined' && sameCandidate &&
     context.correction.reasons.includes('listener_change_requires_review') &&
     typeof input.reviewReason === 'string' && input.reviewReason.trim().length >= 20;
   add(outlier && !confirmedOutlier,'listener_change_requires_review');
-  add(context.correction?.status === 'accepted','accepted_correction_requires_incident_review');
+  add(parentOutlier&&!sameCandidate,'outlier_review_capture_mismatch');
+  add(context.correction?.status === 'accepted'||!!context.correction?.incidentBlocked||!!context.correction?.reasons.includes('accepted_correction_requires_incident_review')||!!context.correction?.reasons.includes('disputed_history_requires_incident_review'),'accepted_correction_requires_incident_review');
   add(input.reviewReason !== undefined && !input.correctsObservationId,'review_requires_quarantined_parent');
   return { status: reasons.length ? 'quarantined' as const : 'accepted' as const,
     reasons, listenerCount: value, observedAt: observed, fetchedAt: fetched, sourceUpdatedAt: updated };

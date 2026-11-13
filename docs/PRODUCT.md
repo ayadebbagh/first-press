@@ -13,7 +13,7 @@ FIRST PRESS lets underground-music listeners discover artists, commit virtual Cr
 
 ## Existing demo
 
-50 artists and 100 tracks form an editorial shortlist, not a measured popularity chart. 93 Spotify track metadata mappings are checked; seven remain unresolved. Artist listener values are synthetic. Orders, watchlists, requests, votes and receipts live in local storage. Receipt cards are editable demo records, not verified support history. The default demo has no server account requirement or shared community results. A02 supplies optional gated invite-only identity; its setup does not replace the local demo backing engine.
+50 artists and 100 tracks form an editorial shortlist, not a measured popularity chart. 93 Spotify track metadata mappings are checked; seven remain unresolved. Artist listener values are synthetic. Demo orders, watchlists, requests, votes and receipts live in local storage. Receipt cards are editable demo records, not verified support history. The default demo has no server account requirement or shared community results. Optional invite-only accounts now have an explicit server wallet and a separate buy/cancel panel for C04-admitted server artists. That panel does not import the demo economy, enable automatic settlement or establish that the 50 demo artists have been admitted to live backing.
 
 ## First connected beta
 

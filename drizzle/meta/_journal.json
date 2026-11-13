@@ -50,6 +50,20 @@
       "when": 1794535326686,
       "tag": "0006_observation_guards",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794537940966,
+      "tag": "0007_listener_review_v2",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794537968112,
+      "tag": "0008_listener_review_guards",
+      "breakpoints": true
     }
   ]
 }

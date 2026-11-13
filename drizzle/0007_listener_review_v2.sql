@@ -1,0 +1,2 @@
+ALTER TABLE "listener_observations" DROP CONSTRAINT "observation_envelope";--> statement-breakpoint
+ALTER TABLE "listener_observations" ADD CONSTRAINT "observation_envelope" CHECK (length("listener_observations"."source_event_key") BETWEEN 1 AND 200 AND "listener_observations"."payload_hash" ~ '^[a-f0-9]{64}$' AND jsonb_typeof("listener_observations"."payload") = 'object' AND "listener_observations"."validation_version" IN ('spotify-listeners-v1','spotify-listeners-v2'));

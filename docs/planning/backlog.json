@@ -479,7 +479,8 @@
       "effort": "M",
       "dependencies": [
         "A03",
-        "C04"
+        "C04",
+        "C09"
       ],
       "summary": "Deliver the first full backing vertical slice with pending state visible to the user.",
       "acceptance": [
@@ -980,6 +981,25 @@
         "The running Next.js app still opens its actual account route, including keyboard activation.",
         "Center the account initial horizontally and vertically at desktop and narrow mobile widths.",
         "Regenerate the local preview and verify actual file and HTTP behavior in isolated desktop/mobile browser tests; preserve local demo state and keep server sign-in out of the file preview."
+      ]
+    },
+    {
+      "key": "C09",
+      "kind": "task",
+      "title": "Preserve correction ancestry and scope outlier confirmations",
+      "area": "data",
+      "milestone": "M1",
+      "priority": "P0",
+      "effort": "S",
+      "dependencies": [
+        "C04"
+      ],
+      "summary": "Independent Herdr review found that a quarantined intermediary could bypass the accepted-source incident gate, and an old outlier quarantine could waive review for another capture. Close both before authoritative order admission and reject PostgreSQL-incompatible Unicode deliberately.",
+      "acceptance": [
+        "Block every descendant correction with accepted or incident-only ancestry, preserving historical quotes and audit records.",
+        "Bind outlier confirmation to the candidate count, identity, source, timestamps and evidence; a different candidate must enter review separately.",
+        "Reject NUL and lone-surrogate JSON as invalid envelopes without silent coercion or transient database errors.",
+        "Use forward migrations and prove service, database, API and historical upgrade behavior."
       ]
     }
   ]
