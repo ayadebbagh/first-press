@@ -1,6 +1,6 @@
 # Server buy orders and cancellation
 
-[A04 / #22](https://github.com/ayadebbagh/first-press/issues/22) adds the first connected backing slice on `/account`: explicit wallet initialization, eligible artist selection, exact Credit reservations, persisted pending/history views and cancellation. The device demo collection remains separate. Sale orders, settlement/receipts, the full connected portfolio and scheduled collection remain A05–A08/C05–C08 release work; this host does not automatically execute queued orders.
+[A04 / #22](https://github.com/ayadebbagh/first-press/issues/22) adds the first connected backing slice on `/account`: explicit wallet initialization, eligible artist selection, exact Credit reservations, persisted pending/history views and cancellation. [A05 exits](EXIT-ORDERS.md) add quantity reservations and mixed history/current positions. The device demo collection remains separate. Settlement/receipts, the full connected portfolio and scheduled collection remain A06–A08/C05–C08 release work; this host does not automatically execute queued orders.
 
 ## HTTP contract
 
@@ -8,11 +8,11 @@ All endpoints require an active, verified signed-in member. Responses are privat
 
 | Endpoint | Behavior |
 | --- | --- |
-| `GET /api/account/backing?cursor=…` | Read-only wallet, currently eligible server artists and up to 50 owned buy orders. Opaque `nextCursor` loads older rows in `(acceptedAt,id)` order. The response uses one repeatable-read database snapshot; errors never fall back to demo funds. |
+| `GET /api/account/backing?cursor=…` | Read-only wallet, eligible server artists, current positions and up to 50 owned buy/sell orders. Opaque `nextCursor` loads older rows in `(acceptedAt,id)` order. The response uses one repeatable-read database snapshot; errors never fall back to demo funds. |
 | `POST /api/account/wallet` with `{}` | Explicit existing A03 initialization: grant the fixed 1,000 virtual Credits once. Registration, GET and mounting the UI never grant/reset money. |
 | `POST /api/account/orders` | Exact `{artistId,amountCents,idempotencyKey}`. `amountCents` is a positive canonical integer decimal string in centi-Credits (100 = 1 Credit), minimum 100, maximum PostgreSQL signed bigint. Request keys are 8–128 ASCII alphanumeric/`:_-` characters. No account, price, listener count, clock, side or balance fields are accepted. |
-| `GET /api/account/orders/[id]` | Owned intent/status, immutable placement estimate, acceptance time and earliest cutoff. A foreign or missing order returns 404. |
-| `POST /api/account/orders/[id]/cancel` with `{}` or empty body | Cancel an owned pending buy and return the exact held Credits once. A retry returns its existing cancelled result; a settled order returns 409 without a refund. Extra authority fields are rejected. |
+| `GET /api/account/orders/[id]` | Owned intent/status, immutable placement estimate, acceptance time, earliest cutoff and exit allocations. One repeatable-read snapshot keeps fields coherent. A foreign or missing order returns 404. |
+| `POST /api/account/orders/[id]/cancel` with `{}` or empty body | Cancel an owned pending order. Buys return the exact held Credits once; exits release held backing quantities with no money movement. A retry returns its existing cancelled result; a settled order returns 409 without a refund. Extra authority fields are rejected. |
 
 Buy/cancel bodies are limited to 4 KiB. Limits per member/minute: 30 buys, 60 cancellations, 60 desk reads and 60 order-detail reads. Known failures return `{error,code,intentAbsent}`. Invalid intent is 400, unavailable/unreviewed artist or insufficient funds is 422, missing order/artist is 404, and request conflicts, uninitialized wallets, accounting drift or already-settled cancellation are 409. Auth/Origin/rate errors do not establish whether an earlier intent committed. Unexpected failures return 503 and must be retried with the same key.
 

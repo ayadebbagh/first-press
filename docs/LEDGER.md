@@ -1,6 +1,6 @@
 # Server Credit ledger (A03)
 
-The server owns real beta Credit records. [A04 buy reservations and cancellation](BUY-ORDERS.md) are available in the connected `/account` panel; the existing browser collection remains a separate synthetic demo. Settlement, exits, full portfolio and verified receipts remain later release work. Neither browser storage nor a submitted balance is imported. Credits remain virtual, with no purchase, transfer or cash redemption.
+The server owns real beta Credit records. [A04 buy reservations and cancellation](BUY-ORDERS.md) are available in the connected `/account` panel; the existing browser collection remains a separate synthetic demo. [A05 exits](EXIT-ORDERS.md) reserve/release backing quantities without moving money. Settlement, full portfolio and verified receipts remain later release work. Neither browser storage nor a submitted balance is imported. Credits remain virtual, with no purchase, transfer or cash redemption.
 
 ## Initial grant
 

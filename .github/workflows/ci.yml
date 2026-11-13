@@ -167,6 +167,9 @@ jobs:
       - run: pnpm test:orders
         env:
           TEST_ORDER_DATABASE_URL: ${{ env.TEST_LEDGER_DATABASE_URL }}
+      - run: pnpm test:exits
+        env:
+          TEST_EXIT_DATABASE_URL: ${{ env.TEST_LEDGER_DATABASE_URL }}
 
   container:
     name: Container HTTP smoke test

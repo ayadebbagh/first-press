@@ -64,6 +64,13 @@
       "when": 1794537968112,
       "tag": "0008_listener_review_guards",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794600579491,
+      "tag": "0009_exit_quantity_integrity",
+      "breakpoints": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { and, desc, eq, sql } from 'drizzle-orm';
+import { and, desc, eq, inArray, sql } from 'drizzle-orm';
 import * as schema from '../db/schema.ts';
-import { baselineIsFresh, ECONOMY_VERSION, MAX_CENTS, MIN_BACKING_CENTS, nextUpdateCutoff, UPDATE_GRACE_MS } from '../../domain/backing-policy.ts';
+import { baselineIsFresh, ECONOMY_VERSION, MAX_CENTS, MIN_BACKING_CENTS, nextUpdateCutoff, UPDATE_GRACE_MS, lotValueCents } from '../../domain/backing-policy.ts';
 import { LedgerError, lockBackingAccount, postOrderMovement, walletWire } from './ledger.ts';
 import { isPostgresText } from '../../domain/listener-validation.ts';
 import type { LedgerDatabase, LedgerTransaction } from './ledger.ts';
@@ -18,15 +18,22 @@ export interface OrderWire {
   id:string;artistId:string;artistName:string;side:'buy'|'sell';status:StoredOrder['status'];amountCents:string|null;
   acceptedAt:string;earliestCutoff:string;cancelledAt:string|null;settledAt:string|null;economyVersion:string;
   placement:{snapshotId:string;listenerCount:string;observedAt:string};pendingStatus:'awaiting_update'|'delayed'|null;
+  exitBasisPoints:number|null;estimatedProceedsCents:string|null;
+  allocations:{lotId:string;quanta:string;status:'held'|'released'|'consumed'}[];
+}
+export interface PositionWire {
+  artistId:string;artistName:string;lotCount:number;availableLotCount:number;reservedLotCount:number;
+  estimatedValueCents:string|null;estimatedAvailableCents:string|null;listenerCount:string|null;observedAt:string|null;stale:boolean;canExit:boolean;
 }
 function wire(order:StoredOrder,artistName:string,snapshot:Snapshot,now:Date):OrderWire {
   return {id:order.id,artistId:order.artistId,artistName,side:order.side,status:order.status,amountCents:order.amountCents?.toString()??null,
     acceptedAt:order.acceptedAt.toISOString(),earliestCutoff:order.earliestCutoff.toISOString(),cancelledAt:order.cancelledAt?.toISOString()??null,
     settledAt:order.settledAt?.toISOString()??null,economyVersion:order.economyVersion,
     placement:{snapshotId:snapshot.id,listenerCount:snapshot.listenerCount!.toString(),observedAt:snapshot.observedAt.toISOString()},
+    exitBasisPoints:order.exitBasisPoints,estimatedProceedsCents:null,allocations:[],
     pendingStatus:order.status==='queued'?(now.getTime()>=order.earliestCutoff.getTime()+UPDATE_GRACE_MS?'delayed':'awaiting_update'):null};
 }
-async function clock(db:Reader){
+export async function orderClock(db:Reader){
   const result=await db.execute(sql`SELECT clock_timestamp() AS now`),value=result.rows[0].now;
   return value instanceof Date?value:new Date(String(value));
 }
@@ -39,7 +46,7 @@ function buyInput(raw:unknown){
   if(amount<MIN_BACKING_CENTS||amount>MAX_CENTS)throw new OrderError('invalid','Backing must be at least 1 Credit and within the supported range.');
   return {artistId:value.artistId,amountCents:amount,idempotencyKey:value.idempotencyKey};
 }
-async function translated<T>(action:()=>Promise<T>):Promise<T>{
+export async function withLedgerErrors<T>(action:()=>Promise<T>):Promise<T>{
   try{return await action();}catch(error){
     if(error instanceof LedgerError){
       const code=error.code==='overflow'?'invalid':error.code;
@@ -49,19 +56,36 @@ async function translated<T>(action:()=>Promise<T>):Promise<T>{
   }
 }
 const orderSelection={order:schema.orders,artistName:schema.artists.name,snapshot:schema.listenerSnapshots};
-async function ownedOrder(db:Reader,userId:string,id:string,now:Date){
+async function decorateExits(db:Reader,orders:OrderWire[]){
+  const ids=orders.filter(order=>order.side==='sell').map(order=>order.id);
+  if(!ids.length)return orders;
+  const rows=await db.select({allocation:schema.exitAllocations,lot:schema.positionLots}).from(schema.exitAllocations)
+    .innerJoin(schema.positionLots,eq(schema.positionLots.id,schema.exitAllocations.lotId)).where(inArray(schema.exitAllocations.orderId,ids)).orderBy(schema.exitAllocations.lotId);
+  const byOrder=new Map<string,typeof rows>();
+  for(const row of rows){const group=byOrder.get(row.allocation.orderId)??[];group.push(row);byOrder.set(row.allocation.orderId,group);}
+  return orders.map(order=>{
+    if(order.side!=='sell')return order;
+    const allocations=byOrder.get(order.id)??[];
+    // Stable placement estimate from immutable principal/entry/frozen quantities.
+    // Execution uses a new count and the actual carry then; this credits nothing.
+    const estimate=allocations.reduce((sum,{allocation,lot})=>sum+lot.principalCents*allocation.quanta*BigInt(order.placement.listenerCount)/(lot.initialQuanta*lot.entryListenerCount),0n);
+    return {...order,estimatedProceedsCents:estimate<=MAX_CENTS?estimate.toString():null,
+      allocations:allocations.map(({allocation:a})=>({lotId:a.lotId,quanta:a.quanta.toString(),status:a.status}))};
+  });
+}
+export async function readOwnedOrder(db:Reader,userId:string,id:string,now:Date){
   const [row]=await db.select(orderSelection).from(schema.orders).innerJoin(schema.artists,eq(schema.artists.id,schema.orders.artistId))
     .innerJoin(schema.listenerSnapshots,eq(schema.listenerSnapshots.id,schema.orders.placementSnapshotId))
     .where(and(eq(schema.orders.id,id),eq(schema.orders.userId,userId)));
   if(!row)throw new OrderError('not_found','Order not found.');
-  return wire(row.order,row.artistName,row.snapshot,now);
+  return (await decorateExits(db,[wire(row.order,row.artistName,row.snapshot,now)]))[0];
 }
 async function hasDispute(tx:Reader,artistId:string){
   const result=await tx.execute(sql`SELECT EXISTS(SELECT 1 FROM snapshot_annotations a JOIN listener_snapshots s ON s.id=a.snapshot_id
     WHERE s.artist_id=${artistId} AND a.kind='disputed') OR fp_observation_artist_needs_review(${artistId}) AS blocked`);
   return result.rows[0].blocked===true;
 }
-async function latestBaseline(tx:LedgerTransaction,artistId:string,now:Date){
+export async function requireFreshBaseline(tx:LedgerTransaction,artistId:string,now:Date){
   const [snapshot]=await tx.select().from(schema.listenerSnapshots).where(and(eq(schema.listenerSnapshots.artistId,artistId),eq(schema.listenerSnapshots.status,'accepted')))
     .orderBy(desc(schema.listenerSnapshots.observedAt),desc(schema.listenerSnapshots.acceptedAt)).limit(1);
   if(!snapshot||snapshot.synthetic||!snapshot.listenerCount||!snapshot.acceptedAt||snapshot.acceptedAt>now||!baselineIsFresh(snapshot.observedAt.getTime(),now.getTime()))throw new OrderError('ineligible','This artist needs a fresh reviewed listener update before new backing.');
@@ -71,7 +95,7 @@ async function latestBaseline(tx:LedgerTransaction,artistId:string,now:Date){
 }
 export async function placeBuy(db:LedgerDatabase,userId:string,raw:unknown){
   const input=buyInput(raw),hash=createHash('sha256').update(JSON.stringify({version:ECONOMY_VERSION,side:'buy',artistId:input.artistId,amountCents:input.amountCents.toString()})).digest('hex');
-  return translated(()=>db.transaction(async tx=>{
+  return withLedgerErrors(()=>db.transaction(async tx=>{
     // Shared admission lock with listener intake and future batch sealing.
     const [artist]=await tx.select().from(schema.artists).where(eq(schema.artists.id,input.artistId)).for('update');
     const balance=await lockBackingAccount(tx,userId);
@@ -80,13 +104,13 @@ export async function placeBuy(db:LedgerDatabase,userId:string,raw:unknown){
     // changed. Account authorization is still checked on every request.
     if(prior){
       if(prior.requestHash!==hash)throw new OrderError('conflict','This request key already belongs to a different backing intent.');
-      return {order:await ownedOrder(tx,userId,prior.id,await clock(tx)),wallet:walletWire(balance),created:false};
+      return {order:await readOwnedOrder(tx,userId,prior.id,await orderClock(tx)),wallet:walletWire(balance),created:false};
     }
     let now:Date,snapshot:Snapshot;
     try{
       if(!artist)throw new OrderError('not_found','Artist not found.');
       if(artist.status!=='active'||artist.synthetic)throw new OrderError('ineligible','This artist is not accepting new backing.');
-      now=await clock(tx);snapshot=await latestBaseline(tx,artist.id,now);
+      now=await orderClock(tx);snapshot=await requireFreshBaseline(tx,artist.id,now);
       if(input.amountCents>balance.availableCents)throw new OrderError('insufficient','Not enough available Credits.');
     }catch(error){
       // Account-wide admission serialization proved this key has no committed
@@ -103,7 +127,7 @@ export async function placeBuy(db:LedgerDatabase,userId:string,raw:unknown){
 }
 export async function cancelBuy(db:LedgerDatabase,userId:string,id:string){
   if(typeof id!=='string'||!id||id.length>200||!isPostgresText(id))throw new OrderError('invalid','Invalid order identifier.');
-  return translated(()=>db.transaction(async tx=>{
+  return withLedgerErrors(()=>db.transaction(async tx=>{
     // Discover ownership without locking the order before the wallet. The artist
     // and all order intent fields are immutable; re-read after canonical locks.
     const [known]=await tx.select({artistId:schema.orders.artistId}).from(schema.orders).where(and(eq(schema.orders.id,id),eq(schema.orders.userId,userId)));
@@ -112,18 +136,55 @@ export async function cancelBuy(db:LedgerDatabase,userId:string,id:string){
     const balance=await lockBackingAccount(tx,userId);
     const [order]=await tx.select().from(schema.orders).where(and(eq(schema.orders.id,id),eq(schema.orders.userId,userId))).for('update');
     if(!order||order.side!=='buy')throw new OrderError('not_found','Buy order not found.');
-    const now=await clock(tx);
     if(order.status==='settled')throw new OrderError('settled','This order has settled and cannot be cancelled.');
-    if(order.status==='cancelled')return {order:await ownedOrder(tx,userId,id,now),wallet:walletWire(balance),cancelled:false};
+    if(order.status==='cancelled')return {order:await readOwnedOrder(tx,userId,id,await orderClock(tx)),wallet:walletWire(balance),cancelled:false};
     const [hold]=await tx.select().from(schema.cashReservations).where(eq(schema.cashReservations.orderId,id)).for('update');
     if(!hold||hold.status!=='held'||hold.amountCents!==order.amountCents||hold.userId!==userId||hold.artistId!==order.artistId)throw new OrderError('drift','This backing reservation needs review.');
+    const now=await orderClock(tx);
     const posted=await postOrderMovement(tx,userId,{kind:'buy_cancel',orderId:id,amountCents:hold.amountCents,idempotencyKey:'buy:cancel:'+id});
     await tx.update(schema.cashReservations).set({status:'released',resolvedAt:now}).where(eq(schema.cashReservations.orderId,id));
     await tx.update(schema.orders).set({status:'cancelled',cancelledAt:now}).where(eq(schema.orders.id,id));
-    return {order:await ownedOrder(tx,userId,id,now),wallet:walletWire(posted.wallet),cancelled:true};
+    return {order:await readOwnedOrder(tx,userId,id,now),wallet:walletWire(posted.wallet),cancelled:true};
   }));
 }
-export async function getOrder(db:Reader,userId:string,id:string){if(!id||id.length>200||!isPostgresText(id))throw new OrderError('invalid','Invalid order identifier.');return ownedOrder(db,userId,id,await clock(db));}
+export async function getOrder(db:LedgerDatabase,userId:string,id:string){
+  if(typeof id!=='string'||!id||id.length>200||!isPostgresText(id))throw new OrderError('invalid','Invalid order identifier.');
+  return db.transaction(async tx=>readOwnedOrder(tx,userId,id,await orderClock(tx)),{isolationLevel:'repeatable read',accessMode:'read only'});
+}
+
+export async function readPositions(db:Reader,userId:string,now:Date):Promise<PositionWire[]>{
+  const result=await db.execute(sql`SELECT l.*,a.name AS artist_name,a.status AS artist_status,a.synthetic AS artist_synthetic,
+    s.listener_count::text AS current_listeners,s.observed_at AS current_observed_at,s.accepted_at AS current_accepted_at,s.synthetic AS snapshot_synthetic,c.id AS capture_id,
+    (EXISTS(SELECT 1 FROM snapshot_annotations n JOIN listener_snapshots q ON q.id=n.snapshot_id WHERE q.artist_id=a.id AND n.kind='disputed') OR fp_observation_artist_needs_review(a.id)) AS review_required
+    FROM position_lots l JOIN artists a ON a.id=l.artist_id
+    LEFT JOIN LATERAL(SELECT * FROM listener_snapshots WHERE artist_id=a.id AND status='accepted' ORDER BY observed_at DESC,accepted_at DESC LIMIT 1) s ON true
+    LEFT JOIN listener_observations c ON c.snapshot_id=s.id AND c.status='accepted'
+    WHERE l.user_id=${userId} AND l.remaining_quanta>0 ORDER BY a.name,a.id,l.id`);
+  type Group=PositionWire&{value:bigint;availableValue:bigint;valueKnown:boolean;priceSafe:boolean;tradeAllowed:boolean};
+  const groups=new Map<string,Group>();
+  for(const row of result.rows){
+    const artistId=String(row.artist_id),observed=row.current_observed_at instanceof Date?row.current_observed_at:row.current_observed_at?new Date(String(row.current_observed_at)):null;
+    const accepted=row.current_accepted_at instanceof Date?row.current_accepted_at:row.current_accepted_at?new Date(String(row.current_accepted_at)):null;
+    const priceSafe=!!row.capture_id&&!row.review_required&&!row.artist_synthetic&&!row.snapshot_synthetic&&!!observed&&!!accepted&&observed<=now&&accepted<=now;
+    const fresh=!!observed&&baselineIsFresh(observed.getTime(),now.getTime());
+    const group=groups.get(artistId)??{artistId,artistName:String(row.artist_name),lotCount:0,availableLotCount:0,reservedLotCount:0,
+      estimatedValueCents:null,estimatedAvailableCents:null,listenerCount:priceSafe?String(row.current_listeners):null,observedAt:observed?.toISOString()??null,
+      stale:!fresh,canExit:false,value:0n,availableValue:0n,valueKnown:priceSafe,priceSafe,tradeAllowed:priceSafe&&fresh&&row.artist_status==='active'};
+    const remaining=BigInt(String(row.remaining_quanta)),reserved=BigInt(String(row.reserved_quanta)),available=remaining-reserved;
+    group.lotCount++;if(available>0n)group.availableLotCount++;if(reserved>0n)group.reservedLotCount++;
+    if(priceSafe){
+      try{
+        const principal=BigInt(String(row.principal_cents)),entry=BigInt(String(row.entry_listener_count)),quanta=BigInt(String(row.initial_quanta)),listeners=BigInt(String(row.current_listeners));
+        group.value+=lotValueCents({principalCents:principal,entryListeners:entry,remainingQuanta:remaining,proceedsRemainder:BigInt(String(row.proceeds_remainder))},listeners);
+        group.availableValue+=principal*available*listeners/(quanta*entry);
+        if(group.value>MAX_CENTS||group.availableValue>MAX_CENTS)group.valueKnown=false;
+      }catch{group.valueKnown=false;}
+    }
+    group.canExit=group.tradeAllowed&&group.availableLotCount>0;groups.set(artistId,group);
+  }
+  return [...groups.values()].map(({value,availableValue,valueKnown,priceSafe:_priceSafe,tradeAllowed:_tradeAllowed,...position})=>({...position,
+    estimatedValueCents:valueKnown?value.toString():null,estimatedAvailableCents:valueKnown?availableValue.toString():null}));
+}
 
 function decodeCursor(value?:string){
   if(value===undefined)return null;
@@ -138,7 +199,7 @@ function decodeCursor(value?:string){
 export async function getBackingDesk(db:LedgerDatabase,userId:string,cursor?:string){
   const after=decodeCursor(cursor);
   return db.transaction(async tx=>{
-    const now=await clock(tx);
+    const now=await orderClock(tx);
     const [balance]=await tx.select().from(schema.wallets).where(eq(schema.wallets.userId,userId));
     const eligible=await tx.execute(sql`SELECT a.id,a.name,s.listener_count::text,s.observed_at FROM artists a
       JOIN LATERAL (SELECT * FROM listener_snapshots WHERE artist_id=a.id AND status='accepted' ORDER BY observed_at DESC,accepted_at DESC LIMIT 1) s ON true
@@ -147,12 +208,13 @@ export async function getBackingDesk(db:LedgerDatabase,userId:string,cursor?:str
       AND NOT EXISTS(SELECT 1 FROM snapshot_annotations n JOIN listener_snapshots q ON q.id=n.snapshot_id WHERE q.artist_id=a.id AND n.kind='disputed')
       AND NOT fp_observation_artist_needs_review(a.id)
       ORDER BY a.name,a.id LIMIT 1000`);
-    const condition=after?and(eq(schema.orders.userId,userId),eq(schema.orders.side,'buy'),sql`(${schema.orders.acceptedAt},${schema.orders.id}) < (${after.at},${after.id})`):and(eq(schema.orders.userId,userId),eq(schema.orders.side,'buy'));
+    const condition=after?and(eq(schema.orders.userId,userId),sql`(${schema.orders.acceptedAt},${schema.orders.id}) < (${after.at},${after.id})`):eq(schema.orders.userId,userId);
     const rows=await tx.select(orderSelection).from(schema.orders).innerJoin(schema.artists,eq(schema.artists.id,schema.orders.artistId))
       .innerJoin(schema.listenerSnapshots,eq(schema.listenerSnapshots.id,schema.orders.placementSnapshotId))
       .where(condition).orderBy(desc(schema.orders.acceptedAt),desc(schema.orders.id)).limit(51);
     const page=rows.slice(0,50),last=page.at(-1)?.order;
     return {wallet:balance?walletWire(balance):null,artists:eligible.rows.map(a=>({id:String(a.id),name:String(a.name),listenerCount:String(a.listener_count),observedAt:(a.observed_at instanceof Date?a.observed_at:new Date(String(a.observed_at))).toISOString()})),
-      orders:page.map(row=>wire(row.order,row.artistName,row.snapshot,now)),nextCursor:rows.length>50&&last?Buffer.from(JSON.stringify([last.acceptedAt.toISOString(),last.id])).toString('base64url'):null,serverTime:now.toISOString()};
+      positions:await readPositions(tx,userId,now),orders:await decorateExits(tx,page.map(row=>wire(row.order,row.artistName,row.snapshot,now))),
+      nextCursor:rows.length>50&&last?Buffer.from(JSON.stringify([last.acceptedAt.toISOString(),last.id])).toString('base64url'):null,serverTime:now.toISOString()};
   },{isolationLevel:'repeatable read',accessMode:'read only'});
 }
