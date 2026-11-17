@@ -66,20 +66,7 @@ for(const issue of created){
 }
 await render(plan,state);
 if(metadataOnly){state.last_metadata_sync=new Date().toISOString();await save();console.log('Repository metadata synced; existing issue bodies, states and milestone choices preserved.');process.exit(0);}
-const owner=repo.split('/')[0];
-const projects=JSON.parse(gh(['project','list','--owner',owner,'--limit','100','--format','json']));
-let project=projects.projects.find(p=>p.title===plan.project_title);
-if(!project)project=JSON.parse(gh(['project','create','--owner',owner,'--title',plan.project_title,'--format','json']));
-state.project={number:project.number,id:project.id,url:project.url};await save();
-gh(['project','link',String(project.number),'--owner',owner,'--repo',repo]);
-const fields=JSON.parse(gh(['project','field-list',String(project.number),'--owner',owner,'--format','json']));
-for(const [name,options] of [['Priority','P0,P1,P2'],['Effort','S,M,L'],['Workstream','foundation,backing,data,identity,daily,operations']]){
-  if(!fields.fields.some(f=>f.name===name))gh(['project','field-create',String(project.number),'--owner',owner,'--name',name,'--data-type','SINGLE_SELECT','--single-select-options',options]);
-}
-for(const issue of plan.issues){
-  const url=state.issues[issue.key].url;
-  gh(['project','item-add',String(project.number),'--owner',owner,'--url',url,'--format','json']);
-  for(const [name,value] of [['Priority',issue.priority],['Effort',issue.effort],['Workstream',issue.area]])gh(['project','item-edit',String(project.number),'--owner',owner,'--url',url,'--field',name,'--value',value]);
-}
+const {syncProjectBoard}=await import('./project-board-sync.mjs');
+syncProjectBoard(plan,state,gh);
 state.last_sync=new Date().toISOString();await save();
-console.log(`Synced ${repo}. Project: ${project.url}. Configure/verify views, statuses, auto-add and closed-item workflows via F03.`);
+console.log(`Synced ${repo}. Project: ${state.project.url}. Views/workflows are verified separately in docs/planning/PROJECT.md.`);
