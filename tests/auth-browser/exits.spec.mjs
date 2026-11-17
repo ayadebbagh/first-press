@@ -119,7 +119,7 @@ async function fixture(context,{page,observation}={}){
   const member=page?await registerOnPage(page,context):(await register(context)).member;
   await initialize(context);
   const artist=await createArtist(observation),lots=await seed(member,artist);
-  if(page){await page.reload();await expect(positions(page).getByText(artist.name,{exact:true})).toBeVisible();}
+  if(page){await page.reload();await expect(positions(page).getByRole('listitem').getByText(artist.name,{exact:true})).toBeVisible();}
   return {member,artist,lots};
 }
 async function desk(context){
@@ -481,7 +481,7 @@ test('actual wall-clock expiry pauses fresh admission while existing stale backi
   const current=await desk(context);expect(current.artists.some(a=>a.id===f.artist.id)).toBe(false);
   expect(current.positions[0]).toMatchObject({artistId:f.artist.id,stale:true,canExit:false,listenerCount:'12345',observedAt:f.artist.observedAt,estimatedValueCents:'24690'});
   await page.reload();await balances(page);
-  await expect(positions(page).getByText(f.artist.name,{exact:true})).toBeVisible();
+  await expect(positions(page).getByRole('listitem').getByText(f.artist.name,{exact:true})).toBeVisible();
   await expect(positions(page)).toContainText('STALE ESTIMATE');await expect(positions(page)).toContainText('12,345 Spotify monthly listeners');
   await expect(positions(page).locator('time')).toHaveAttribute('datetime',f.artist.observedAt);
   await expect(page.getByRole('button',{name:'Queue server exit ↗',exact:true})).toBeDisabled();
