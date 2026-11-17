@@ -165,6 +165,8 @@ export const settlementBatches = pgTable('settlement_batches', {
   cutoff: instant('cutoff').notNull(),
   sealedAt: instant('sealed_at').notNull(),
   eligibleThrough: instant('eligible_through').notNull(),
+  // NULL preserves unknown legacy membership; new service seals FALSE -> TRUE.
+  membershipSealed: boolean('membership_sealed'),
   status: batchStatus('status').notNull().default('sealed'),
   snapshotId: text('snapshot_id'),
   executedAt: instant('executed_at'),
@@ -175,6 +177,22 @@ export const settlementBatches = pgTable('settlement_batches', {
   foreignKey({ name: 'batch_snapshot_artist', columns: [t.snapshotId, t.artistId], foreignColumns: [listenerSnapshots.id, listenerSnapshots.artistId] }),
   check('batch_slot', sql`mod(extract(epoch FROM ${t.cutoff}), 43200) = 0 AND ${t.sealedAt} >= ${t.cutoff} AND ${t.eligibleThrough} < ${t.cutoff} AND ${t.eligibleThrough} <= ${t.sealedAt}`),
   check('batch_terminal', sql`(${t.status} = 'sealed' AND ${t.executedAt} IS NULL AND ${t.skipReason} IS NULL) OR (${t.status} = 'executed' AND ${t.snapshotId} IS NOT NULL AND ${t.executedAt} IS NOT NULL AND ${t.executedAt} >= ${t.sealedAt} AND ${t.executedAt} < ${t.cutoff} + interval '2 hours' AND ${t.skipReason} IS NULL) OR (${t.status} = 'skipped' AND ${t.executedAt} IS NULL AND ${t.skipReason} IS NOT NULL)`),
+]);
+
+// A06 / #24: closed batch membership, independent of later cancellation.
+export const settlementBatchOrders = pgTable('settlement_batch_orders', {
+  batchId: text('batch_id').notNull(),
+  orderId: text('order_id').notNull(),
+  userId: text('user_id').notNull(),
+  artistId: text('artist_id').notNull(),
+  ordinal: integer('ordinal').notNull(),
+}, t => [
+  primaryKey({ columns: [t.batchId, t.orderId] }),
+  unique('batch_member_ordinal').on(t.batchId, t.ordinal),
+  foreignKey({ name: 'batch_member_batch_artist', columns: [t.batchId, t.artistId], foreignColumns: [settlementBatches.id, settlementBatches.artistId] }),
+  foreignKey({ name: 'batch_member_order_owner', columns: [t.orderId, t.userId, t.artistId], foreignColumns: [orders.id, orders.userId, orders.artistId] }),
+  check('batch_member_ordinal_positive', sql`${t.ordinal} >= 1`),
+  index('batch_member_order_idx').on(t.orderId),
 ]);
 
 export const settlements = pgTable('settlements', {

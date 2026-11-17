@@ -28,7 +28,7 @@ before(async()=>{
   await assertTestDatabase(db);
   const result=spawnSync(process.execPath,['scripts/db/migrate.mjs'],{env:{...process.env,DATABASE_URL:url},encoding:'utf8',timeout:60_000});
   assert.equal(result.status,0,result.stdout+result.stderr);
-  assert.equal((await pool.query('SELECT count(*)::int n FROM drizzle.__drizzle_migrations')).rows[0].n,10);
+  assert.equal((await pool.query('SELECT count(*)::int n FROM drizzle.__drizzle_migrations')).rows[0].n,11);
 });
 after(async()=>pool.end());
 const orderError=code=>error=>error instanceof OrderError&&error.code===code;
@@ -568,7 +568,7 @@ test('upgrade retains legacy source evidence but blocks new exits on unsafe ance
       observations:(await other.query('SELECT * FROM listener_observations ORDER BY id')).rows,lots:(await other.query('SELECT * FROM position_lots ORDER BY id')).rows,
       receipts:(await other.query('SELECT * FROM receipt_events ORDER BY id')).rows,ledger:(await other.query('SELECT * FROM ledger_events ORDER BY id')).rows});
     const evidence=await preserved();migrate(root);assert.equal(await preserved(),evidence);
-    assert.equal((await other.query('SELECT count(*)::int n FROM drizzle.__drizzle_migrations')).rows[0].n,10);
+    assert.equal((await other.query('SELECT count(*)::int n FROM drizzle.__drizzle_migrations')).rows[0].n,11);
     assert.equal((await other.query('SELECT fp_observation_artist_needs_review($1) blocked',[artistId])).rows[0].blocked,true);
     await assert.rejects(placeExit(legacy,user,request(artistId)),orderError('ineligible'));
     assert.equal((await getBackingDesk(legacy,user)).positions[0].canExit,false);

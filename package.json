@@ -27,7 +27,8 @@
     "test:ledger": "node --experimental-strip-types --test tests/ledger/*.test.mjs",
     "test:observations": "node --experimental-strip-types --test tests/observations/*.test.mjs",
     "test:orders": "node --experimental-strip-types --test tests/orders/*.test.mjs",
-    "test:exits": "node --experimental-strip-types --test tests/exits/*.test.mjs"
+    "test:exits": "node --experimental-strip-types --test tests/exits/*.test.mjs",
+    "test:batches": "node --experimental-strip-types --test tests/batches/*.test.mjs"
   },
   "dependencies": {
     "next": "16.4.5",

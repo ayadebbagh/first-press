@@ -2,9 +2,9 @@
 
 ## Current implementation
 
-Next.js App Router serves independent app routes and `/api/health`. React state and `localStorage` implement the entire demo account. `src/engine.ts` holds pure accounting rules; `src/playback.ts` selects the provider. The production bundle uses standalone output and a non-root Docker image. A01 adds a separate PostgreSQL schema, migrations, lazy server-only connection and isolated fixture tooling; the demo does not consume them. A02 adds gated invite-only account routes, verified identity, sessions/recovery and owned read APIs; transactional backing services and a metric collector remain pending.
+Next.js App Router serves independent app routes and `/api/health`. React state and `localStorage` implement the entire demo account. `src/engine.ts` holds pure accounting rules; `src/playback.ts` selects the provider. The production bundle uses standalone output and a non-root Docker image. A01 adds a separate PostgreSQL schema, migrations, lazy server-only connection and isolated fixture tooling; the demo does not consume them. A02 adds gated invite-only account routes, verified identity, sessions/recovery and owned read APIs; A03–A05 add the server ledger, buy reservations and quantity-reserved exits. A06 adds durable batch preparation; execution and the metric collector remain pending.
 
-## Accepted connected-beta design — services pending
+## Connected-beta design
 
 Keep one Next.js application, one PostgreSQL database and one scheduled Node worker from the same repository. Use Drizzle for typed migrations and Better Auth with both Google and email/password sign-in, as accepted in [ADR 0001](adr/0001-self-hosted-backend.md). Pinned database/auth dependencies and core tables are installed; invite-only account services are in A02; A03 adds the [server Credit ledger and starting grant](LEDGER.md); A04 adds [transactional buy reservations/cancellation and a connected Account panel](BUY-ORDERS.md); [A05](EXIT-ORDERS.md) adds quantity-reserved exits; settlement and the full connected portfolio remain A06–A08. See [authentication setup](AUTHENTICATION.md). See [database setup and schema invariants](DATABASE.md). Select and test email delivery for verification/recovery before launch; avoid making a paid service a hidden prerequisite. Do not require a member's Spotify login just to use an embed or back an artist.
 
@@ -23,6 +23,8 @@ Start without Redis, hosted job services or object storage. PostgreSQL can coord
 - Daily (later): rotation versions, connected match assignments, votes, locked predictions and published results, isolated from live backing accounting.
 
 ## Settlement contract
+
+[Durable batch preparation](SETTLEMENT-BATCHES.md) implements the first A06 increment: committed membership seals, one-time C04 quote binding and expiry/replay. It changes no money or positions and exposes no public settlement route. Execution and its complete accounting/concurrency proof remain pending.
 
 [Backing v1](specs/backing-v1.md) defines exact centi-Credits, immutable principal/entry-listener lots and fixed fractions reserved for exits. A lot follows the listener ratio from its own execution snapshot, with exact subcent carry across partial exits. `src/domain/backing-policy.ts` provides tested arithmetic and timing references; the browser demo still uses the separate synthetic engine.
 

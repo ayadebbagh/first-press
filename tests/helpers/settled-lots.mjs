@@ -72,7 +72,11 @@ export async function seedSettledLots(db,{userId,artistId,adminId,lots=[{princip
         requestKey:'historical-buy:'+orderId,requestHash:createHash('sha256').update(orderId).digest('hex'),placementSnapshotId:baseline.id,acceptedAt,earliestCutoff:cutoff});
       await postOrderMovement(tx,userId,{kind:'buy_reserve',orderId,amountCents:lot.principalCents,idempotencyKey:'fixture:reserve:'+orderId});
       await tx.insert(schema.cashReservations).values({orderId,userId,artistId,amountCents:lot.principalCents,createdAt:acceptedAt});
-      await tx.insert(schema.settlementBatches).values({id:batchId,artistId,cutoff,sealedAt:new Date(cutoff.getTime()+1000),eligibleThrough:new Date(cutoff.getTime()-1)});
+      // Explicit historical columns keep this fixture usable in real pre-0010
+      // upgrade rehearsals; current typed inserts include the new nullable seal.
+      await tx.execute(sql`INSERT INTO settlement_batches(id,artist_id,cutoff,sealed_at,eligible_through)
+        VALUES (${batchId},${artistId},${cutoff.toISOString()}::timestamptz,
+          ${new Date(cutoff.getTime()+1000).toISOString()}::timestamptz,${new Date(cutoff.getTime()-1).toISOString()}::timestamptz)`);
       await tx.update(schema.settlementBatches).set({status:'executed',snapshotId:quote.id,executedAt}).where(eq(schema.settlementBatches.id,batchId));
       await postOrderMovement(tx,userId,{kind:'buy_settle',orderId,amountCents:lot.principalCents,idempotencyKey:'fixture:settle:'+orderId});
       await tx.update(schema.cashReservations).set({status:'consumed',resolvedAt:executedAt}).where(eq(schema.cashReservations.orderId,orderId));
