@@ -59,7 +59,7 @@ test('upgrade preserves legacy quotes and money while detecting unsafe historica
       captures:(await pool.query('SELECT * FROM listener_observations ORDER BY id')).rows,wallet:(await pool.query('SELECT * FROM wallets ORDER BY user_id')).rows,
       ledger:(await pool.query('SELECT * FROM ledger_events ORDER BY id')).rows});
     const before=await state();migrate(root);assert.equal(await state(),before,'No historical evidence or money is rewritten.');
-    assert.equal((await pool.query('SELECT count(*)::int n FROM drizzle.__drizzle_migrations')).rows[0].n,10);
+    assert.equal((await pool.query('SELECT count(*)::int n FROM drizzle.__drizzle_migrations')).rows[0].n,11);
     for(const unsafe of [a,b]){
       assert.equal((await pool.query('SELECT fp_observation_artist_needs_review($1) blocked',[unsafe.id])).rows[0].blocked,true);
       await assert.rejects(placeBuy(db,'upgrade',{artistId:unsafe.id,amountCents:'100',idempotencyKey:randomUUID()}),e=>e instanceof OrderError&&e.code==='ineligible');
