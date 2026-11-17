@@ -218,8 +218,253 @@
     "verified_at": "2026-11-12T18:45:47.520Z"
   },
   "project": {
-    "status": "pending",
-    "reason": "Projects creation is not exposed by the connected tools; CLI authentication unavailable."
+    "status": "configured",
+    "owner": "ayadebbagh",
+    "number": 2,
+    "id": "PVT_kwHOBtkNQs4Br8Z-",
+    "url": "https://github.com/users/ayadebbagh/projects/2",
+    "title": "FIRST PRESS \u2014 Development",
+    "public": false,
+    "linked_repository": "ayadebbagh/first-press",
+    "issue": 9,
+    "fields": {
+      "Status": {
+        "id": "PVTSSF_lAHOBtkNQs4Br8Z-zhqMvoM",
+        "database_id": 445431427,
+        "options": {
+          "Backlog": "f75ad846",
+          "Ready": "c720fd73",
+          "In progress": "47fc9ee4",
+          "In review": "54e9f960",
+          "Blocked": "e8bbae6b",
+          "Done": "98236657"
+        }
+      },
+      "Priority": {
+        "id": "PVTSSF_lAHOBtkNQs4Br8Z-zhqMvyY",
+        "database_id": 445431590,
+        "options": {
+          "P0": "14907aeb",
+          "P1": "0d86a33f",
+          "P2": "c9e7f2e6"
+        }
+      },
+      "Effort": {
+        "id": "PVTSSF_lAHOBtkNQs4Br8Z-zhqMvy0",
+        "database_id": 445431597,
+        "options": {
+          "S": "a6fc0542",
+          "M": "00d122da",
+          "L": "6e5c2c3c"
+        }
+      },
+      "Workstream": {
+        "id": "PVTSSF_lAHOBtkNQs4Br8Z-zhqMvy4",
+        "database_id": 445431598,
+        "options": {
+          "foundation": "f1744c4b",
+          "backing": "0f660d2d",
+          "data": "65c53924",
+          "identity": "1eb36218",
+          "daily": "dc030e4c",
+          "operations": "b523a100"
+        }
+      }
+    },
+    "views": [
+      {
+        "id": "PVTV_lAHOBtkNQs4Br8Z-zgMmEvc",
+        "number": 1,
+        "name": "Backlog",
+        "layout": "TABLE_LAYOUT",
+        "filter": "",
+        "visible_fields": [
+          "Title",
+          "Status",
+          "Priority",
+          "Effort",
+          "Workstream",
+          "Assignees",
+          "Labels",
+          "Milestone"
+        ],
+        "columns": []
+      },
+      {
+        "id": "PVTV_lAHOBtkNQs4Br8Z-zgMmEzw",
+        "number": 3,
+        "name": "Status board",
+        "layout": "BOARD_LAYOUT",
+        "filter": "",
+        "visible_fields": [
+          "Title",
+          "Assignees",
+          "Status",
+          "Labels",
+          "Milestone",
+          "Priority",
+          "Effort",
+          "Workstream"
+        ],
+        "columns": [
+          "Status"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "PWF_lAHOBtkNQs4Br8Z-zgfeW98",
+        "number": 4,
+        "name": "Auto-add sub-issues to project",
+        "enabled": true
+      },
+      {
+        "id": "PWF_lAHOBtkNQs4Br8Z-zgfeW94",
+        "number": 3,
+        "name": "Auto-close issue",
+        "enabled": true
+      },
+      {
+        "id": "PWF_lAHOBtkNQs4Br8Z-zgfeW-E",
+        "number": 6,
+        "name": "Item added to project",
+        "enabled": true
+      },
+      {
+        "id": "PWF_lAHOBtkNQs4Br8Z-zgfeW9w",
+        "number": 1,
+        "name": "Item closed",
+        "enabled": true
+      },
+      {
+        "id": "PWF_lAHOBtkNQs4Br8Z-zgfeW-A",
+        "number": 5,
+        "name": "Pull request linked to issue",
+        "enabled": true
+      },
+      {
+        "id": "PWF_lAHOBtkNQs4Br8Z-zgfeW90",
+        "number": 2,
+        "name": "Pull request merged",
+        "enabled": true
+      }
+    ],
+    "decision_blocked_keys": [
+      "C03",
+      "R02",
+      "R05",
+      "O01",
+      "O06",
+      "D01",
+      "D02",
+      "D05",
+      "D06"
+    ],
+    "initial_statuses": {
+      "F03": "In progress",
+      "A05": "In review"
+    },
+    "verification": {
+      "verified_at": "2026-11-17T02:04:16.760765Z",
+      "closed_to_done": {
+        "issue": 23,
+        "item_id": "PVTI_lAHOBtkNQs4Br8Z-zhJWcpA",
+        "before": {
+          "id": "PVTI_lAHOBtkNQs4Br8Z-zhJWcpA",
+          "updatedAt": "2026-11-17T01:58:42Z",
+          "content": {
+            "number": 23,
+            "state": "OPEN",
+            "closedAt": null,
+            "url": "https://github.com/ayadebbagh/first-press/issues/23"
+          },
+          "fieldValueByName": {
+            "name": "In review",
+            "optionId": "54e9f960",
+            "updatedAt": "2026-11-17T01:58:42Z"
+          }
+        },
+        "after": {
+          "id": "PVTI_lAHOBtkNQs4Br8Z-zhJWcpA",
+          "updatedAt": "2026-11-17T01:59:34Z",
+          "content": {
+            "number": 23,
+            "state": "CLOSED",
+            "closedAt": "2026-11-17T01:59:09Z",
+            "url": "https://github.com/ayadebbagh/first-press/issues/23"
+          },
+          "fieldValueByName": {
+            "name": "Done",
+            "optionId": "98236657",
+            "updatedAt": "2026-11-17T01:59:12Z"
+          }
+        },
+        "trigger_pr": 59,
+        "merge_commit": "730dbf9cfc3135860f5a81d9cbdb80d9001e3d80",
+        "manual_status_write_between_observations": false
+      },
+      "views": "GraphQL readback confirms Backlog TABLE_LAYOUT and Status board BOARD_LAYOUT with Status vertical columns",
+      "workflow_configuration_limit": "GraphQL exposes workflow identity/name/enabled only; default closed-to-Done target must be proved by real closure",
+      "unrelated_project_1": "Untouched",
+      "issue_count": 47,
+      "status_counts": {
+        "Backlog": 21,
+        "Done": 13,
+        "In progress": 2,
+        "Ready": 2,
+        "Blocked": 9
+      },
+      "repeat_sync": "--check and --apply both reported 0 items need changes; final --check after #24 start also 0"
+    },
+    "items": {
+      "1": "PVTI_lAHOBtkNQs4Br8Z-zhJWb6E",
+      "2": "PVTI_lAHOBtkNQs4Br8Z-zhJWb8s",
+      "3": "PVTI_lAHOBtkNQs4Br8Z-zhJWb_w",
+      "4": "PVTI_lAHOBtkNQs4Br8Z-zhJWcCg",
+      "5": "PVTI_lAHOBtkNQs4Br8Z-zhJWcHo",
+      "6": "PVTI_lAHOBtkNQs4Br8Z-zhJWcLU",
+      "7": "PVTI_lAHOBtkNQs4Br8Z-zhJWcPE",
+      "8": "PVTI_lAHOBtkNQs4Br8Z-zhJWcSU",
+      "9": "PVTI_lAHOBtkNQs4Br8Z-zhJWcV4",
+      "10": "PVTI_lAHOBtkNQs4Br8Z-zhJWcac",
+      "11": "PVTI_lAHOBtkNQs4Br8Z-zhJWceg",
+      "12": "PVTI_lAHOBtkNQs4Br8Z-zhJWcjc",
+      "13": "PVTI_lAHOBtkNQs4Br8Z-zhJWcnc",
+      "14": "PVTI_lAHOBtkNQs4Br8Z-zhJWcqo",
+      "15": "PVTI_lAHOBtkNQs4Br8Z-zhJWcuk",
+      "16": "PVTI_lAHOBtkNQs4Br8Z-zhJWcx0",
+      "17": "PVTI_lAHOBtkNQs4Br8Z-zhJWc0g",
+      "18": "PVTI_lAHOBtkNQs4Br8Z-zhJWc34",
+      "19": "PVTI_lAHOBtkNQs4Br8Z-zhJWc78",
+      "20": "PVTI_lAHOBtkNQs4Br8Z-zhJWc_g",
+      "21": "PVTI_lAHOBtkNQs4Br8Z-zhJWdDc",
+      "22": "PVTI_lAHOBtkNQs4Br8Z-zhJWdIE",
+      "23": "PVTI_lAHOBtkNQs4Br8Z-zhJWcpA",
+      "24": "PVTI_lAHOBtkNQs4Br8Z-zhJWdOk",
+      "25": "PVTI_lAHOBtkNQs4Br8Z-zhJWdRE",
+      "26": "PVTI_lAHOBtkNQs4Br8Z-zhJWdUk",
+      "27": "PVTI_lAHOBtkNQs4Br8Z-zhJWdYE",
+      "28": "PVTI_lAHOBtkNQs4Br8Z-zhJWddA",
+      "29": "PVTI_lAHOBtkNQs4Br8Z-zhJWdgk",
+      "30": "PVTI_lAHOBtkNQs4Br8Z-zhJWdk4",
+      "31": "PVTI_lAHOBtkNQs4Br8Z-zhJWdos",
+      "32": "PVTI_lAHOBtkNQs4Br8Z-zhJWdsM",
+      "33": "PVTI_lAHOBtkNQs4Br8Z-zhJWdvo",
+      "34": "PVTI_lAHOBtkNQs4Br8Z-zhJWdzs",
+      "35": "PVTI_lAHOBtkNQs4Br8Z-zhJWd4U",
+      "36": "PVTI_lAHOBtkNQs4Br8Z-zhJWd7c",
+      "37": "PVTI_lAHOBtkNQs4Br8Z-zhJWd-c",
+      "38": "PVTI_lAHOBtkNQs4Br8Z-zhJWeDI",
+      "39": "PVTI_lAHOBtkNQs4Br8Z-zhJWeF8",
+      "40": "PVTI_lAHOBtkNQs4Br8Z-zhJWeJA",
+      "41": "PVTI_lAHOBtkNQs4Br8Z-zhJWeLw",
+      "42": "PVTI_lAHOBtkNQs4Br8Z-zhJWeOQ",
+      "43": "PVTI_lAHOBtkNQs4Br8Z-zhJWeRE",
+      "45": "PVTI_lAHOBtkNQs4Br8Z-zhJWeVg",
+      "48": "PVTI_lAHOBtkNQs4Br8Z-zhJWeZk",
+      "53": "PVTI_lAHOBtkNQs4Br8Z-zhJWedI",
+      "57": "PVTI_lAHOBtkNQs4Br8Z-zhJWegA"
+    }
   },
   "followups": {
     "pictures_pr": "https://github.com/ayadebbagh/first-press/pull/46",

@@ -217,10 +217,10 @@
       "priority": "P1",
       "effort": "S",
       "dependencies": [],
-      "summary": "Finish repository operations after the first real CI run. The founder wants to add a collaborator with Admin access later; do not invite anyone until their username and timing are supplied.",
+      "summary": "Finish repository operations after the first real CI run. The founder selected a future move to first-press-app/first-press and repository Admin for TawfiqAbubaker. No organization, transfer or invitation is authorized in this implementation; use docs/REPOSITORY-TRANSFER.md for the later move.",
       "acceptance": [
         "Verify public repo metadata, CI permissions, dependency updates and successful check names; configure main-branch PR protections where the account plan supports them.",
-        "Create/link the Project; configure statuses Backlog, Ready, In progress, In review, Blocked, Done and priority/effort/workstream fields.",
+        "Create/link a separate private FIRST PRESS \u2014 Development Project; configure statuses Backlog, Ready, In progress, In review, Blocked, Done and priority/effort/workstream fields.",
         "Verify closed issues move to Done and document Ready selection, labels, milestones and backlog/board views.",
         "Document future collaborator Admin invitation and its security implications; record that no invitation was sent yet."
       ],
