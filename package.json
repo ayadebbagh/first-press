@@ -30,7 +30,7 @@
     "test:exits": "node --experimental-strip-types --test tests/exits/*.test.mjs"
   },
   "dependencies": {
-    "next": "16.4.5",
+    "next": "16.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "drizzle-orm": "0.45.4",
